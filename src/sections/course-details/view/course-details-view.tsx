@@ -1,0 +1,85 @@
+import type { AppDispatch } from 'src/redux';
+
+import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { Grid, CircularProgress } from '@mui/material';
+
+import { DashboardContent } from 'src/layouts/dashboard';
+import { getSingleCourse } from 'src/redux/async/courses/courses.async';
+
+import CourseDetailsOverview from '../details';
+import CourseDetailsHeader from '../course-details-header';
+
+const defCourse: Course = {
+  id: 0,
+  course_name: '',
+  course_overview: '',
+  level: 'Beginner',
+  course_icon: '',
+  lesson_count: 0,
+  mode: '',
+  certificate_included: false,
+  syllabus_link: null,
+  on_dashboard: false,
+  course_category: '',
+  duration: '',
+  instructor_name: '',
+  start_date: '',
+  batch_timing: '',
+  price: '',
+  course_image_link: null,
+  tags: null,
+  tools_and_technologies: null,
+  what_you_will_learn: '',
+  curriculum: '',
+  career_opportunities: '',
+  course_description: '',
+};
+export function CourseDetailsView() {
+  const dispatch = useDispatch<AppDispatch>();
+  const { courseId } = useParams();
+  const [course, setCourse] = useState<Course>(defCourse);
+  const [loader, setLoader] = useState(false);
+
+  const getCourseDetail = async () => {
+    setLoader(true);
+    const payload: getCoursePayload = {
+      id: courseId,
+    };
+    const res = await dispatch(getSingleCourse(payload));
+    if (res.meta.requestStatus === 'fulfilled') {
+      const data = res.payload.data;
+      setCourse(data[0]);
+      setLoader(false);
+    } else {
+      setLoader(false);
+    }
+  };
+  useEffect(() => {
+    if (courseId) {
+      console.log('courseId');
+      getCourseDetail();
+    }
+  }, [courseId]);
+
+  return (
+    <DashboardContent maxWidth="xl">
+      {loader ? (
+        <Grid container justifyContent="center" alignItems="center">
+          <CircularProgress />
+        </Grid>
+      ) : (
+        <>
+          <Grid container sx={{ pb: 3 }}>
+            <CourseDetailsHeader course={course} />
+          </Grid>
+          <Grid container sx={{ pb: 3 }}>
+            <CourseDetailsOverview course={course} />
+          </Grid>
+        </>
+      )}
+    </DashboardContent>
+  );
+}

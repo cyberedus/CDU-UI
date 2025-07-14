@@ -1,0 +1,125 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
+
+import { ForumRounded } from '@mui/icons-material';
+import { Box, Grid, Button, Typography } from '@mui/material';
+
+import { useRouter } from 'src/routes/hooks';
+
+import DialogSlide from 'src/components/dialog/slide-dialog';
+
+import ConsultForm from './consult-form';
+
+const titleVariants: any = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const subtitleVariants: any = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
+};
+
+// Use a standard function declaration
+export const ReadyToStart = () => {
+  const { visitorRelated } = useSelector((state: reduxState) => state.appSettings);
+  const [consultformOpen, setConsultformOpen] = useState<boolean>(false);
+  const router = useRouter();
+
+  const handleToggle = () => {
+    if (visitorRelated) {
+      setConsultformOpen(false);
+      router.push('/contact-us');
+    } else {
+      setConsultformOpen(true);
+    }
+  };
+
+  return (
+    <Box sx={{ pb: 4, width: 1, textAlign: 'center', pt: 4 }}>
+      {/* --- HEADING --- */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={titleVariants}
+      >
+        <Grid container gap={1} justifyContent="center" alignItems="center">
+          <Typography
+            variant="h3"
+            component="h2"
+            sx={{
+              fontWeight: 'bold',
+              color: '#333',
+            }}
+          >
+            Ready to Start Your
+          </Typography>
+          <Typography
+            variant="h3"
+            component="h2"
+            sx={[
+              (theme) => ({
+                background: `linear-gradient(to right, ${theme.vars.palette.primary.main}, ${theme.vars.palette.primary.light})`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                textFillColor: 'transparent',
+                color: 'transparent',
+                // mb: { xs: 3, md: 4 },
+              }),
+            ]}
+          >
+            Journey?
+          </Typography>
+        </Grid>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+        variants={subtitleVariants}
+      >
+        <Typography
+          variant="h6"
+          sx={{
+            mb: 6,
+            color: '#666',
+            fontSize: 27.2,
+          }}
+        >
+          Join thousands of students who have transformed their careers with our hands-on approach
+        </Typography>
+      </motion.div>
+      <Box textAlign="center" sx={{ mt: 6 }}>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Button
+            variant="contained"
+            size="large"
+            color="secondary"
+            startIcon={<ForumRounded />}
+            onClick={handleToggle}
+            sx={{
+              borderRadius: 8,
+            }}
+          >
+            Let{`'`}s Talk
+          </Button>
+        </motion.div>
+      </Box>
+      {!visitorRelated && (
+        <DialogSlide
+          maxWidth="md"
+          id="consultForm"
+          open={consultformOpen}
+          setOpen={setConsultformOpen}
+          title="Get Your Free Career Consultation"
+        >
+          <ConsultForm afterFillForm={handleToggle} />
+        </DialogSlide>
+      )}
+    </Box>
+  );
+};

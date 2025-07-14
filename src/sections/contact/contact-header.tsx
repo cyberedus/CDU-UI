@@ -1,0 +1,171 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+import { Box, Card, CardContent, Grid, Stack, Typography } from '@mui/material';
+
+import { ConsultForm } from '../common';
+import ContactOptions from './to-connect';
+import ContactInfoCard from './contact-info';
+
+const ContactHeader = () => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  return (
+    <Box
+      sx={{
+        width: 1,
+      }}
+    >
+      <Grid
+        container
+        component={motion.div}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        {/* Left Section - Course Details */}
+        <Grid size={{ xs: 12 }}>
+          <Stack spacing={{ xs: 2 }}>
+            <motion.div variants={itemVariants}>
+              <Grid container justifyContent="center" textAlign="center" gap={1}>
+                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+                  Get in
+                </Typography>
+                <Typography
+                  variant="h2"
+                  sx={[
+                    (theme) => ({
+                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent',
+                      color: 'transparent',
+                      // mb: { xs: 3, md: 4 },
+                    }),
+                  ]}
+                >
+                  Touch
+                </Typography>
+              </Grid>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                Ready to start your journey? We{`'`}re here to help you every step of the way
+              </Typography>
+            </motion.div>
+          </Stack>
+        </Grid>
+
+        {/* Right Section - Video Thumbnail */}
+
+        <Grid size={{ xs: 12 }} container>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }}>
+            <motion.div variants={itemVariants}>
+              <Card>
+                <CardContent>
+                  <Grid container>
+                    <Typography variant="h4">Send Us Message</Typography>
+                  </Grid>
+                  <ConsultForm buttonTitle="Send Message" />
+                </CardContent>
+              </Card>
+            </motion.div>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ my: 5 }}>
+            <motion.div variants={itemVariants}>
+              <ContactInfoCard />
+            </motion.div>
+          </Grid>
+        </Grid>
+        {/* <Grid size={{ xs: 12 }} sx={{ my: 4 }}>
+          <Stack spacing={{ xs: 2 }}>
+            <motion.div variants={itemVariants}>
+              <Grid container justifyContent="center" textAlign="center" gap={1}>
+                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+                  Frequently Asked
+                </Typography>
+                <Typography
+                  variant="h2"
+                  sx={[
+                    (theme) => ({
+                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent',
+                      color: 'transparent',
+                      // mb: { xs: 3, md: 4 },
+                    }),
+                  ]}
+                >
+                  Questions
+                </Typography>
+              </Grid>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                Get answers to common questions about our courses and programs
+              </Typography>
+            </motion.div>
+          </Stack>
+        </Grid> */}
+        <Grid size={{ xs: 12 }}>
+          <Stack spacing={{ xs: 2 }}>
+            <motion.div variants={itemVariants}>
+              <Grid container justifyContent="center" textAlign="center" gap={1}>
+                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+                  Other Ways to
+                </Typography>
+                <Typography
+                  variant="h2"
+                  sx={[
+                    (theme) => ({
+                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent',
+                      color: 'transparent',
+                      // mb: { xs: 3, md: 4 },
+                    }),
+                  ]}
+                >
+                  Connect
+                </Typography>
+              </Grid>
+            </motion.div>
+
+            <motion.div variants={itemVariants}>
+              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                Choose the option that works best for you
+              </Typography>
+            </motion.div>
+          </Stack>
+          <ContactOptions />
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
+export default ContactHeader;
