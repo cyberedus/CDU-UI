@@ -59,7 +59,7 @@ interface customError {
   name: string;
   response: {
     status: number;
-    data: Record<string, number | string>;
+    data: Record<string, number | string | any>;
     message: string;
   };
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type
@@ -71,23 +71,16 @@ interface customError {
 axiosclient.interceptors.response.use(
   (response: AxiosResponse) => response,
   async (error: customError) => {
-    // Use our custom typed error here
-    // *Return For Aborted Calls
-    // Use `error?.name` for safety as `error` itself might be null/undefined in very rare edge cases
     if (axios.isCancel(error) || error?.name === 'CanceledError') {
-      // Request was aborted, nothing more to do
-      return Promise.resolve(); // Resolve to prevent further handling as an error
+      return Promise.resolve();
     }
-
-    // Access properties safely using optional chaining (?)
     const status = error.response?.status;
-    const errorMessage: any = error.response?.data?.message || error.message; // Fallback to error.message
+    const errorMessage: any = error.response?.data?.error?.message || error.message; // Fallback to error.message
 
     switch (status) {
       case 401:
         // Unauthorized
         notify('Session Expired. Please Login Again.', 'error', 'Authentication Error'); // Using your notify function
-        // navigateHome(); // Assuming navigateHome redirects
         return Promise.reject(error); // Still reject to allow caller to catch
 
       case 403:
@@ -106,7 +99,7 @@ axiosclient.interceptors.response.use(
 
       default: {
         // For all other errors, use a generic notification
-        console.error('API Error:', error.toJSON ? error.toJSON() : error); // More detailed error logging
+        console.error('API Error:', error.response); // More detailed error logging
         // Check if there's a specific message from the server, otherwise use a generic one
         const displayMessage =
           errorMessage || `An unexpected error occurred (Status: ${status || 'Unknown'}).`;

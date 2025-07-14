@@ -95,6 +95,7 @@ export const notify = (
   return toast(content, {
     type,
     ...options,
+    icon: undefined,
     // Custom close button is handled within CustomAlertToast
     closeButton: false,
     // Pause toast on hover (default for react-toastify)

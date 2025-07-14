@@ -2,12 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { customAxiosClient } from 'src/service';
 
-export const getContactDetails = createAsyncThunk(
-  'dashboard/getContactDetails',
-  async (payload, { fulfillWithValue, rejectWithValue, dispatch }) =>
+export const signInAsync = createAsyncThunk(
+  'admin/signInAsync',
+  async (payload: signInData, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
-      'get',
-      '/v1/contact/contact-details',
+      'post',
+      '/v1/admin/login',
       payload,
       {
         fulfillWithValue,

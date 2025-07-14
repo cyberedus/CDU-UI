@@ -159,3 +159,8 @@ interface FeatureCardProps {
   onClick?: () => void; // Optional click handler for the button
   iconColor?: string; // Optional color for the icon
 }
+
+interface signInData {
+  email?: string;
+  password?: string;
+}
