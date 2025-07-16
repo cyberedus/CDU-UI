@@ -26,10 +26,10 @@ const getConfigIDsFromLocalStorage = (): string | null => {
 const axiosclient = axios.create({
   headers: {
     // Initial Authorization header; will be updated by interceptor
-    Authorization: `Bearer ${localStorage.getItem('accesstoken') || ''}`,
+    Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`,
   },
   baseURL: config.API_URL,
-  signal, // Using a global signal here; consider per-request signals for fine-grained control
+  signal,
 });
 
 // ******************************
@@ -39,7 +39,7 @@ axiosclient.interceptors.request.use(
   (request: any) => {
     // Update Authorization header for every request
     request.headers = request.headers || {}; // Ensure headers object exists
-    request.headers.Authorization = `Bearer ${localStorage.getItem('accesstoken') || ''}`;
+    request.headers.Authorization = `Bearer ${localStorage.getItem('accessToken') || ''}`;
 
     // Retrieve config Ids from localStorage and set header
     const configIDs = getConfigIDsFromLocalStorage();
@@ -55,18 +55,6 @@ axiosclient.interceptors.request.use(
   }
 );
 
-interface customError {
-  name: string;
-  response: {
-    status: number;
-    data: Record<string, number | string | any>;
-    message: string;
-  };
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-  toJSON: () => {};
-  message?: string;
-}
-
 // 3. Your Axios Interceptor with improved typing
 axiosclient.interceptors.response.use(
   (response: AxiosResponse) => response,
@@ -75,7 +63,17 @@ axiosclient.interceptors.response.use(
       return Promise.resolve();
     }
     const status = error.response?.status;
-    const errorMessage: any = error.response?.data?.error?.message || error.message; // Fallback to error.message
+    let errorMessage = '';
+    const contentType = error.response.headers['content-type'];
+    if (contentType && contentType.includes('application/json')) {
+      // Read JSON from blob
+      const errorBlob = error.response.data as Blob;
+      const text = await errorBlob.text();
+      const jsonError = JSON.parse(text);
+      errorMessage = jsonError.error?.message ?? error.message;
+    } else {
+      errorMessage = error.response?.data?.error?.message || error.message; // Fallback to error.message
+    }
 
     switch (status) {
       case 401:
@@ -113,7 +111,14 @@ axiosclient.interceptors.response.use(
 // ******************************
 // * 5. AxiosClient Function (for Redux Toolkit Thunks)
 // ******************************
-
+const createData = (payload: AxiosClientPayload | Record<string, any> | void) => {
+  if (payload?.signal) {
+    return payload?.request;
+  } else if (payload?.isShowProgress) {
+    return payload?.formData;
+  }
+  return payload ?? {};
+};
 export const AxiosClient: AxiosClientFunction = async (
   type,
   api,
@@ -122,17 +127,12 @@ export const AxiosClient: AxiosClientFunction = async (
   isRejectWithErrorMsg,
   responseType
 ) => {
+  const data = createData(payload);
   try {
     const requestConfig: AxiosClientPayload = {
       url: api,
       method: type,
-      // Safely access properties from payload based on their presence
-      data: payload?.signal
-        ? payload.request // Assuming payload.request is the actual data
-        : payload?.isShowProgress
-          ? payload?.formData
-          : (payload ?? {}), // Default to entire payload if no specific flags
-      // Pass the signal from the payload if provided, otherwise use the global one
+      data,
       signal: payload?.signal || signal,
       onUploadProgress: payload?.onUploadProgress,
       onDownloadProgress: payload?.onDownloadProgress,
@@ -144,46 +144,25 @@ export const AxiosClient: AxiosClientFunction = async (
 
     const response: AxiosResponse = await axiosclient(requestConfig);
 
-    // Handle successful responses (2xx family)
     if (response.status >= 200 && response.status < 300) {
-      // Specifically handle 299 if it has special meaning
       if (response.status === 299) {
         return toolkit?.fulfillWithValue({ data: response.data, status: response.status });
       }
       return toolkit?.fulfillWithValue(response.data);
-    }
-    // Handle specific status codes that are not direct errors but need special action
-    else if (response.status === 403) {
-      // This block will actually be hit if the interceptor resolved the promise
-      // However, given the interceptor now rejects for 403, this part might not be reached directly
-      // unless the original error was swallowed and a resolved response with status 403 came through.
-      // Assuming the interceptor passes through 403 with a rejected promise:
-      //   toolkit.dispatch(
-      //     setDisplayMessage({
-      //       message: response?.data?.message || 'Access Denied',
-      //       type: 'error',
-      //       autoHide: false,
-      //     })
-      //   );
-      // Reject with a structured error message
+    } else if (response.status === 403) {
       const rejectionPayload: CustomErrorResponse =
         response?.request?.responseType === 'blob'
           ? { message: 'Access Denied' }
           : { message: response.data?.message || 'Forbidden', statusCode: 403 };
       return toolkit?.rejectWithValue(rejectionPayload);
-    }
-    // Generic case for other non-2xx statuses if they somehow bypass interceptor error handling
-    else {
-      return toolkit?.rejectWithValue(response.data || response.data); // Use response.data consistently
+    } else {
+      return toolkit?.rejectWithValue(response.data); // Use response.data consistently
     }
   } catch (error: any) {
-    // Catch AxiosError specifically
     let rejectPayload: string | CustomErrorResponse;
 
     if (axios.isAxiosError(error)) {
       if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
         rejectPayload =
           isRejectWithErrorMsg && error.response.data
             ? error.response.data // If you want to return the raw response data
@@ -192,14 +171,11 @@ export const AxiosClient: AxiosClientFunction = async (
                 statusCode: error.response.status,
               };
       } else if (error.request) {
-        // The request was made but no response was received
         rejectPayload = error.message;
       } else {
-        // Something happened in setting up the request that triggered an Error
         rejectPayload = error.message;
       }
     } else {
-      // Non-Axios error
       rejectPayload = error.message || 'An unknown error occurred';
     }
 

@@ -59,6 +59,7 @@ interface CustomErrorResponse {
 
 interface configTypes {
   API_URL: string;
+  DEV_TOOLS: string;
 }
 
 interface CustomToastProps {
@@ -69,37 +70,50 @@ interface CustomToastProps {
   onClose?: () => void; // Function to call when the toast is closed
 }
 
+interface CurriculumItem {
+  topic_title: string;
+  subtopics: string[];
+}
+
+interface CourseBatch {
+  batch_id: number;
+  batch_name: string;
+  start_date: string; // ISO date string, can be parsed with Date if needed
+  end_date: string; // ISO date string
+  mode: 'Online' | 'Offline' | 'Hybrid'; // Use union if you know all possible values
+  timing: string;
+  instructor_name: string;
+  seats_available: number;
+  created_at: string; // ISO timestamp
+}
+
 interface Course {
   id: number;
   course_name: string;
-  course_overview: string;
-  level: 'Beginner' | 'Intermediate' | 'Advanced'; // Adjust as needed
-  course_icon: string;
-  lesson_count: number;
-  mode: 'Online' | 'Offline' | string; // You can narrow or expand this union
+  course_tagline: string;
+  course_description: string;
+  level: string;
+  duration: string;
+  price: string; // could also be number if it's stored as a number
   certificate_included: boolean;
   syllabus_link: string | null;
+  course_image_link?: string | null;
+  tags: string[];
   on_dashboard: boolean;
+  topics_count: number;
   course_category: string;
-  duration: string;
-  instructor_name: string;
-  start_date: string; // ISO format: "2025-07-02T18:30:00.000Z"
-  batch_timing: string;
-  duration: string;
-  price: string; // Consider number if it's numeric: number;
-  course_image_link: string | null;
-  tags: string[] | null;
-  tools_and_technologies: string[] | null;
-  what_you_will_learn: string;
-  curriculum: string;
-  career_opportunities: string;
-  course_description: string;
+  overview_points: string[];
+  what_you_will_learn: string[];
+  career_opportunities: string[];
+  tools_and_technologies: string[];
+  curriculum: CurriculumItem[];
+  course_icon: string;
+  batches: CourseBatch[];
 }
 
 type CourseList = Course[];
-interface CurriculumModule {
-  title: string;
-  topics: string[];
+interface CourseProps {
+  course: Course;
 }
 
 type Company = {
@@ -126,6 +140,8 @@ interface DashboardState {
   loading: boolean;
   data: any;
   error: string | null;
+  interestedCourseOptions: string[] | any[];
+  interestedCouse: string | null;
 }
 
 interface appSettingState {
@@ -163,4 +179,33 @@ interface FeatureCardProps {
 interface signInData {
   email?: string;
   password?: string;
+}
+
+interface customError {
+  name: string;
+  response: {
+    status: number;
+    data: Record<string, number | string | any>;
+    message: string;
+    headers: Record<any, any>;
+  };
+  request: {
+    responseType: string;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
+  toJSON: () => {};
+  message?: string;
+}
+
+interface ContactInfo {
+  id: number;
+  address: string;
+  email: string;
+  alternate_email: string;
+  phone_number: string;
+  alternate_phone_number: string;
+  office_hours: string;
+}
+interface ContactDetialsProps {
+  conatctDetails: ContactInfo;
 }

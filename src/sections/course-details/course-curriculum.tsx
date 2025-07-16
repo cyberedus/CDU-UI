@@ -15,40 +15,6 @@ import {
   AccordionDetails,
 } from '@mui/material';
 
-const curriculumData: CurriculumModule[] = [
-  {
-    title: 'Introduction to Ethical Hacking',
-    topics: ['What is Ethical Hacking?', 'Types of Hackers', 'Phases of Hacking'],
-  },
-  {
-    title: 'Footprinting and Reconnaissance',
-    topics: [
-      'What is Footprinting?',
-      'Information Gathering Tools',
-      'Scanning Networks',
-      'Enumeration Techniques',
-    ],
-  },
-  {
-    title: 'Scanning Networks',
-    topics: [
-      'Network Scanning Techniques',
-      'Vulnerability Scanning',
-      'Proxy Servers and Anonymizers',
-    ],
-  },
-  // Add more modules as needed
-  {
-    title: 'System Hacking',
-    topics: [
-      'Password Cracking Techniques',
-      'Keyloggers and Spyware',
-      'Hiding Files',
-      'Privilege Escalation',
-    ],
-  },
-];
-
 // --- Framer Motion Variants ---
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -68,7 +34,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
-const CourseCurriculum: React.FC = () => {
+const CourseCurriculum: React.FC<CourseProps> = ({ course }) => {
   // State to manage which accordion is expanded.
   // 'panelX' corresponds to the index of the module.
   const [expandedPanel, setExpandedPanel] = React.useState<string | false>('panel0'); // Expand the first one by default
@@ -111,8 +77,8 @@ const CourseCurriculum: React.FC = () => {
           </Typography>
         </motion.div>
 
-        {curriculumData.map((module, index) => (
-          <motion.div key={module.title} variants={itemVariants} style={{ paddingTop: 7 }}>
+        {course.curriculum.map((module, index) => (
+          <motion.div key={module.topic_title} variants={itemVariants} style={{ paddingTop: 7 }}>
             <Accordion
               expanded={expandedPanel === `panel${index}`}
               onChange={handleChange(`panel${index}`)}
@@ -142,20 +108,20 @@ const CourseCurriculum: React.FC = () => {
                   borderRadius: '8px',
                   minHeight: { xs: 48, md: 64 }, // Adjust height
                   '& .MuiAccordionSummary-content': {
-                    margin: '12px 0', // Adjust content vertical spacing
+                    margin: '12px 0',
                     '&.Mui-expanded': {
-                      margin: '12px 0', // Keep consistent when expanded
+                      margin: '12px 0',
                     },
                   },
                 }}
               >
                 <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#333' }}>
-                  {module.title}
+                  {module.topic_title}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails sx={{ pt: 1, pb: 2, px: 2, borderTop: '1px solid #eee' }}>
                 <List sx={{ pt: 0 }}>
-                  {module.topics.map((topic) => (
+                  {module.subtopics.map((topic) => (
                     <ListItem key={topic} sx={{ py: 0.5, pl: 0 }}>
                       <ListItemIcon sx={{ minWidth: 'unset', mr: 1, color: '#616161' }}>
                         • {/* Custom bullet point */}

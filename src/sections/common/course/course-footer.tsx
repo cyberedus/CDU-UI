@@ -1,5 +1,7 @@
+import type { AppDispatch } from 'src/redux';
+
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FileDownloadOutlined } from '@mui/icons-material';
 import { Box, Button, CircularProgress } from '@mui/material';
@@ -8,6 +10,7 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useDownload } from 'src/hooks/useDownload';
 
+import { setInterestedCourse } from 'src/redux/index.slices';
 import { downloadCourseSyllabus } from 'src/redux/index.async';
 
 import DialogSlide from 'src/components/dialog/slide-dialog';
@@ -19,6 +22,7 @@ interface CourseFooterProps {
   isHome?: boolean;
 }
 const CourseFooter = ({ course, isHome }: CourseFooterProps) => {
+  const dispatch = useDispatch<AppDispatch>();
   const { handleDownload, downloading } = useDownload();
   const { visitorRelated } = useSelector((state: reduxState) => state.appSettings);
   const [consultformOpen, setConsultformOpen] = useState<boolean>(false);
@@ -45,6 +49,7 @@ const CourseFooter = ({ course, isHome }: CourseFooterProps) => {
   };
 
   const handleNavigateView = () => {
+    dispatch(setInterestedCourse(course.course_name));
     router.push(isHome ? `/courses/${course.id}` : `${course.id}`);
   };
   return (

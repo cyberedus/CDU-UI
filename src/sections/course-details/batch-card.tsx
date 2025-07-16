@@ -7,18 +7,9 @@ import ScheduleIcon from '@mui/icons-material/Schedule';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { Box, Card, styled, Typography, CardContent } from '@mui/material';
 
-// Define the interface for a single batch item
-export interface BatchData {
-  id: string; // Add an ID for key prop when mapping
-  startDate: string;
-  time: string;
-  mode: string;
-  instructor: string;
-}
-
 // Props for the individual BatchCard
 interface BatchCardProps {
-  batch: BatchData;
+  batch: CourseBatch;
 }
 
 // Styled component for the icon-text pair
@@ -30,7 +21,7 @@ const IconTextContainer = styled(Box)(({ theme }) => ({
 
 // Individual Batch Card Component
 const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
-  const { startDate, time, mode, instructor } = batch;
+  const { start_date, timing, mode, instructor_name } = batch;
 
   return (
     <motion.div
@@ -46,14 +37,14 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
           <IconTextContainer>
             <CalendarMonthIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Start Date: {startDate}
+              Start Date: {start_date}
             </Typography>
           </IconTextContainer>
 
           <IconTextContainer>
             <ScheduleIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Time: {time}
+              Time: {timing}
             </Typography>
           </IconTextContainer>
 
@@ -67,7 +58,7 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
           <IconTextContainer>
             <PersonIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Instructor: {instructor}
+              Instructor: {instructor_name}
             </Typography>
           </IconTextContainer>
         </CardContent>

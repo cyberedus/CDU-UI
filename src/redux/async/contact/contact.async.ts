@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { customAxiosClient } from 'src/service';
 
 export const getContactDetails = createAsyncThunk(
-  'dashboard/getContactDetails',
+  'contact/getContactDetails',
   async (payload, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
       'get',

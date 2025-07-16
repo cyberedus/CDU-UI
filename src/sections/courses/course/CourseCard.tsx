@@ -2,16 +2,8 @@ import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
 import { Box, Card, Chip, Grid, Avatar, Typography, CardContent } from '@mui/material';
-import {
-  Timer,
-  Laptop,
-  DateRange,
-  AccessTime,
-  WorkspacePremium,
-  MenuBook as MenuBookIcon,
-} from '@mui/icons-material';
+import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
 
-import { fDate } from 'src/utils/format-time';
 import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
 
 import { CourseFooter } from 'src/sections/common';
@@ -112,23 +104,23 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             color="text.secondary"
             sx={{ mb: 2 }}
           >
-            {course.course_overview}
+            {course.course_description}
           </Typography>
 
-          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+          {/* <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
             <DateRange sx={{ fontSize: 16, mr: 0.4 }} />
             <Typography sx={{ mr: 0.4 }} variant="body1">
               Start Date :
             </Typography>
             <Typography variant="body2">{fDate(course.start_date, 'DD/MM/YYYY')}</Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+          </Box> */}
+          {/* <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
             <Timer sx={{ fontSize: 16, mr: 0.4 }} />
             <Typography sx={{ mr: 0.4 }} variant="body1">
               Start Time :
             </Typography>
             <Typography variant="body2">{course.batch_timing}</Typography>
-          </Box>
+          </Box> */}
           <Box mt={1}>
             <Typography sx={{ mr: 0.4 }} variant="subtitle1">
               Tools and Technologies
@@ -153,17 +145,17 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             }}
           >
             <Chip
-              label={`${course.lesson_count} Lessons`}
+              label={`${course.topics_count} Lessons`}
               icon={<MenuBookIcon />}
               size="small"
               // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
             />
-            <Chip
+            {/* <Chip
               label={`${course.mode}`}
               icon={<Laptop />}
               size="small"
               // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
-            />
+            /> */}
             <Chip
               label={course.duration}
               icon={<AccessTime />}

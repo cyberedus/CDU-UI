@@ -16,7 +16,7 @@ import AuthProvider from 'src/auth/auth-provider';
 
 export const CourseDetailsPage = lazy(() => import('src/pages/course-details'));
 export const CoursesPage = lazy(() => import('src/pages/courses'));
-export const ContactUsPage = lazy(() => import('src/pages/contsct-us'));
+export const ContactUsPage = lazy(() => import('src/pages/contact-us'));
 export const DashboardPage = lazy(() => import('src/pages/dashboard'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
 export const UserPage = lazy(() => import('src/pages/user'));

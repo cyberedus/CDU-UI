@@ -53,6 +53,9 @@ interface ConsultationProps {
 const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { appSettingLoader } = useSelector((state: reduxState) => state.appSettings);
+  const { interestedCourseOptions, interestedCouse } = useSelector(
+    (state: reduxState) => state.dashboardData
+  );
   const {
     handleSubmit,
     control,
@@ -63,14 +66,13 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
       username: '',
       email: '',
       phone_number: '',
-      course_interested: '',
+      course_interested: interestedCouse ?? '',
       message: '',
       device_fingerprint: '',
     },
   });
 
   const onSubmit: SubmitHandler<leadsFormData> = async (data: leadsFormData) => {
-    console.log('Form Data Submitted:', data);
     const device_fingerprint: string = UIDV4();
     const res = await dispatch(createLeadsData({ ...data, device_fingerprint }));
     if (res.meta.requestStatus === 'fulfilled') {
@@ -221,10 +223,11 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
                       <MenuItem value="">
                         <em>Select a course</em>
                       </MenuItem>
-                      <MenuItem value="cybersecurity">Cybersecurity Fundamentals</MenuItem>
-                      <MenuItem value="ethical_hacking">Ethical Hacking</MenuItem>
-                      <MenuItem value="data_privacy">Data Privacy & Compliance</MenuItem>
-                      <MenuItem value="cloud_security">Cloud Security</MenuItem>
+                      {interestedCourseOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
                     </Select>
                   )}
                 />
@@ -273,7 +276,7 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
                 disabled={appSettingLoader}
                 startIcon={appSettingLoader ? <CircularProgress size={15} /> : null}
                 sx={{
-                  mt: 3,
+                  mt: 0,
                   px: 5,
                   py: 1.5,
                   bgcolor: '#2f4858', // Custom darker blue from your image

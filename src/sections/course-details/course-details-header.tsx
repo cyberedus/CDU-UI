@@ -224,10 +224,12 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
             >
               {/* This is a placeholder for the image within the component, assuming it's loaded as a public asset */}
               {/* If you prefer to use an <img> tag, uncomment and replace the Box's backgroundImage */}
-              <img
+
+              <Box
+                component="img"
                 src="/images/image_429246.png" // Update this path to where your image is served
                 alt="Certified Ethical Hacker (CEH) Course Thumbnail"
-                style={{
+                sx={{
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',

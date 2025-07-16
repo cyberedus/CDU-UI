@@ -7,7 +7,7 @@ import { ConsultForm } from '../common';
 import ContactOptions from './to-connect';
 import ContactInfoCard from './contact-info';
 
-const ContactHeader = () => {
+const ContactHeader = ({ conatctDetails }: ContactDetialsProps) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -45,11 +45,25 @@ const ContactHeader = () => {
           <Stack spacing={{ xs: 2 }}>
             <motion.div variants={itemVariants}>
               <Grid container justifyContent="center" textAlign="center" gap={1}>
-                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+                <Typography
+                  variant="h1"
+                  component="h1"
+                  sx={[
+                    (theme) => ({
+                      background: `linear-gradient(to right, ${theme.vars.palette.common.black}, ${theme.vars.palette.common.black})`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      textFillColor: 'transparent',
+                      color: 'transparent',
+                    }),
+                  ]}
+                >
                   Get in
                 </Typography>
                 <Typography
-                  variant="h2"
+                  variant="h1"
+                  component="h1"
                   sx={[
                     (theme) => ({
                       background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
@@ -58,7 +72,6 @@ const ContactHeader = () => {
                       backgroundClip: 'text',
                       textFillColor: 'transparent',
                       color: 'transparent',
-                      // mb: { xs: 3, md: 4 },
                     }),
                   ]}
                 >
@@ -90,45 +103,12 @@ const ContactHeader = () => {
               </Card>
             </motion.div>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }} sx={{ my: 5 }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }} height={1}>
             <motion.div variants={itemVariants}>
-              <ContactInfoCard />
+              <ContactInfoCard conatctDetails={conatctDetails} />
             </motion.div>
           </Grid>
         </Grid>
-        {/* <Grid size={{ xs: 12 }} sx={{ my: 4 }}>
-          <Stack spacing={{ xs: 2 }}>
-            <motion.div variants={itemVariants}>
-              <Grid container justifyContent="center" textAlign="center" gap={1}>
-                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-                  Frequently Asked
-                </Typography>
-                <Typography
-                  variant="h2"
-                  sx={[
-                    (theme) => ({
-                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textFillColor: 'transparent',
-                      color: 'transparent',
-                      // mb: { xs: 3, md: 4 },
-                    }),
-                  ]}
-                >
-                  Questions
-                </Typography>
-              </Grid>
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
-                Get answers to common questions about our courses and programs
-              </Typography>
-            </motion.div>
-          </Stack>
-        </Grid> */}
         <Grid size={{ xs: 12 }}>
           <Stack spacing={{ xs: 2 }}>
             <motion.div variants={itemVariants}>
@@ -146,7 +126,6 @@ const ContactHeader = () => {
                       backgroundClip: 'text',
                       textFillColor: 'transparent',
                       color: 'transparent',
-                      // mb: { xs: 3, md: 4 },
                     }),
                   ]}
                 >

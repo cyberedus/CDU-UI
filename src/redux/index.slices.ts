@@ -1,5 +1,8 @@
 // dashboard
-export { default as dashboardSlice } from './slices/dashboard/get-all-course-list.slice';
+export {
+  setInterestedCourse,
+  default as dashboardSlice,
+} from './slices/dashboard/get-all-course-list.slice';
 // App setting
 export {
   setVitorId,

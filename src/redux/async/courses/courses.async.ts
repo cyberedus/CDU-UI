@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { customAxiosClient } from 'src/service';
 
 export const getAllCourseList = createAsyncThunk(
-  'dashboard/getAllCourseList',
+  'courses/getAllCourseList',
   async (payload, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
       'post',
@@ -18,7 +18,7 @@ export const getAllCourseList = createAsyncThunk(
     )
 );
 export const getSingleCourse = createAsyncThunk(
-  'dashboard/getSingleCourse',
+  'courses/getSingleCourse',
   async (payload: getCoursePayload, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
       'post',
@@ -34,7 +34,7 @@ export const getSingleCourse = createAsyncThunk(
 );
 
 export const createCourseDetails = createAsyncThunk(
-  'dashboard/createCourseDetails',
+  'courses/createCourseDetails',
   async (payload, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
       'post',
@@ -49,7 +49,7 @@ export const createCourseDetails = createAsyncThunk(
     )
 );
 export const downloadCourseSyllabus = createAsyncThunk(
-  'dashboard/downloadCourseSyllabus',
+  'courses/downloadCourseSyllabus',
   async (payload: downloadCourse, { fulfillWithValue, rejectWithValue, dispatch }) =>
     await customAxiosClient(
       'post',

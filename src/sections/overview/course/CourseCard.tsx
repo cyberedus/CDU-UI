@@ -2,12 +2,7 @@ import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
 import { Box, Card, Chip, Grid, Avatar, Typography, CardContent } from '@mui/material';
-import {
-  Laptop,
-  AccessTime,
-  WorkspacePremium,
-  MenuBook as MenuBookIcon,
-} from '@mui/icons-material';
+import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
 
 import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
 
@@ -99,7 +94,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             textAlign="left"
             sx={{ flexGrow: 0, mb: 2 }}
           >
-            {course.course_overview}
+            {course.course_description}
           </Typography>
 
           <Box
@@ -113,17 +108,17 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             }}
           >
             <Chip
-              label={`${course.lesson_count} Lessons`}
+              label={`${course.topics_count} Lessons`}
               icon={<MenuBookIcon />}
               size="small"
               sx={{ alignSelf: 'flex-start' }}
             />
-            <Chip
+            {/* <Chip
               label={`${course.mode}`}
               icon={<Laptop />}
               size="small"
               sx={{ alignSelf: 'flex-start' }}
-            />
+            /> */}
             <Chip
               label={course.duration}
               icon={<AccessTime />}

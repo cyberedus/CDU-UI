@@ -133,7 +133,17 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
               // circular
               autoplayInterval={30000}
               itemTemplate={(course: Course) => (
-                <Grid py={3} pb={5} m={2} height={1}>
+                <Grid
+                  size={{
+                    xs: 12,
+                    sm: 6,
+                    lg: 4,
+                  }}
+                  py={3}
+                  pb={5}
+                  m={2}
+                  height={1}
+                >
                   <CourseCard course={course} variants={itemVariants} />
                 </Grid>
               )}

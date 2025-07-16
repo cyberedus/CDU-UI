@@ -39,7 +39,7 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
             aria-label="course navigation tabs"
             sx={{
               '& .MuiTabs-indicator': {
-                backgroundColor: '#1976d2', // Blue indicator
+                backgroundColor: 'primary.main', // Blue indicator
               },
             }}
           >
@@ -48,9 +48,9 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
               sx={{
                 textTransform: 'none',
                 fontWeight: 'bold',
-                color: tabValue === 0 ? '#1976d2' : '#616161', // Blue when selected
+                color: '#616161', // Blue when selected
                 '&.Mui-selected': {
-                  color: '#1976d2',
+                  color: 'primary.main',
                 },
               }}
             />
@@ -71,8 +71,8 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
         {/* Content Area */}
         <CardContent sx={{ width: 1 }}>
           {tabValue === 0 && <CourseOverView course={course} />}
-          {tabValue === 1 && <CourseCurriculum />}
-          {tabValue === 2 && <CourseBatches />}
+          {tabValue === 1 && <CourseCurriculum course={course} />}
+          {tabValue === 2 && <CourseBatches course={course} />}
         </CardContent>
         {/* You would add content for other tabs (Curriculum, Batches, Fees) here */}
       </Card>
