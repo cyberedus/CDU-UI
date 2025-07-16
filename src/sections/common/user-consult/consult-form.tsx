@@ -52,7 +52,9 @@ interface ConsultationProps {
 
 const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { appSettingLoader } = useSelector((state: reduxState) => state.appSettings);
+  const { appSettingLoader, visitorRelated } = useSelector(
+    (state: reduxState) => state.appSettings
+  );
   const { interestedCourseOptions, interestedCouse } = useSelector(
     (state: reduxState) => state.dashboardData
   );
@@ -68,12 +70,12 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
       phone_number: '',
       course_interested: interestedCouse ?? '',
       message: '',
-      device_fingerprint: '',
+      device_fingerprint: visitorRelated ?? '',
     },
   });
 
   const onSubmit: SubmitHandler<leadsFormData> = async (data: leadsFormData) => {
-    const device_fingerprint: string = UIDV4();
+    const device_fingerprint: string = visitorRelated ?? UIDV4();
     const res = await dispatch(createLeadsData({ ...data, device_fingerprint }));
     if (res.meta.requestStatus === 'fulfilled') {
       notify(
@@ -88,8 +90,6 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
         afterFillForm();
       }
       reset(); // Reset form after successful submission
-    } else {
-      notify('Something went wrong', 'error', 'We’ve Got wrong Request!');
     }
   };
 

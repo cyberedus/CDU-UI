@@ -201,11 +201,12 @@ interface ContactInfo {
   id: number;
   address: string;
   email: string;
-  alternate_email: string;
+  alternate_email?: string | null;
   phone_number: string;
-  alternate_phone_number: string;
+  alternate_phone_number?: string | null;
   office_hours: string;
 }
 interface ContactDetialsProps {
   conatctDetails: ContactInfo;
+  loading?: boolean;
 }

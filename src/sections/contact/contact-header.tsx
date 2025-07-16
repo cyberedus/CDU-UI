@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { Box, Card, CardContent, Grid, Stack, Typography } from '@mui/material';
+import { Box, Card, CardContent, CircularProgress, Grid, Stack, Typography } from '@mui/material';
 
 import { ConsultForm } from '../common';
 import ContactOptions from './to-connect';
 import ContactInfoCard from './contact-info';
 
-const ContactHeader = ({ conatctDetails }: ContactDetialsProps) => {
+const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
@@ -79,9 +79,21 @@ const ContactHeader = ({ conatctDetails }: ContactDetialsProps) => {
                 </Typography>
               </Grid>
             </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={itemVariants}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  mb: 6,
+                  color: '#666',
+                  fontSize: 27.2,
+                  textAlign: 'center',
+                }}
+              >
                 Ready to start your journey? We{`'`}re here to help you every step of the way
               </Typography>
             </motion.div>
@@ -89,59 +101,66 @@ const ContactHeader = ({ conatctDetails }: ContactDetialsProps) => {
         </Grid>
 
         {/* Right Section - Video Thumbnail */}
-
-        <Grid size={{ xs: 12 }} container>
-          <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }}>
-            <motion.div variants={itemVariants}>
-              <Card>
-                <CardContent>
-                  <Grid container>
-                    <Typography variant="h4">Send Us Message</Typography>
-                  </Grid>
-                  <ConsultForm buttonTitle="Send Message" />
-                </CardContent>
-              </Card>
-            </motion.div>
+        {loading ? (
+          <Grid container justifyContent="center" alignItems="center" width={1}>
+            <CircularProgress />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }} height={1}>
-            <motion.div variants={itemVariants}>
-              <ContactInfoCard conatctDetails={conatctDetails} />
-            </motion.div>
-          </Grid>
-        </Grid>
-        <Grid size={{ xs: 12 }}>
-          <Stack spacing={{ xs: 2 }}>
-            <motion.div variants={itemVariants}>
-              <Grid container justifyContent="center" textAlign="center" gap={1}>
-                <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-                  Other Ways to
-                </Typography>
-                <Typography
-                  variant="h2"
-                  sx={[
-                    (theme) => ({
-                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textFillColor: 'transparent',
-                      color: 'transparent',
-                    }),
-                  ]}
-                >
-                  Connect
-                </Typography>
+        ) : (
+          <>
+            <Grid size={{ xs: 12 }} container>
+              <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }}>
+                <motion.div variants={itemVariants}>
+                  <Card>
+                    <CardContent>
+                      <Grid container>
+                        <Typography variant="h4">Send Us Message</Typography>
+                      </Grid>
+                      <ConsultForm buttonTitle="Send Message" />
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </Grid>
-            </motion.div>
+              <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }} height={1}>
+                <motion.div variants={itemVariants}>
+                  <ContactInfoCard conatctDetails={conatctDetails} />
+                </motion.div>
+              </Grid>
+            </Grid>
+            <Grid size={{ xs: 12 }}>
+              <Stack spacing={{ xs: 2 }}>
+                <motion.div variants={itemVariants}>
+                  <Grid container justifyContent="center" textAlign="center" gap={1}>
+                    <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
+                      Other Ways to
+                    </Typography>
+                    <Typography
+                      variant="h2"
+                      sx={[
+                        (theme) => ({
+                          background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          textFillColor: 'transparent',
+                          color: 'transparent',
+                        }),
+                      ]}
+                    >
+                      Connect
+                    </Typography>
+                  </Grid>
+                </motion.div>
 
-            <motion.div variants={itemVariants}>
-              <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
-                Choose the option that works best for you
-              </Typography>
-            </motion.div>
-          </Stack>
-          <ContactOptions />
-        </Grid>
+                <motion.div variants={itemVariants}>
+                  <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                    Choose the option that works best for you
+                  </Typography>
+                </motion.div>
+              </Stack>
+              <ContactOptions />
+            </Grid>
+          </>
+        )}
       </Grid>
     </Box>
   );

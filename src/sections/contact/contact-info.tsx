@@ -107,7 +107,6 @@ const ContactInfoCard: React.FC<ContactDetialsProps> = ({ conatctDetails }) => {
         {/* Office Hours */}
         <motion.div variants={itemVariants}>
           <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
-            {' '}
             {/* No mb for the last item */}
             <Box
               sx={{
@@ -129,10 +128,12 @@ const ContactInfoCard: React.FC<ContactDetialsProps> = ({ conatctDetails }) => {
                 Office Hours
               </Typography>
               <Typography variant="body2">{conatctDetails.office_hours}</Typography>
-              <Typography variant="body2">Sunday: Closed</Typography>
             </div>
           </Box>
         </motion.div>
+        <Typography variant="body2" color="error" sx={{ mt: 2 }}>
+          Note: For Saturday or Sunday visits, please call ahead to confirm.
+        </Typography>
       </CardContent>
     </Card>
   );

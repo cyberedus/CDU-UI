@@ -23,12 +23,17 @@ const contactInitialData: ContactInfo = {
 export function ContactUsView() {
   const dispatch = useDispatch<AppDispatch>();
   const [contactDetails, setContactDetails] = useState<ContactInfo>(contactInitialData);
+  const [loading, setLoading] = useState(false);
 
   const getDefaultContactDetails = async () => {
+    setLoading(true);
     const res = await dispatch(getContactDetails());
     if (res.meta.requestStatus === 'fulfilled') {
       const contactData = res.payload.data;
-      setContactDetails(contactData[0]);
+      setContactDetails(contactData?.[0] ?? contactInitialData);
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
   };
   console.log(contactDetails, 'contactDetails');
@@ -40,7 +45,7 @@ export function ContactUsView() {
   return (
     <DashboardContent>
       <Grid spacing={3}>
-        <ContactHeader conatctDetails={contactDetails} />
+        <ContactHeader loading={loading} conatctDetails={contactDetails} />
       </Grid>
       {/* <ContactUsPage /> */}
     </DashboardContent>
