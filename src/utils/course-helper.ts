@@ -28,11 +28,13 @@ export const getCourseIcon = (courseCategory: string) =>
   (courseCategory === 'data' && StorageIcon) ||
   (courseCategory === 'ai-ml' && HubIcon) ||
   LocalLibraryIcon;
+
 export const getCourseColor = (courseLevel: string) =>
   (courseLevel === 'Beginner' && 'success') ||
   (courseLevel === 'Intermediate' && 'primary') ||
   (courseLevel === 'Advanced' && 'warning') ||
   'secondary';
+
 export const responsiveOptions = [
   {
     breakpoint: '1400px',
@@ -60,6 +62,7 @@ export const responsiveOptions = [
     numScroll: 1,
   },
 ];
+
 export const responsiveOptionsCourse = [
   {
     breakpoint: '1400px',
