@@ -108,7 +108,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
         ) : (
           <>
             <Grid size={{ xs: 12 }} container>
-              <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }}>
+              <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 0, md: 3 } }}>
                 <motion.div variants={itemVariants}>
                   <Card>
                     <CardContent>
@@ -120,7 +120,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
                   </Card>
                 </motion.div>
               </Grid>
-              <Grid size={{ xs: 12, md: 6 }} sx={{ p: 3 }} height={1}>
+              <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 0, md: 3 } }} height={1}>
                 <motion.div variants={itemVariants}>
                   <ContactInfoCard conatctDetails={conatctDetails} />
                 </motion.div>

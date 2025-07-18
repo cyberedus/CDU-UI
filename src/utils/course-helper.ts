@@ -45,13 +45,13 @@ export const responsiveOptions = [
     numScroll: 1,
   },
   {
-    breakpoint: '1199px',
-    numVisible: 6,
+    breakpoint: '1024px',
+    numVisible: 5,
     numScroll: 1,
   },
   {
-    breakpoint: '767px',
-    numVisible: 4,
+    breakpoint: '768px',
+    numVisible: 3,
     numScroll: 1,
   },
   {

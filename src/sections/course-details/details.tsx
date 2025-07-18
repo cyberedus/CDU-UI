@@ -42,6 +42,8 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
                 backgroundColor: 'primary.main', // Blue indicator
               },
             }}
+            variant="scrollable"
+            scrollButtons
           >
             <Tab
               label="Overview"

@@ -98,7 +98,7 @@ const HomePageHeader = () => {
               background:
                 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03))',
               backdropFilter: 'blur(10px)', // backdrop-blur-sm
-              p: 4, // p-8 (MUI theme spacing)
+              p: { xs: 1, sm: 4 }, // p-8 (MUI theme spacing)
               boxShadow: '0px 10px 30px rgba(0,0,0,0.1)', // shadow-xl
               transition: 'box-shadow 0.5s', // Smooth transition for shadow
             }}

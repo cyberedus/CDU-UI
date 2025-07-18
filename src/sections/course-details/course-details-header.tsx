@@ -74,13 +74,20 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
         animate="visible"
         alignItems="center"
         justifyContent="space-between"
+        direction={{
+          xs: 'column-reverse',
+          sm: 'column-reverse',
+          md: 'row',
+        }}
+        rowGap={2}
       >
         {/* Left Section - Course Details */}
         <Grid size={{ xs: 12, md: 6 }}>
           <Stack spacing={{ xs: 2, md: 3 }} sx={{ pr: { md: 4 } }}>
             <motion.div variants={itemVariants}>
-              <Stack direction="row" spacing={1}>
+              <Stack direction="row" spacing={1} flexWrap="wrap" rowGap={1}>
                 <Chip
+                  key={1}
                   label={course.level}
                   color="primary"
                   sx={{ bgcolor: '#e0f7fa', color: '#007bb2', fontWeight: 'bold' }}
@@ -109,7 +116,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Stack direction="row" spacing={3} alignItems="center" flexWrap="wrap">
+              <Stack direction="row" spacing={3} alignItems="center" flexWrap="wrap" rowGap={1}>
                 <Stack direction="row" alignItems="center" spacing={0.5}>
                   <AccessTimeIcon sx={{ color: '#616161' }} />
                   <Typography variant="body2" sx={{ color: '#616161' }}>
@@ -119,7 +126,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                 <Stack direction="row" alignItems="center" spacing={0.5}>
                   <BarChartIcon sx={{ color: '#616161' }} />
                   <Typography variant="body2" sx={{ color: '#616161' }}>
-                    Beginner
+                    {course.level}
                   </Typography>
                 </Stack>
                 {course.certificate_included && (
@@ -207,7 +214,6 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                // Placeholder for actual video content if needed
                 '&::before': {
                   content: '""',
                   display: 'block',
@@ -219,12 +225,9 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                   background: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6))', // Dark overlay
                   borderRadius: '16px',
                 },
-                position: 'relative', // Needed for absolute positioning of overlay
+                position: 'relative',
               }}
             >
-              {/* This is a placeholder for the image within the component, assuming it's loaded as a public asset */}
-              {/* If you prefer to use an <img> tag, uncomment and replace the Box's backgroundImage */}
-
               <Box
                 component="img"
                 src="/images/image_429246.png" // Update this path to where your image is served

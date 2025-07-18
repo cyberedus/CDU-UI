@@ -49,7 +49,7 @@ const ContactOptions: React.FC = () => {
         display: 'grid',
         gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' },
         gap: 3,
-        padding: 3,
+        padding: { xs: 0, md: 3 },
         maxWidth: '1200px',
         margin: 'auto',
         borderRadius: 2,

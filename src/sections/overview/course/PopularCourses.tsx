@@ -130,7 +130,6 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
               responsiveOptions={responsiveOptionsCourse}
               className="custom-carousel"
               contentClassName="container-carousel"
-              // circular
               autoplayInterval={30000}
               itemTemplate={(course: Course) => (
                 <Grid
@@ -141,7 +140,10 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
                   }}
                   py={3}
                   pb={5}
-                  m={2}
+                  m={{
+                    xs: 0,
+                    sm: 2,
+                  }}
                   height={1}
                 >
                   <CourseCard course={course} variants={itemVariants} />

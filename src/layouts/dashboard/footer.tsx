@@ -179,7 +179,19 @@ const FooterSection = () => (
       </Grid>
     </Grid>
     <Grid sx={{ pt: 1, borderTop: '1px solid #ccc', mt: 5 }}>
-      <Box display="flex" justifyContent="space-between" pt={3}>
+      <Box
+        display="flex"
+        flexDirection={{
+          xs: 'column',
+          sm: 'row',
+        }}
+        justifyContent="space-between"
+        pt={3}
+        textAlign={{
+          xs: 'center',
+          sm: 'left',
+        }}
+      >
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           © 2025 CyberEdus. All rights reserved.
         </Typography>
