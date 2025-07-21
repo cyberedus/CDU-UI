@@ -1,6 +1,7 @@
 /** **************************************
 * Fonts: app
 *************************************** */
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);
 @import '@fontsource-variable/dm-sans';
 
 @import '@fontsource/barlow/400.css';
@@ -24,6 +25,7 @@
 html {
   height: 100%;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 body,
 #root,
@@ -32,6 +34,13 @@ body,
   flex: 1 1 auto;
   min-height: 100%;
   flex-direction: column;
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 img {
   max-width: 100%;

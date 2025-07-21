@@ -31,19 +31,18 @@ export const themeConfig: ThemeConfig = {
    * Typography
    *************************************** */
   fontFamily: {
-    primary: 'DM Sans Variable',
+    primary: 'Inter',
     secondary: 'Barlow',
   },
   /** **************************************
    * Palette
    *************************************** */
   palette: {
-
     primary: {
       lighter: '#FFE8CC',
       light: '#F5A74D',
       main: '#E77D19',
-      dark: '#D46617',     // slightly darker than main, rich and balanced
+      dark: '#D46617', // slightly darker than main, rich and balanced
       darker: '#A75113',
       contrastText: '#FFFFFF',
     },

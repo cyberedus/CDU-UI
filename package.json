@@ -66,6 +66,7 @@
     "@types/nprogress": "^0.2.3",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.1",
+    "@types/react-helmet": "^6.1.11",
     "@typescript-eslint/parser": "^8.29.0",
     "@vitejs/plugin-react-swc": "^3.8.1",
     "animated-number-react": "^0.1.2",

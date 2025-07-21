@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet';
+
 import { CONFIG } from 'src/config-global';
 
 import { SignInView } from 'src/sections/auth';
@@ -7,7 +9,10 @@ import { SignInView } from 'src/sections/auth';
 export default function Page() {
   return (
     <>
-      <title>{`Sign in - ${CONFIG.appName}`}</title>
+      <Helmet>
+        <title>{`Sign in - ${CONFIG.appName}`}</title>
+        <meta name="description" content="This is a sign in page" />
+      </Helmet>
 
       <SignInView />
     </>
