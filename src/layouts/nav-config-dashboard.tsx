@@ -28,18 +28,18 @@ export const navData: NavItem[] = [
     path: '/contact-us',
     icon: null,
   },
-  // {
-  //   title: 'Blog',
-  //   path: '/blog',
-  //   icon: null,
-  //   // icon: icon('ic-blog'),
-  // },
-  // {
-  //   title: 'Testimonials',
-  //   path: '/testimonials',
-  //   icon: null,
-  //   // icon: icon('ic-blog'),
-  // },
+  {
+    title: 'Blog',
+    path: '/blog',
+    icon: null,
+    // icon: icon('ic-blog'),
+  },
+  {
+    title: 'Testimonials',
+    path: '/testimonials',
+    icon: null,
+    // icon: icon('ic-blog'),
+  },
   // {
   //   title: 'Dashboard',
   //   path: '/',

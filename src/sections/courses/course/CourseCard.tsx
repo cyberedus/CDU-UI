@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
-import { Box, Card, Chip, Grid, Avatar, Typography, CardContent } from '@mui/material';
 import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
+import { Box, Card, Chip, Grid, Alert, Avatar, Typography, CardContent } from '@mui/material';
 
 import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
+
+import { fDate } from 'src/utils';
 
 import { CourseFooter } from 'src/sections/common';
 
@@ -72,12 +74,6 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               {course.course_name}
             </Typography>
           </Grid>
-          {/* <Grid>
-
-            <Typography variant="h5" component="div" fontWeight="bold" gutterBottom>
-              {course.course_name}
-            </Typography>
-          </Grid> */}
 
           <Grid container justifyContent="space-between" alignItems="center">
             <Chip
@@ -107,31 +103,21 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             {course.course_description}
           </Typography>
 
-          {/* <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-            <DateRange sx={{ fontSize: 16, mr: 0.4 }} />
-            <Typography sx={{ mr: 0.4 }} variant="body1">
-              Start Date :
-            </Typography>
-            <Typography variant="body2">{fDate(course.start_date, 'DD/MM/YYYY')}</Typography>
-          </Box> */}
-          {/* <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-            <Timer sx={{ fontSize: 16, mr: 0.4 }} />
-            <Typography sx={{ mr: 0.4 }} variant="body1">
-              Start Time :
-            </Typography>
-            <Typography variant="body2">{course.batch_timing}</Typography>
-          </Box> */}
           <Box mt={1}>
             <Typography sx={{ mr: 0.4 }} variant="subtitle1">
               Tools and Technologies
             </Typography>
-            <Typography variant="body2">{course?.tools_and_technologies?.join(', ')}</Typography>
+            <Typography variant="body2" color="text.secondary">
+              {course?.tools_and_technologies?.join(', ')}
+            </Typography>
           </Box>
           <Box mt={1}>
             <Typography sx={{ mr: 0.4 }} variant="subtitle1">
               What You{`'`}ll Learn
             </Typography>
-            <Typography variant="body2">{course.what_you_will_learn}</Typography>
+            <Typography variant="body2" color="text.secondary">
+              {course.what_you_will_learn}
+            </Typography>
           </Box>
           <Box
             sx={{
@@ -150,24 +136,27 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               size="small"
               // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
             />
-            {/* <Chip
-              label={`${course.mode}`}
-              icon={<Laptop />}
-              size="small"
-              // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
-            /> */}
+
             <Chip
               label={course.duration}
               icon={<AccessTime />}
               size="small"
               // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
             />
-            {/* <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <MenuBookIcon sx={{ fontSize: 16, mr: 0.5 }} />
-              <Typography variant="body2">{course.lesson_count} Lessons</Typography>
-            </Box>
-            <Typography variant="caption">{40}%</Typography> */}
+            {course.upcoming_batch_date && (
+              <Chip
+                label={`Upcoming Batch: ${fDate(course.upcoming_batch_date)}`}
+                color="success"
+                variant="outlined"
+                size="small"
+              />
+            )}
           </Box>
+          {course.available_seats && (
+            <Alert severity="info" sx={{ mt: 2 }}>
+              Only {course.available_seats} seats available
+            </Alert>
+          )}
         </CardContent>
         <CourseFooter course={course} />
       </Card>

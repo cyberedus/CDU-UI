@@ -144,11 +144,8 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
               <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} sx={{ mt: 2 }}>
                 <Button
                   variant="contained"
+                  color="secondary"
                   sx={{
-                    bgcolor: '#1976d2', // Primary Blue
-                    '&:hover': {
-                      bgcolor: '#1565c0', // Darker blue on hover
-                    },
                     py: 1.5,
                     px: 4,
                     borderRadius: '8px',
@@ -165,12 +162,6 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                 <Button
                   variant="outlined"
                   sx={{
-                    borderColor: '#bdbdbd',
-                    color: '#616161',
-                    '&:hover': {
-                      borderColor: '#9e9e9e',
-                      color: '#424242',
-                    },
                     py: 1.5,
                     px: 4,
                     borderRadius: '8px',

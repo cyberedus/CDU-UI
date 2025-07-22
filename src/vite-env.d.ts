@@ -109,6 +109,8 @@ interface Course {
   curriculum: CurriculumItem[];
   course_icon: string;
   batches: CourseBatch[];
+  upcoming_batch_date?: string | null;
+  available_seats?: number | null;
 }
 
 type CourseList = Course[];

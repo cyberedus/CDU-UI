@@ -14,8 +14,8 @@ import { PopularCourses } from '../course/PopularCourses';
 import NoCoursesFound from '../../common/no-cousres-found';
 
 const titleVariants: any = {
-  hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
 };
 
 const subtitleVariants: any = {
@@ -120,7 +120,10 @@ export function AllCoursesView() {
             sx={{
               mb: 6,
               color: '#666',
-              fontSize: 27.2,
+              fontSize: {
+                xs: 17.2,
+                sm: 20.2,
+              },
             }}
           >
             Choose from our industry-design curriculum with 80% hands-on training, real projects and

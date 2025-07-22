@@ -1,10 +1,12 @@
 import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
-import { Box, Card, Chip, Grid, Avatar, Typography, CardContent } from '@mui/material';
 import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
+import { Box, Card, Chip, Grid, Alert, Avatar, Typography, CardContent } from '@mui/material';
 
 import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
+
+import { fDate } from 'src/utils';
 
 import { CourseFooter } from 'src/sections/common';
 
@@ -125,7 +127,20 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               size="small"
               sx={{ alignSelf: 'flex-start' }}
             />
+            {course.upcoming_batch_date && (
+              <Chip
+                label={`Upcoming Batch: ${fDate(course.upcoming_batch_date)}`}
+                color="success"
+                variant="outlined"
+                size="small"
+              />
+            )}
           </Box>
+          {course.available_seats && (
+            <Alert severity="info" sx={{ mt: 2 }}>
+              Only {course.available_seats} seats available
+            </Alert>
+          )}
         </CardContent>
         <CourseFooter course={course} isHome />
       </Card>

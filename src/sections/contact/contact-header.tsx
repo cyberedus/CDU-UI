@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { Box, Card, CardContent, CircularProgress, Grid, Stack, Typography } from '@mui/material';
+import { Box, Card, Grid, Stack, Typography, CardContent, CircularProgress } from '@mui/material';
 
 import { ConsultForm } from '../common';
 import ContactOptions from './to-connect';
@@ -25,6 +25,11 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
     visible: { opacity: 1, y: 0 },
   };
 
+  const subtitleVariants: any = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
+  };
+
   return (
     <Box
       sx={{
@@ -41,63 +46,64 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
         justifyContent="space-between"
       >
         {/* Left Section - Course Details */}
-        <Grid size={{ xs: 12 }}>
-          <Stack spacing={{ xs: 2 }}>
-            <motion.div variants={itemVariants}>
-              <Grid container justifyContent="center" textAlign="center" gap={1}>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={[
-                    (theme) => ({
-                      background: `linear-gradient(to right, ${theme.vars.palette.common.black}, ${theme.vars.palette.common.black})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textFillColor: 'transparent',
-                      color: 'transparent',
-                    }),
-                  ]}
-                >
-                  Get in
-                </Typography>
-                <Typography
-                  variant="h1"
-                  component="h1"
-                  sx={[
-                    (theme) => ({
-                      background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                      textFillColor: 'transparent',
-                      color: 'transparent',
-                    }),
-                  ]}
-                >
-                  Touch
-                </Typography>
-              </Grid>
-            </motion.div>
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={itemVariants}
-            >
+        <Grid size={{ xs: 12 }} textAlign="center">
+          <motion.div variants={itemVariants}>
+            <Grid container justifyContent="center" textAlign="center" gap={1}>
               <Typography
-                variant="h6"
-                sx={{
-                  mb: 6,
-                  color: '#666',
-                  fontSize: 27.2,
-                  textAlign: 'center',
-                }}
+                variant="h1"
+                component="h1"
+                sx={[
+                  (theme) => ({
+                    background: `linear-gradient(to right, ${theme.vars.palette.common.black}, ${theme.vars.palette.common.black})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    textFillColor: 'transparent',
+                    color: 'transparent',
+                  }),
+                ]}
               >
-                Ready to start your journey? We{`'`}re here to help you every step of the way
+                Get in
               </Typography>
-            </motion.div>
-          </Stack>
+              <Typography
+                variant="h1"
+                component="h1"
+                sx={[
+                  (theme) => ({
+                    background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, ${theme.vars.palette.secondary.light})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    textFillColor: 'transparent',
+                    color: 'transparent',
+                  }),
+                ]}
+              >
+                Touch
+              </Typography>
+            </Grid>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={subtitleVariants}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 3,
+                color: '#666',
+                fontSize: {
+                  xs: 17.2,
+                  sm: 20.2,
+                },
+                textAlign: 'center',
+              }}
+            >
+              Ready to start your journey? We{`'`}re here to help you every step of the way
+            </Typography>
+          </motion.div>
         </Grid>
 
         {/* Right Section - Video Thumbnail */}
@@ -107,7 +113,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
           </Grid>
         ) : (
           <>
-            <Grid size={{ xs: 12 }} container>
+            <Grid size={{ xs: 12 }} container rowGap={3} pb={2}>
               <Grid size={{ xs: 12, md: 6 }} sx={{ p: { xs: 0, md: 3 } }}>
                 <motion.div variants={itemVariants}>
                   <Card>
@@ -127,7 +133,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
               </Grid>
             </Grid>
             <Grid size={{ xs: 12 }}>
-              <Stack spacing={{ xs: 2 }}>
+              <Stack spacing={{ xs: 2 }} pb={3}>
                 <motion.div variants={itemVariants}>
                   <Grid container justifyContent="center" textAlign="center" gap={1}>
                     <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
