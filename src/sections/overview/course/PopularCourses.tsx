@@ -168,6 +168,11 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
               px: 4,
               py: 1.5,
               fontSize: '1rem',
+              background: 'linear-gradient(to right, #E77D19, #F5A74D)',
+              color: 'white',
+              '&:hover': {
+                background: 'linear-gradient(to right, #C76614, #E5943C)',
+              }
             }}
             onClick={handleGotoCourses}
           >

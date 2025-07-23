@@ -32,26 +32,37 @@ const HomePageHeader = () => {
   return (
     <Grid container sx={{ pb: 3, width: 1 }}>
       <Grid size={{ xs: 12, md: 6 }}>
-        <Typography variant="h1" component="p" sx={{ mb: 0, fontSize: 50, fontWeight: 900 }}>
+        <Typography 
+          variant="h1" 
+          component="p" 
+          sx={{ 
+            background: 'linear-gradient(to right, #1250A3, #376BBC)', 
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            color: 'transparent',
+            mb: 0, 
+            fontSize: 50, 
+            fontWeight: 900 
+          }}>
           Master In
         </Typography>
         <Typography
           variant="h1"
           component="p"
-          sx={[
-            (theme) => ({
-              background: `linear-gradient(to right, ${theme.vars.palette.secondary.main}, cyan)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textFillColor: 'transparent',
-              color: 'transparent',
-              mb: { xs: 3, md: 4 },
-              mt: -2,
-              fontWeight: 900,
-              fontSize: 50,
-            }),
-          ]}
+          sx={{
+            background: 'linear-gradient(to right, #376BBC, #5C86D5 )',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            color: 'transparent',
+            mb: { xs: 3, md: 4 },
+            mt: -2,
+            fontWeight: 900,
+            fontSize: 50,
+          }}
         >
           Info-Sec
         </Typography>
@@ -68,7 +79,13 @@ const HomePageHeader = () => {
           onClick={handleToggle}
           size="large"
           variant="contained"
-          sx={{ mt: 6, borderRadius: 10, fontSize: 20 }}
+          sx={{ mt: 6, borderRadius: 10, fontSize: 20 ,
+            background: 'linear-gradient(to right, #E77D19, #F5A74D)',
+            color: 'white',
+            '&:hover': {
+              background: 'linear-gradient(to right, #C76614, #E5943C)',
+            }
+          }}
         >
           Start Learning
         </Button>
