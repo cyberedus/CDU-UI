@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet';
+//import { Helmet } from 'react-helmet';
 
-import { CONFIG } from 'src/config-global';
+//import { CONFIG } from 'src/config-global';
 
 import { NotFoundView } from 'src/sections/error';
 
@@ -9,13 +9,13 @@ import { NotFoundView } from 'src/sections/error';
 export default function Page() {
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{`404 page not found! | Error - ${CONFIG.appName}`}</title>
         <meta
           name="description"
           content="This is a page not found page which you can see our interactive not found message"
         />
-      </Helmet>
+      </Helmet> */}
 
       <NotFoundView />
     </>
