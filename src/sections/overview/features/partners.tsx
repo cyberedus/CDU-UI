@@ -36,30 +36,28 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
       >
         <Grid container gap={1} textAlign="center" justifyContent="center" alignItems="center">
           <Typography
-            variant="h3"
+            variant="h2"
             component="h2"
             sx={{
               fontWeight: 'bold',
               color: '#333',
             }}
           >
-            Our Hiring
+            Our
           </Typography>
           <Typography
-            variant="h3"
+            variant="h2"
             component="h2"
-            sx={[
-              (theme) => ({
-                background: `linear-gradient(to right, ${theme.vars.palette.primary.main}, ${theme.vars.palette.primary.light})`,
+            sx={{
+                background: `linear-gradient(to right, #1250A3, #5C86D5)`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 textFillColor: 'transparent',
                 color: 'transparent',
-              }),
-            ]}
+              }}
           >
-            Partners
+            Hiring Partners
           </Typography>
         </Grid>
       </motion.div>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import PhoneIcon from '@mui/icons-material/Phone';
 import PeopleIcon from '@mui/icons-material/People';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import VideocamIcon from '@mui/icons-material/Videocam';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { Box, Card, Button, styled, Typography, CardContent } from '@mui/material';
 
@@ -85,11 +85,10 @@ const ContactOptions: React.FC = () => {
               <Button
                 variant="contained"
                 startIcon={<WhatsAppIcon />}
+                onClick={() => window.open('https://wa.me/918485858656', '_blank')}
                 sx={{
-                  backgroundColor: '#2196f3', // Blue color for consistency
-                  '&:hover': {
-                    backgroundColor: '#1976d2',
-                  },
+                  backgroundColor: '#25D366',
+                  '&:hover': { backgroundColor: '#1EBE5D' },
                   textTransform: 'none',
                   padding: '10px 20px',
                   borderRadius: '25px',
@@ -103,7 +102,7 @@ const ContactOptions: React.FC = () => {
         </StyledCard>
       </motion.div>
 
-      {/* Video Call Card */}
+      {/* Phone Call Card */}
       <motion.div
         variants={cardVariants}
         initial="hidden"
@@ -113,7 +112,7 @@ const ContactOptions: React.FC = () => {
       >
         <StyledCard>
           <IconWrapper>
-            <VideocamIcon sx={{ fontSize: 40, color: '#f44336' }} /> {/* Red for video */}
+            <PhoneIcon sx={{ fontSize: 40, color: '#2196f3' }} /> {/* Blue for phone */}
           </IconWrapper>
           <CardContent
             sx={{
@@ -124,15 +123,16 @@ const ContactOptions: React.FC = () => {
             }}
           >
             <Typography variant="h5" component="div" fontWeight="bold" gutterBottom>
-              Video Call
+              Phone Call
             </Typography>
             <Typography variant="body2" color="text.secondary" sx={{ marginBottom: 2 }}>
-              Schedule a personalized video consultation with our experts.
+              Want to talk? Reach out to us directly for a quick call.
             </Typography>
             <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
               <Button
                 variant="contained"
-                startIcon={<VideocamIcon />}
+                startIcon={<PhoneIcon />}
+                onClick={() => window.location.href = 'tel:+918485858656'}
                 sx={{
                   backgroundColor: '#2196f3',
                   '&:hover': {
@@ -144,7 +144,7 @@ const ContactOptions: React.FC = () => {
                 }}
                 fullWidth
               >
-                Book a Call
+                Call Us
               </Button>
             </motion.div>
           </CardContent>
@@ -181,11 +181,10 @@ const ContactOptions: React.FC = () => {
               <Button
                 variant="contained"
                 startIcon={<LocationOnIcon />}
+                onClick={() => window.open('https://www.google.com/maps?q=Cyber-Edu,Shivajinagar,Pune,Maharashtra+411004', '_blank')}
                 sx={{
-                  backgroundColor: '#2196f3',
-                  '&:hover': {
-                    backgroundColor: '#1976d2',
-                  },
+                  backgroundColor: '#1250A3',
+                  '&:hover': { backgroundColor: '#376BBC' },
                   textTransform: 'none',
                   padding: '10px 20px',
                   borderRadius: '25px',

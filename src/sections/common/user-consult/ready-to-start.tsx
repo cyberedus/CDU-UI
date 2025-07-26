@@ -47,7 +47,7 @@ export const ReadyToStart = () => {
       >
         <Grid container gap={1} justifyContent="center" alignItems="center">
           <Typography
-            variant="h3"
+            variant="h2"
             component="h2"
             sx={{
               fontWeight: 'bold',
@@ -57,19 +57,17 @@ export const ReadyToStart = () => {
             Ready to Start Your
           </Typography>
           <Typography
-            variant="h3"
+            variant="h2"
             component="h2"
-            sx={[
-              (theme) => ({
-                background: `linear-gradient(to right, ${theme.vars.palette.primary.main}, ${theme.vars.palette.primary.light})`,
+            sx={{
+                background: `linear-gradient(to right, #1250A3, #5C86D5)`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 textFillColor: 'transparent',
                 color: 'transparent',
                 // mb: { xs: 3, md: 4 },
-              }),
-            ]}
+              }}
           >
             Journey?
           </Typography>
@@ -103,6 +101,11 @@ export const ReadyToStart = () => {
             onClick={handleToggle}
             sx={{
               borderRadius: 8,
+              background: 'linear-gradient(to right, #E77D19, #F5A74D)',
+              color: 'white',
+              '&:hover': {
+                background: 'linear-gradient(to right, #C76614, #E5943C)',
+              }
             }}
           >
             Let{`'`}s Talk

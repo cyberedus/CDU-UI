@@ -158,7 +158,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
-                  <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                  <Typography variant="h6" sx={{ color: '#555', textAlign: 'center' }}>
                     Choose the option that works best for you
                   </Typography>
                 </motion.div>

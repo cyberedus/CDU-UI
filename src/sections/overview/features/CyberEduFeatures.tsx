@@ -105,19 +105,17 @@ export const CyberEduFeatures = () => (
         <Typography
           variant="h2"
           component="h2"
-          sx={[
-            (theme) => ({
-              background: `linear-gradient(to right, ${theme.vars.palette.primary.main}, ${theme.vars.palette.primary.light})`,
+          sx={{
+              background: `linear-gradient(to right, #1250A3, #5C86D5)`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               textFillColor: 'transparent',
               color: 'transparent',
               // mb: { xs: 3, md: 4 },
-            }),
-          ]}
+            }}
         >
-          CyberEdu?
+          CyberEdus?
         </Typography>
       </Grid>
     </motion.div>
