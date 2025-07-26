@@ -30,49 +30,53 @@ const HomePageHeader = () => {
     router.push('/courses');
   };
   return (
-    <Grid container sx={{ pb: 3, width: 1 }}>
+    <Grid container sx={{ pb: 3, width: 1, background: 'linear-gradient(to right, #F8FBFF, #F3F6FC)' }}>
       <Grid size={{ xs: 12, md: 6 }}>
-        <Typography 
-          variant="h1" 
-          component="p" 
-          sx={{ 
-            background: 'linear-gradient(to right, #1250A3, #376BBC)', 
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textFillColor: 'transparent',
-            color: 'transparent',
-            mb: 0, 
-            fontSize: 50, 
-            fontWeight: 900 
-          }}>
-          Master In
-        </Typography>
-        <Typography
-          variant="h1"
-          component="p"
-          sx={{
-            background: 'linear-gradient(to right, #376BBC, #5C86D5 )',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            textFillColor: 'transparent',
-            color: 'transparent',
-            mb: { xs: 3, md: 4 },
-            mt: -2,
-            fontWeight: 900,
-            fontSize: 50,
-          }}
-        >
-          Info-Sec
-        </Typography>
-        <Typography variant="body2" sx={{ fontSize: 25 }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <Typography 
+            variant="h1" 
+            component="p" 
+            sx={{ 
+              background: 'linear-gradient(to right, #1250A3, #376BBC)', 
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              color: 'transparent',
+              mb: 0, 
+              fontSize: 50, 
+              fontWeight: 900 
+            }}>
+            Master In
+          </Typography>
+        </motion.div>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.0 }}>
+          <Typography
+            variant="h1"
+            component="p"
+            sx={{
+              background: 'linear-gradient(to right, #376BBC, #5C86D5 )',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              color: 'transparent',
+              mb: { xs: 3, md: 4 },
+              mt: -2,
+              fontWeight: 900,
+              fontSize: 50,
+            }}
+          >
+            Info-Sec
+          </Typography>
+        </motion.div>
+        <Typography variant="body2" sx={{ fontSize: 22, mt: 1 }}>
           Professional Info-Sec training with
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: 25 }}>
+        <Typography variant="body2" sx={{ fontSize: 22 }}>
           hands-on experience and
         </Typography>
-        <Typography variant="body2" sx={{ fontSize: 25 }}>
+        <Typography variant="body2" sx={{ fontSize: 22 }}>
           industry certification
         </Typography>
         <Button
@@ -84,6 +88,7 @@ const HomePageHeader = () => {
             color: 'white',
             '&:hover': {
               background: 'linear-gradient(to right, #C76614, #E5943C)',
+              transform: 'scale(1.02)'
             }
           }}
         >
@@ -102,11 +107,12 @@ const HomePageHeader = () => {
           }}
         >
           <MotionCard
+            animate={{ scale: [1, 1.01, 1] }}
             whileHover={{
               scale: 1.02, // Overall card scale on hover
               boxShadow: '0px 20px 40px rgba(0,0,0,0.25)', // Enhanced shadow on hover
             }}
-            transition={{ duration: 0.5 }}
+            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
             sx={{
               position: 'relative',
               borderRadius: '16px', // rounded-2xl
@@ -167,7 +173,7 @@ const HomePageHeader = () => {
                   background: 'linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent)', // from-background/20
                 }}
               />
-            </Box>
+              </Box>
           </MotionCard>
         </Box>
       </Grid>
