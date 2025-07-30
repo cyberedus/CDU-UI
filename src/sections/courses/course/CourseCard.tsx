@@ -36,12 +36,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
     >
       <Card
         sx={{
-          borderRadius: 4,
-          p: {
-            xs: 0,
-            sm: 1,
-            lg: 1,
-          },
+          borderRadius: 2,
           boxShadow: '0px 4px 20px rgba(0,0,0,0.05)',
           display: 'flex',
           flexDirection: 'column',
@@ -50,12 +45,41 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         }}
         elevation={1}
       >
+        <Box sx={{
+          marginBottom: '30px',
+          position: 'relative',
+          height: 240,
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+
+          <Box component='img' src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'} width={1} height={1} sx={{
+            borderRadius: '0px 0 50% 50%',
+            position: 'absolute',
+            left: 0
+          }} />
+          <Box sx={{
+            borderRadius: '0px 0 49% 49%',
+            position: 'absolute',
+            background: (theme) => theme.palette.primary.main,
+            zIndex: -1,
+            top: 0,
+            left: 8,
+            right: 8,
+            height: 253,
+          }} />
+        </Box>
         <CardContent
           sx={{
             flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
-            borderRadius: 4,
+            borderRadius: 2,
+            p: {
+              xs: 0,
+              sm: 2,
+              lg: 4,
+            },
           }}
         >
           <Grid container gap={2} alignItems="left" flexWrap="nowrap">
@@ -134,14 +158,14 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               label={`${course.topics_count} Lessons`}
               icon={<MenuBookIcon />}
               size="small"
-              // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
+            // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
             />
 
             <Chip
               label={course.duration}
               icon={<AccessTime />}
               size="small"
-              // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
+            // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
             />
             {course.upcoming_batch_date && (
               <Chip

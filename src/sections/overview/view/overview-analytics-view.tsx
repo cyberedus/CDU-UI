@@ -64,7 +64,7 @@ export function OverviewAnalyticsView() {
         </Grid>
       ) : (
         <>
-          <Grid container spacing={3} sx={{ pt: 1 }}>
+          <Grid container spacing={3} sx={{ pt: 1 }} justifyContent='center'>
             <Grid size={{ xs: 12, sm: 6, md: 3, lg: 2.5 }}>
               <AnalyticsWidgetSummary
                 title="Students Trained"

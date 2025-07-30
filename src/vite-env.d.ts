@@ -143,6 +143,7 @@ interface DashboardState {
   data: any;
   error: string | null;
   interestedCourseOptions: string[] | any[];
+  dashboardCourseList: string[] | any[];
   interestedCouse: string | null;
 }
 

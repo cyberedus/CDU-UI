@@ -79,7 +79,7 @@ const CourseFilter = ({ courseList = [], onFilterChange }: FilterProps) => {
         <Grid
           size={{
             xs: 12,
-            sm: 8,
+            lg: 8,
           }}
         >
           <motion.div variants={itemVariants}>
@@ -105,7 +105,8 @@ const CourseFilter = ({ courseList = [], onFilterChange }: FilterProps) => {
         <Grid
           size={{
             xs: 12,
-            sm: 2,
+            lg: 2,
+            sm: 6,
           }}
         >
           <motion.div variants={itemVariants}>
@@ -128,7 +129,8 @@ const CourseFilter = ({ courseList = [], onFilterChange }: FilterProps) => {
         <Grid
           size={{
             xs: 12,
-            sm: 2,
+            lg: 2,
+            sm: 6,
           }}
         >
           <motion.div variants={itemVariants}>

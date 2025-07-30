@@ -24,11 +24,6 @@ export const navData: NavItem[] = [
     ],
   },
   {
-    title: 'Contact',
-    path: '/contact-us',
-    icon: null,
-  },
-  {
     title: 'Blog',
     path: '/blog',
     icon: null,
@@ -39,6 +34,11 @@ export const navData: NavItem[] = [
     path: '/testimonials',
     icon: null,
     // icon: icon('ic-blog'),
+  },
+  {
+    title: 'Contact',
+    path: '/contact-us',
+    icon: null,
   },
   // {
   //   title: 'Dashboard',

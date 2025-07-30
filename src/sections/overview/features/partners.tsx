@@ -43,21 +43,21 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
               color: '#333',
             }}
           >
-            Our
+            Our Hiring
           </Typography>
           <Typography
             variant="h2"
             component="h2"
             sx={{
-                background: `linear-gradient(to right, #1250A3, #5C86D5)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textFillColor: 'transparent',
-                color: 'transparent',
-              }}
+              background: `linear-gradient(to right, #1250A3, #5C86D5)`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              color: 'transparent',
+            }}
           >
-            Hiring Partners
+            Partners
           </Typography>
         </Grid>
       </motion.div>
@@ -76,7 +76,7 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
             fontSize: 27.2,
           }}
         >
-          What makes us different from other institutes
+          Trusted by industry leaders to source top cybersecurity and tech talent
         </Typography>
       </motion.div>
 

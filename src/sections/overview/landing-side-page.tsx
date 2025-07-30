@@ -30,27 +30,27 @@ const HomePageHeader = () => {
     router.push('/courses');
   };
   return (
-    <Grid container sx={{ pb: 3, width: 1, background: 'linear-gradient(to right, #F8FBFF, #F3F6FC)' }}>
+    <Grid container sx={{ pb: 3, width: 1, }}>
       <Grid size={{ xs: 12, md: 6 }}>
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <Typography 
-            variant="h1" 
-            component="p" 
-            sx={{ 
-              background: 'linear-gradient(to right, #1250A3, #376BBC)', 
+          <Typography
+            variant="h1"
+            component="p"
+            sx={{
+              background: 'linear-gradient(to right, #1250A3, #376BBC)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               textFillColor: 'transparent',
               color: 'transparent',
-              mb: 0, 
-              fontSize: 50, 
-              fontWeight: 900 
+              mb: 0,
+              fontSize: 50,
+              fontWeight: 900
             }}>
             Master In
           </Typography>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.0 }}>
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }}>
           <Typography
             variant="h1"
             component="p"
@@ -83,7 +83,8 @@ const HomePageHeader = () => {
           onClick={handleToggle}
           size="large"
           variant="contained"
-          sx={{ mt: 6, borderRadius: 10, fontSize: 20 ,
+          sx={{
+            mt: 6, borderRadius: 10, fontSize: 20,
             background: 'linear-gradient(to right, #E77D19, #F5A74D)',
             color: 'white',
             '&:hover': {
@@ -173,7 +174,7 @@ const HomePageHeader = () => {
                   background: 'linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent)', // from-background/20
                 }}
               />
-              </Box>
+            </Box>
           </MotionCard>
         </Box>
       </Grid>

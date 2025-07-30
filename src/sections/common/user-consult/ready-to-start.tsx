@@ -37,7 +37,7 @@ export const ReadyToStart = () => {
   };
 
   return (
-    <Box sx={{ pb: 4, width: 1, textAlign: 'center', pt: 4 }}>
+    <Box sx={{ pb: 4, width: 1, textAlign: 'center', pt: 4, background: theme => theme.palette.primary.lighter, my: 3 }}>
       {/* --- HEADING --- */}
       <motion.div
         initial="hidden"
@@ -60,14 +60,14 @@ export const ReadyToStart = () => {
             variant="h2"
             component="h2"
             sx={{
-                background: `linear-gradient(to right, #1250A3, #5C86D5)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textFillColor: 'transparent',
-                color: 'transparent',
-                // mb: { xs: 3, md: 4 },
-              }}
+              background: `linear-gradient(to right, #1250A3, #5C86D5)`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              color: 'transparent',
+              // mb: { xs: 3, md: 4 },
+            }}
           >
             Journey?
           </Typography>

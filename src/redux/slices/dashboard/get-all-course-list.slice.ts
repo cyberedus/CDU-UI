@@ -8,6 +8,7 @@ const initialState: DashboardState = {
   error: null,
   interestedCourseOptions: [],
   interestedCouse: null,
+  dashboardCourseList: []
 };
 
 const dashboardSlice = createSlice({
@@ -24,15 +25,18 @@ const dashboardSlice = createSlice({
         state.loading = true;
         state.error = null;
         state.interestedCourseOptions = [];
+        state.dashboardCourseList = [];
       })
       .addCase(getDashboardDetails.fulfilled, (state, action) => {
         state.loading = false;
         const { courses = [] } = action.payload.data;
+        state.dashboardCourseList = courses.filter((course: Course) => course.on_dashboard)
         state.interestedCourseOptions = [
           ...new Set(courses.map((course: Course) => course.course_name)),
         ];
       })
       .addCase(getDashboardDetails.rejected, (state, action) => {
+        state.dashboardCourseList = [];
         state.interestedCourseOptions = [];
         state.loading = false;
         state.error = action.payload as string;

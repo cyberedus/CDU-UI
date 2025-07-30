@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
+import { Box, Card, Chip, Grid, Alert, Typography, CardContent } from '@mui/material';
 import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
-import { Box, Card, Chip, Grid, Alert, Avatar, Typography, CardContent } from '@mui/material';
 
-import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
+import { getCourseColor } from 'src/utils/course-helper';
 
 import { fDate } from 'src/utils';
 
@@ -20,7 +20,7 @@ type CourseCardProps = {
 export default function CourseCard({ course, variants }: Readonly<CourseCardProps>) {
   const getColor = useMemo(() => getCourseColor(course.level), [course]);
 
-  const GetCourseIcon = useMemo(() => getCourseIcon(course.course_category), [course]);
+  // const GetCourseIcon = useMemo(() => getCourseIcon(course.course_category), [course]);
   return (
     <Box
       component={motion.div}
@@ -28,19 +28,14 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
       whileHover={{
         y: -8,
         boxShadow: '0px 20px 30px rgba(0,0,0,0.1)',
-        borderRadius: 30,
+        borderRadius: 10,
       }}
       whileTap={{ scale: 0.98 }}
       style={{ height: '100%' }}
     >
       <Card
         sx={{
-          borderRadius: 4,
-          p: {
-            xs: 0,
-            sm: 1,
-            lg: 2,
-          },
+          borderRadius: 2,
           boxShadow: '0px 4px 20px rgba(0,0,0,0.05)',
           display: 'flex',
           flexDirection: 'column',
@@ -49,13 +44,45 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         }}
         elevation={1}
       >
+        <Box sx={{
+          marginBottom: '30px',
+          position: 'relative',
+          height: 240,
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+
+          <Box component='img' src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'} width={1} height={1} sx={{
+            borderRadius: '0px 0 50% 50%',
+            position: 'absolute',
+            left: 0
+          }} />
+          <Box sx={{
+            borderRadius: '0px 0 49% 49%',
+            position: 'absolute',
+            background: (theme) => theme.palette.primary.main,
+            zIndex: -1,
+            top: 0,
+            left: 8,
+            right: 8,
+            height: 253,
+          }} />
+        </Box>
+
+
         <CardContent
-          sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4 }}
+          sx={{
+            flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4, p: {
+              xs: 0,
+              sm: 2,
+              lg: 4,
+            },
+          }}
         >
-          <Grid container gap={2} alignItems="left" flexWrap="nowrap">
-            <Avatar sx={{ bgcolor: 'grey.300', color: `common.black`, mb: 2 }}>
+          <Grid container gap={2} alignItems="cenetr" flexWrap="nowrap" justifyContent='center'>
+            {/* <Avatar sx={{ bgcolor: 'grey.300', color: `common.black`, mb: 2 }}>
               <GetCourseIcon />
-            </Avatar>
+            </Avatar> */}
 
             <Typography
               variant="h5"

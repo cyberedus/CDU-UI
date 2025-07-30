@@ -75,21 +75,21 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
               color: '#333',
             }}
           >
-            Our
+            Our Popular
           </Typography>
           <Typography
             variant="h2"
             component="h2"
             sx={{
-                background: `linear-gradient(to right, #1250A3, #5C86D5)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                textFillColor: 'transparent',
-                color: 'transparent',
-              }}
+              background: `linear-gradient(to right, #1250A3, #5C86D5)`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              textFillColor: 'transparent',
+              color: 'transparent',
+            }}
           >
-            Popular Courses
+            Courses
           </Typography>
         </Grid>
       </motion.div>
