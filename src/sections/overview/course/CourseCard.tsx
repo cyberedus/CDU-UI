@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
-import { Box, Card, Chip, Grid, Alert, Typography, CardContent } from '@mui/material';
-import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
+import { WorkspacePremium } from '@mui/icons-material';
+import { Box, Card, Chip, Grid, Typography, CardContent } from '@mui/material';
 
 import { getCourseColor } from 'src/utils/course-helper';
-
-import { fDate } from 'src/utils';
 
 import { CourseFooter } from 'src/sections/common';
 
@@ -45,7 +43,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         elevation={1}
       >
         <Box sx={{
-          marginBottom: '30px',
+          marginBottom: '0px',
           position: 'relative',
           height: 240,
           display: 'flex',
@@ -73,27 +71,12 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         <CardContent
           sx={{
             flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4, p: {
-              xs: 2,
+              xs: 3,
               lg: 4,
             },
+            pt: 0
           }}
         >
-          <Grid container gap={2} alignItems="cenetr" flexWrap="nowrap" justifyContent='center'>
-            {/* <Avatar sx={{ bgcolor: 'grey.300', color: `common.black`, mb: 2 }}>
-              <GetCourseIcon />
-            </Avatar> */}
-
-            <Typography
-              variant="h5"
-              component="div"
-              fontWeight="bold"
-              gutterBottom
-              textAlign="left"
-            >
-              {course.course_name}
-            </Typography>
-          </Grid>
-
           <Grid container justifyContent="space-between" alignItems="center">
             <Chip
               label={course.level}
@@ -114,7 +97,17 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               />
             )}
           </Grid>
-
+          <Grid container gap={2} alignItems="center" flexWrap="nowrap" justifyContent='start'>
+            <Typography
+              variant="h5"
+              component="div"
+              fontWeight="bold"
+              gutterBottom
+              textAlign="left"
+            >
+              {course.course_name}
+            </Typography>
+          </Grid>
           <Typography
             className="line-clamp-5"
             variant="body2"
@@ -125,7 +118,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             {course.course_description}
           </Typography>
 
-          <Box
+          {/* <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
@@ -141,12 +134,12 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               size="small"
               sx={{ alignSelf: 'flex-start' }}
             />
-            {/* <Chip
+            <Chip
               label={`${course.mode}`}
               icon={<Laptop />}
               size="small"
               sx={{ alignSelf: 'flex-start' }}
-            /> */}
+            />
             <Chip
               label={course.duration}
               icon={<AccessTime />}
@@ -166,7 +159,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             <Alert severity="info" sx={{ mt: 2 }}>
               Only {course.available_seats} seats available
             </Alert>
-          )}
+          )} */}
         </CardContent>
         <CourseFooter course={course} isHome />
       </Card>

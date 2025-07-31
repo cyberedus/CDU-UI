@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import GroupsIcon from '@mui/icons-material/Groups';
-import ScienceIcon from '@mui/icons-material/Science';
-import ApartmentIcon from '@mui/icons-material/Apartment';
 import { Box, Grid, Paper, Typography } from '@mui/material';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import GroupsOutlinedIcon from '@mui/icons-material/GroupsOutlined';
+import ScienceOutlinedIcon from '@mui/icons-material/ScienceOutlined';
+import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 
 interface FeatureItem {
   icon: React.ReactNode;
@@ -17,34 +17,34 @@ interface FeatureItem {
 
 const features: FeatureItem[] = [
   {
-    icon: <ScienceIcon sx={{ fontSize: 40, color: '#FF7043' }} />,
+    icon: <ScienceOutlinedIcon sx={{ fontSize: 60, color: '#fff' }} />,
     title: '80% Practical Approach',
     description:
       'Unlike traditional institutes, 80% of our curriculum is hands-on practice with real projects and industry tools.',
     backgroundColor: '#FFF3E0',
   },
   {
-    icon: <ApartmentIcon sx={{ fontSize: 40, color: '#2563EB' }} />,
+    icon: <ApartmentOutlinedIcon sx={{ fontSize: 60, color: '#fff' }} />,
     title: 'Real Industry Projects',
     description:
       'Work on actual client projects and build a portfolio that impresses employers from day one.',
     backgroundColor: '#e6efff',
   },
   {
-    icon: <GroupsIcon sx={{ fontSize: 40, color: '#9C27B0' }} />,
+    icon: <GroupsOutlinedIcon sx={{ fontSize: 60, color: '#fff' }} />,
     title: 'Industry Mentorship',
     description: 'Learn directly from industry professionals currently working in top companies.',
     backgroundColor: '#f3e5f5',
   },
   {
-    icon: <SupportAgentIcon sx={{ fontSize: 40, color: '#4CAF50' }} />,
+    icon: <SupportAgentOutlinedIcon sx={{ fontSize: 60, color: '#fff' }} />,
     title: 'Placement Support',
     description:
       'Comprehensive placement assistance including resume building, interview prep, and direct company connections.',
     backgroundColor: '#e8f5e9',
   },
   {
-    icon: <EmojiEventsIcon sx={{ fontSize: 40, color: '#FFC107' }} />,
+    icon: <EmojiEventsOutlinedIcon sx={{ fontSize: 60, color: '#fff' }} />,
     title: '100% Internship',
     description:
       'Guaranteed internship opportunities with leading cybersecurity firms to kickstart your career.',
@@ -106,14 +106,14 @@ export const CyberEduFeatures = () => (
           variant="h2"
           component="h2"
           sx={{
-              background: `linear-gradient(to right, #1250A3, #5C86D5)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              textFillColor: 'transparent',
-              color: 'transparent',
-              // mb: { xs: 3, md: 4 },
-            }}
+            background: `linear-gradient(to right, #1250A3, #5C86D5)`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            textFillColor: 'transparent',
+            color: 'transparent',
+            // mb: { xs: 3, md: 4 },
+          }}
         >
           CyberEdus?
         </Typography>
@@ -138,14 +138,15 @@ export const CyberEduFeatures = () => (
       </Typography>
     </motion.div>
 
-    <Grid container spacing={2} justifyContent="space-between" alignItems="stretch">
+    <Grid container spacing={2} justifyContent="start" alignItems="stretch">
       {features.map((feature, index) => (
         <Grid
           key={feature.title}
           size={{
             xs: 12,
             sm: 6,
-            md: 2.3,
+            md: 4,
+            lg: 2.3,
           }}
           sx={{ height: 'auto' }}
         >
@@ -157,10 +158,10 @@ export const CyberEduFeatures = () => (
             transition={{ delay: index * 0.1 }}
             style={{ height: '100%' }}
           >
+
             <Paper
               elevation={3}
               sx={{
-                p: 3,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -169,44 +170,75 @@ export const CyberEduFeatures = () => (
                 transition: 'transform 0.3s ease-in-out',
                 '&:hover': {
                   transform: 'translateY(-5px)',
-                  backgroundColor: feature.backgroundColor,
                 },
               }}
             >
-              <Box
-                sx={{
-                  mb: 2,
-                  p: 1.5,
-                  borderRadius: '50%',
-                  backgroundColor: 'white',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-                }}
-              >
-                {feature.icon}
+              <Box sx={{
+                position: 'relative',
+                height: 120,
+                width: 1,
+                backgroundColor: 'grey.200',
+                borderRadius: '16px 16px 50% 50%',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column', 
+                justifyContent: 'center', 
+                alignItems: 'center'
+              }}>
+
+                <Box
+                  sx={{
+                    p: 1.5,
+                    borderRadius: '50%',
+                    backgroundColor: 'primary.main',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mt: -13,
+                    height: 180,
+                    width: 180,
+                  }}
+                />
+                <Box
+                  sx={{
+                    p: 1.5,
+                    borderRadius: '50%',
+                    backgroundColor: 'primary.main',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'absolute',
+                    top: 6,
+                    height: 90,
+                    width: 90,
+                  }}
+                >
+
+                  {feature.icon}
+                </Box>
               </Box>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 'bold',
-                  mb: 1,
-                  color: '#333',
-                }}
-              >
-                {feature.title}
-              </Typography>
-              <Typography
-                variant="body2"
-                sx={{
-                  textAlign: 'center',
-                  color: '#555',
-                  flexGrow: 1,
-                }}
-              >
-                {feature.description}
-              </Typography>
+              <Box p={3}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 'bold',
+                    mb: 1,
+                    color: '#333',
+                  }}
+                >
+                  {feature.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  sx={{
+                    textAlign: 'center',
+                    color: '#555',
+                    flexGrow: 1,
+                  }}
+                >
+                  {feature.description}
+                </Typography>
+              </Box>
             </Paper>
           </motion.div>
         </Grid>

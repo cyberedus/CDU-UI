@@ -85,11 +85,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KulthePranav/CDU-UI.git"
+    "url": "git+https://github.com/cyberedus/CDU-UI.git"
   },
   "keywords": [],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KulthePranav/CDU-UI/issues"
+    "url": "https://github.com/cyberedus/CDU-UI/issues"
   }
 }

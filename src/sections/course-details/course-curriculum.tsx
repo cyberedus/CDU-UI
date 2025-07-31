@@ -137,6 +137,14 @@ const CourseCurriculum: React.FC<CourseProps> = ({ course }) => {
             </Accordion>
           </motion.div>
         ))}
+        <motion.div variants={itemVariants}>
+          <Typography
+            variant="subtitle1"
+            sx={{ color: '#333', my: { xs: 2, md: 4 } }}
+          >
+            To view the full curriculum, download the syllabus.
+          </Typography>
+        </motion.div>
       </Paper>
     </Box>
   );

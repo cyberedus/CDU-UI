@@ -5,7 +5,7 @@ import { Box, Grid } from '@mui/material';
 
 import { UIDV4 } from 'src/utils/course-helper';
 
-import CourseCard from './CourseCard'; // Make sure the path is correct
+import CourseCard from 'src/sections/common/course/course-card';
 
 // --- FRAMER MOTION VARIANTS ---
 const containerVariants = {

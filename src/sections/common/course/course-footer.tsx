@@ -61,8 +61,8 @@ const CourseFooter = ({ course, isHome }: CourseFooterProps) => {
           justifyContent: 'space-between',
           color: 'text.secondary',
           gap: 1,
-          my: 3,
-          px: 2,
+          mb: 3,
+          px: 3,
         }}
       >
         {course.syllabus_link && (

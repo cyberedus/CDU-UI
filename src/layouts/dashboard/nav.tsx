@@ -27,6 +27,7 @@ export type NavContentProps = {
   };
   workspaces: WorkspacesPopoverProps['data'];
   sx?: SxProps<Theme>;
+  scrolled?: boolean
 };
 
 export function NavDesktop({
@@ -35,19 +36,15 @@ export function NavDesktop({
   slots,
   workspaces,
   layoutQuery,
+  scrolled
 }: NavContentProps & { layoutQuery: Breakpoint }) {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        // pt: 2.5,
-        // px: 2.5,
-        // top: 0,
-        // left: 0,
         height: 1,
         display: 'none',
-        // position: 'fixed',
         flexDirection: 'row',
         zIndex: 'var(--layout-nav-zIndex)',
         width: 1,
@@ -58,7 +55,7 @@ export function NavDesktop({
         ...sx,
       }}
     >
-      <NavContentDesktop data={data} slots={slots} workspaces={workspaces} />
+      <NavContentDesktop data={data} slots={slots} workspaces={workspaces} scrolled={scrolled} />
     </Box>
   );
 }
@@ -186,13 +183,13 @@ export function NavContent({ data, slots, sx }: NavContentProps) {
     </>
   );
 }
-export function NavContentDesktop({ data, slots, sx }: Readonly<NavContentProps>) {
+export function NavContentDesktop({ data, slots, sx, scrolled }: Readonly<NavContentProps>) {
   const pathname = usePathname();
 
   return (
     <>
       <Box sx={{ minWidth: '20%' }}>
-        <Logo />
+        <Logo isSingle={!scrolled} />
       </Box>
 
       {slots?.topArea}

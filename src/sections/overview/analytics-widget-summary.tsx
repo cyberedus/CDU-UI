@@ -106,9 +106,10 @@ export function AnalyticsWidgetSummary({
           flexWrap: 'wrap',
           alignItems: 'flex-end',
           justifyContent: 'flex-end',
+          height: 1
         }}
       >
-        <Box sx={{ flexGrow: 1, minWidth: 112 }}>
+        <Box sx={{ flexGrow: 1, minWidth: 112, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 1 }}>
           <Box sx={{ mb: 1, typography: 'h6' }}>{title}</Box>
 
           <Box sx={{ typography: 'h4' }}>

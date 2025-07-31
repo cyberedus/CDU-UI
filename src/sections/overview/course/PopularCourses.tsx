@@ -9,9 +9,8 @@ import { useRouter } from 'src/routes/hooks';
 
 import { responsiveOptionsCourse } from 'src/utils/course-helper';
 
+import CourseCard from 'src/sections/common/course/course-card';
 import NoCoursesFound from 'src/sections/common/no-cousres-found';
-
-import CourseCard from './CourseCard';
 // --- FRAMER MOTION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },

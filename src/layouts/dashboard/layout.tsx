@@ -1,6 +1,7 @@
 import type { Breakpoint } from '@mui/material/styles';
 
 import { merge } from 'es-toolkit';
+import { useEffect, useState } from 'react';
 import { useBoolean } from 'minimal-shared/hooks';
 
 import { Box } from '@mui/material';
@@ -46,6 +47,16 @@ export function DashboardLayout({
   const theme = useTheme();
 
   const { value: open, onFalse: onClose, onTrue: onOpen } = useBoolean();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const renderHeader = () => {
     const headerSlotProps: HeaderSectionProps['slotProps'] = {
@@ -60,7 +71,7 @@ export function DashboardLayout({
           This is an info Alert.
         </Alert>
       ),
-      centerArea: <NavDesktop data={navData} layoutQuery={layoutQuery} workspaces={_workspaces} />,
+      centerArea: <NavDesktop data={navData} layoutQuery={layoutQuery} workspaces={_workspaces} scrolled={scrolled} />,
       leftArea: (
         <>
           {/** @slot Nav mobile */}
@@ -88,7 +99,7 @@ export function DashboardLayout({
             sx={{
               height: 40,
               display: 'none',
-              [theme.breakpoints.down('sm')]: {
+              [theme.breakpoints.down('lg')]: {
                 display: 'flex',
               },
             }}

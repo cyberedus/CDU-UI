@@ -1,12 +1,10 @@
 import React, { useMemo } from 'react'; // Import React for JSX
 import { motion } from 'framer-motion';
 
-import { AccessTime, WorkspacePremium, MenuBook as MenuBookIcon } from '@mui/icons-material';
-import { Box, Card, Chip, Grid, Alert, Avatar, Typography, CardContent } from '@mui/material';
+import { WorkspacePremium } from '@mui/icons-material';
+import { Box, Card, Chip, Grid, Typography, CardContent } from '@mui/material';
 
-import { getCourseIcon, getCourseColor } from 'src/utils/course-helper';
-
-import { fDate } from 'src/utils';
+import { getCourseColor } from 'src/utils/course-helper';
 
 import { CourseFooter } from 'src/sections/common';
 
@@ -20,7 +18,7 @@ type CourseCardProps = {
 export default function CourseCard({ course, variants }: Readonly<CourseCardProps>) {
   const getColor = useMemo(() => getCourseColor(course.level), [course]);
 
-  const GetCourseIcon = useMemo(() => getCourseIcon(course.course_category), [course]);
+  // const GetCourseIcon = useMemo(() => getCourseIcon(course.course_category), [course]);
   return (
     <Box
       component={motion.div}
@@ -28,11 +26,10 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
       whileHover={{
         y: -8,
         boxShadow: '0px 20px 30px rgba(0,0,0,0.1)',
-        borderRadius: 30,
+        borderRadius: 10,
       }}
       whileTap={{ scale: 0.98 }}
       style={{ height: '100%' }}
-      key={course.id}
     >
       <Card
         sx={{
@@ -59,46 +56,27 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             left: 0
           }} />
           <Box sx={{
-            borderRadius: '0px 0 49% 49%',
+            borderRadius: '70% 70% 180% 180%',
             position: 'absolute',
             background: (theme) => theme.palette.primary.main,
             zIndex: -1,
-            top: 0,
-            left: 8,
-            right: 8,
-            height: 253,
+            top: 97,
+            left: 25,
+            right: 25,
+            height: 152,
           }} />
         </Box>
+
+
         <CardContent
           sx={{
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            borderRadius: 2,
-            p: {
-              xs: 2,
+            flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4, p: {
+              xs: 3,
               lg: 4,
             },
             pt: 0
           }}
         >
-          <Grid container gap={2} alignItems="left" flexWrap="nowrap">
-            <Avatar sx={{ bgcolor: 'grey.300', color: `common.black`, mb: 2 }}>
-              <GetCourseIcon />
-            </Avatar>
-
-            <Typography
-              variant="h5"
-              component="div"
-              fontWeight="bold"
-              gutterBottom
-              textAlign="left"
-              mt={1}
-            >
-              {course.course_name}
-            </Typography>
-          </Grid>
-
           <Grid container justifyContent="space-between" alignItems="center">
             <Chip
               label={course.level}
@@ -110,47 +88,43 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               <Chip
                 label="Certified"
                 icon={<WorkspacePremium />}
-                color="info"
                 size="small"
-                sx={{ mb: 2, alignSelf: 'flex-start' }}
+                color="info"
+                sx={{
+                  mb: 2,
+                  alignSelf: 'flex-start',
+                }}
               />
             )}
           </Grid>
-
+          <Grid container gap={2} alignItems="center" flexWrap="nowrap" justifyContent='start'>
+            <Typography
+              variant="h5"
+              component="div"
+              fontWeight="bold"
+              gutterBottom
+              textAlign="left"
+            >
+              {course.course_name}
+            </Typography>
+          </Grid>
           <Typography
-            textAlign="left"
             className="line-clamp-5"
             variant="body2"
             color="text.secondary"
-            sx={{ mb: 2 }}
+            textAlign="left"
+            sx={{ flexGrow: 0, mb: 2 }}
           >
             {course.course_description}
           </Typography>
 
-          <Box mt={1}>
-            <Typography sx={{ mr: 0.4 }} variant="subtitle1">
-              Tools and Technologies
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {course?.tools_and_technologies?.join(', ')}
-            </Typography>
-          </Box>
-          <Box mt={1}>
-            <Typography sx={{ mr: 0.4 }} variant="subtitle1">
-              What You{`'`}ll Learn
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {course.what_you_will_learn}
-            </Typography>
-          </Box>
-          <Box
+          {/* <Box
             sx={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'start',
               color: 'text.secondary',
               gap: 1,
-              mt: 2,
               flexWrap: 'wrap',
             }}
           >
@@ -158,14 +132,19 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               label={`${course.topics_count} Lessons`}
               icon={<MenuBookIcon />}
               size="small"
-            // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
+              sx={{ alignSelf: 'flex-start' }}
             />
-
+            <Chip
+              label={`${course.mode}`}
+              icon={<Laptop />}
+              size="small"
+              sx={{ alignSelf: 'flex-start' }}
+            />
             <Chip
               label={course.duration}
               icon={<AccessTime />}
               size="small"
-            // sx={{ bgcolor: `${getColor}.lighter`, color: `${getColor}.dark` }}
+              sx={{ alignSelf: 'flex-start' }}
             />
             {course.upcoming_batch_date && (
               <Chip
@@ -180,9 +159,9 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
             <Alert severity="info" sx={{ mt: 2 }}>
               Only {course.available_seats} seats available
             </Alert>
-          )}
+          )} */}
         </CardContent>
-        <CourseFooter course={course} />
+        <CourseFooter course={course} isHome />
       </Card>
     </Box>
   );

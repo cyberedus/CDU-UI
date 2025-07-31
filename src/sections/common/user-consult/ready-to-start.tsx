@@ -37,7 +37,15 @@ export const ReadyToStart = () => {
   };
 
   return (
-    <Box sx={{ pb: 4, width: 1, textAlign: 'center', pt: 4, background: theme => theme.palette.primary.lighter, my: 3 }}>
+    <Box sx={{
+    pb: 4,
+    pt: 4,
+    my: 3,
+    width: 1,
+    textAlign: 'center',
+    background: '#e7eaf3',
+    borderRadius:2
+  }}>
       {/* --- HEADING --- */}
       <motion.div
         initial="hidden"
@@ -92,7 +100,7 @@ export const ReadyToStart = () => {
         </Typography>
       </motion.div>
       <Box textAlign="center" sx={{ mt: 6 }}>
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ repeat: Infinity, duration: 1 }}>
           <Button
             variant="contained"
             size="large"
