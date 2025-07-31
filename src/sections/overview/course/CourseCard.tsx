@@ -52,7 +52,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
           justifyContent: 'center'
         }}>
 
-          <Box component='img' src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'} width={1} height={1} sx={{
+          <Box component='img' src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'} alt={course.course_name} width={1} height={1} sx={{
             borderRadius: '0px 0 50% 50%',
             position: 'absolute',
             left: 0
@@ -73,8 +73,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         <CardContent
           sx={{
             flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4, p: {
-              xs: 0,
-              sm: 2,
+              xs: 2,
               lg: 4,
             },
           }}

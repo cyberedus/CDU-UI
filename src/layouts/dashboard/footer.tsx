@@ -61,7 +61,7 @@ const supportLinks = [
 ];
 
 const FooterSection = () => {
-  const { dashboardCourseList } = useSelector(
+  const { dashboardCourseList = [] } = useSelector(
     (state: reduxState) => state.dashboardData
   );
 

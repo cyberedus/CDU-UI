@@ -193,61 +193,16 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
         <Grid size={{ xs: 12, md: 6 }}>
           <motion.div variants={itemVariants}>
             <Box
+              component="img"
+              src={course.course_image_link ?? ''}
+              alt={course.course_name}
               sx={{
-                width: '100%',
-                aspectRatio: '16 / 9', // Standard video aspect ratio
-                borderRadius: '16px',
-                overflow: 'hidden',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                backgroundImage: `url('/images/image_429246.png')`, // Replace with actual path or use <img>
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                '&::before': {
-                  content: '""',
-                  display: 'block',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6))', // Dark overlay
-                  borderRadius: '16px',
-                },
-                position: 'relative',
+                height: 1,
+                objectFit: 'fill',
+                borderRadius: 2,
+                minHeight: 340
               }}
-            >
-              <Box
-                component="img"
-                src="/images/image_429246.png" // Update this path to where your image is served
-                alt="Certified Ethical Hacker (CEH) Course Thumbnail"
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: '16px',
-                  position: 'absolute',
-                  zIndex: 0, // Ensure it's behind the overlay
-                }}
-              />
-              <Box
-                sx={{
-                  position: 'relative',
-                  zIndex: 1, // Ensure logo is above the overlay
-                  p: 2, // Padding for the logo/text inside
-                  // Add specific styling for the "PLANETS" logo if it's an SVG or text
-                }}
-              >
-                {/* You might embed the "PLANETS" logo as an SVG or an image here */}
-                {/* For now, just a placeholder */}
-                <Typography variant="h6" sx={{ color: 'white', fontWeight: 'bold' }}>
-                  PLANETS
-                </Typography>
-                {/* You could add a play button icon here */}
-              </Box>
-            </Box>
+            />
           </motion.div>
         </Grid>
       </Grid>
