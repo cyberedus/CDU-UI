@@ -43,7 +43,6 @@ export function SignInView() {
     const res = await dispatch(signInAsync(signInData));
     if (res.meta.requestStatus === 'fulfilled') {
       const accessToken = res.payload.data;
-      console.log(res.payload, 'res.payload');
       setSessionStorageValue('accessToken', accessToken);
       notify('Logged in successfully', 'success');
       router.push('/admin');

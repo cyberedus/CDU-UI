@@ -10,7 +10,6 @@ interface AuthProviderProps {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [checkState, setCheckState] = useState(false);
   const router = useRouter();
-  console.log('auth provider');
 
   useEffect(() => {
     setCheckState(true);
@@ -18,7 +17,6 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     if (!getTokenFromLocal) {
       router.push('/sign-in');
     }
-    console.log(getTokenFromLocal);
     setCheckState(false);
   }, []);
 

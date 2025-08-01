@@ -59,7 +59,6 @@ export function CourseDetailsView() {
   };
   useEffect(() => {
     if (courseId) {
-      console.log('courseId');
       getCourseDetail();
     }
   }, [courseId]);

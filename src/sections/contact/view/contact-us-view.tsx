@@ -36,7 +36,6 @@ export function ContactUsView() {
       setLoading(false);
     }
   };
-  console.log(contactDetails, 'contactDetails');
 
   useEffect(() => {
     getDefaultContactDetails();
