@@ -32,19 +32,19 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
         }}
       >
         {/* Tabs Navigation */}
-        <Box sx={{ borderBottom: 1, borderColor: 'divider', px: { xs: 2, md: 4 }, width: 1 }}>
-          <Tabs
-            value={tabValue}
-            onChange={handleChange}
-            aria-label="course navigation tabs"
-            sx={{
-              '& .MuiTabs-indicator': {
-                backgroundColor: 'primary.main', // Blue indicator
-              },
-            }}
-            variant="scrollable"
-            scrollButtons
-          >
+        <Box sx={{ borderBottom: 1, borderColor: 'divider', px: 0, width: '100%' }}>
+            <Tabs
+              value={tabValue}
+              onChange={handleChange}
+              aria-label="course navigation tabs"
+              variant="fullWidth"
+              sx={{
+                width: '100%',
+                '& .MuiTabs-indicator': {
+                  backgroundColor: 'primary.main',
+                },
+              }}
+            >
             <Tab
               label="Overview"
               sx={{
@@ -64,10 +64,10 @@ const CourseDetailsOverview: React.FC<CourseDetailsOverviewProps> = ({ course })
               label="Batches"
               sx={{ textTransform: 'none', fontWeight: 'bold', color: '#616161' }}
             />
-            <Tab
+            {/* <Tab
               label="Fees"
               sx={{ textTransform: 'none', fontWeight: 'bold', color: '#616161' }}
-            />
+            /> */}
           </Tabs>
         </Box>
         {/* Content Area */}

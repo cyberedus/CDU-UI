@@ -98,7 +98,7 @@ export function NavMobile({
 
 // ----------------------------------------------------------------------
 
-export function NavContent({ data, slots, sx }: NavContentProps) {
+export function NavContent({ data, slots, sx, }: NavContentProps) {
   const pathname = usePathname();
 
   return (

@@ -59,14 +59,14 @@ const CourseOverView = ({ course }: CourseProps) => {
               component="h2"
               sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}
             >
-              This course teaches how to:
+              Overview
             </Typography>
           </motion.div>
           <motion.div variants={itemVariants}>
             <List sx={{ pt: 0 }}>
               {course.overview_points.map((item) => (
-                <ListItem key={item} sx={{ py: 0.5, pl: 0 }}>
-                  <ListItemIcon sx={{ minWidth: 'unset', mr: 1, color: '#616161' }}>
+                <ListItem key={item} sx={{ py: 0.5, pl: 0, alignItems: 'start' }}>
+                  <ListItemIcon sx={{ minWidth: 'unset', mr: 1, mt: 0.5, color: '#616161' }}>
                     • {/* Custom bullet point, or use a proper list item icon if preferred */}
                   </ListItemIcon>
                   <ListItemText
@@ -115,6 +115,34 @@ const CourseOverView = ({ course }: CourseProps) => {
                 />
               </motion.div>
             ))}
+          </Box>
+        </Box>
+        {/* Additional Benefits */}
+        <Box sx={{ mb: { xs: 4, md: 5 } }}>
+          <motion.div variants={itemVariants}>
+            <Typography
+              variant="h5"
+              component="h2"
+              sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}
+            >
+              Additional Benefits
+            </Typography>
+          </motion.div>
+          <Box
+            sx={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: 1, // Space between chips
+            }}
+            component={motion.div}
+            variants={containerVariants}
+          >
+            <ListItem sx={{ py: 0.5, pl: 0 }}>
+              <ListItemText
+                primary={course.additional_benefits}
+                sx={{ '& .MuiListItemText-primary': { color: '#555' } }}
+              />
+            </ListItem>
           </Box>
         </Box>
       </Grid>

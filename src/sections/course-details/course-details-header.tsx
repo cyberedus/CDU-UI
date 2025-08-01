@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { FileDownloadOutlined } from '@mui/icons-material';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import { Box, Chip, Grid, Stack, Button, Typography, CircularProgress } from '@mui/material';
 
@@ -117,12 +116,6 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
 
             <motion.div variants={itemVariants}>
               <Stack direction="row" spacing={3} alignItems="center" flexWrap="wrap" rowGap={1}>
-                <Stack direction="row" alignItems="center" spacing={0.5}>
-                  <AccessTimeIcon sx={{ color: '#616161' }} />
-                  <Typography variant="body2" sx={{ color: '#616161' }}>
-                    {course.duration}
-                  </Typography>
-                </Stack>
                 <Stack direction="row" alignItems="center" spacing={0.5}>
                   <BarChartIcon sx={{ color: '#616161' }} />
                   <Typography variant="body2" sx={{ color: '#616161' }}>

@@ -96,11 +96,13 @@ export function DashboardLayout({
           {/** @slot Account drawer */}
           {/* <AccountPopover data={_account} /> */}
           <Logo
+            isSingle={!scrolled}
             sx={{
-              height: 40,
+              height: 50,
               display: 'none',
               [theme.breakpoints.down('lg')]: {
                 display: 'flex',
+                justifyContent:'end'
               },
             }}
           />

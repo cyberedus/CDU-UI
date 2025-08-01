@@ -85,6 +85,9 @@ interface CourseBatch {
   instructor_name: string;
   seats_available: number;
   created_at: string; // ISO timestamp
+  duration: string;
+  format?: string | null
+  internship?: string | null
 }
 
 interface Course {
@@ -110,6 +113,7 @@ interface Course {
   course_icon: string;
   batches: CourseBatch[];
   upcoming_batch_date?: string | null;
+  additional_benefits?: string | null;
   available_seats?: number | null;
 }
 

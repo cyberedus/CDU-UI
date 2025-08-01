@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import PersonIcon from '@mui/icons-material/Person';
 import LaptopIcon from '@mui/icons-material/LaptopMac';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -15,13 +14,13 @@ interface BatchCardProps {
 // Styled component for the icon-text pair
 const IconTextContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'start',
   marginBottom: theme.spacing(1),
 }));
 
 // Individual Batch Card Component
 const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
-  const { start_date, timing, mode, instructor_name } = batch;
+  const { duration, format, mode, internship } = batch;
 
   return (
     <motion.div
@@ -31,20 +30,19 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
       style={{ flexShrink: 0 }} // Prevent cards from shrinking too much
     >
       <Card sx={{ minWidth: 280, maxWidth: 300, borderRadius: 2, boxShadow: 3, m: 1.5 }}>
-        {' '}
         {/* Added margin for spacing between cards */}
         <CardContent>
           <IconTextContainer>
             <CalendarMonthIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Start Date: {start_date}
+              Duration: {duration}
             </Typography>
           </IconTextContainer>
 
           <IconTextContainer>
             <ScheduleIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Time: {timing}
+              Format: {format}
             </Typography>
           </IconTextContainer>
 
@@ -56,9 +54,9 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
           </IconTextContainer>
 
           <IconTextContainer>
-            <PersonIcon sx={{ mr: 1, color: 'text.secondary' }} />
+            <LaptopIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
-              Instructor: {instructor_name}
+              Internship: {internship}
             </Typography>
           </IconTextContainer>
         </CardContent>
