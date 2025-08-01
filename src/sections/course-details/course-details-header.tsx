@@ -153,31 +153,33 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                 >
                   Enroll Now
                 </Button>
-                <Button
-                  variant="outlined"
-                  sx={{
-                    py: 1.5,
-                    px: 4,
-                    borderRadius: '8px',
-                    textTransform: 'none',
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                  }}
-                  component={motion.button}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  disabled={downloading}
-                  startIcon={
-                    downloading ? (
-                      <CircularProgress color="inherit" size={15} />
-                    ) : (
-                      <FileDownloadOutlined />
-                    )
-                  }
-                  onClick={downloadSyllabus}
-                >
-                  Download Syllabus
-                </Button>
+                {course.syllabus_link && (
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      py: 1.5,
+                      px: 4,
+                      borderRadius: '8px',
+                      textTransform: 'none',
+                      fontWeight: 'bold',
+                      fontSize: '1rem',
+                    }}
+                    component={motion.button}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    disabled={downloading}
+                    startIcon={
+                      downloading ? (
+                        <CircularProgress color="inherit" size={15} />
+                      ) : (
+                        <FileDownloadOutlined />
+                      )
+                    }
+                    onClick={downloadSyllabus}
+                  >
+                    Download Syllabus
+                  </Button>
+                )}
               </Stack>
             </motion.div>
           </Stack>

@@ -44,7 +44,7 @@ const SplashScreen = ({ sx, ...other }: splashScreenProps) => {
             repeatDelay: 1,
           }}
         >
-          <Logo disabled isSingle={false} sx={{ height: 64, width: 64 }} />
+          <Logo disabled isSingle={false} sx={{ height: 50, width: 64 }} />
         </m.div>
         <Box
           component={m.div}

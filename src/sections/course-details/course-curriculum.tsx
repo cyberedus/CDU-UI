@@ -77,49 +77,49 @@ const CourseCurriculum: React.FC<CourseProps> = ({ course }) => {
           </Typography>
         </motion.div>
 
-        {course.curriculum.map((module, index) =>
-          module.subtopics.length > 0 ? (
-            <motion.div key={module.topic_title} variants={itemVariants} style={{ paddingTop: 7 }}>
-              <Accordion
-                expanded={expandedPanel === `panel${index}`}
-                onChange={handleChange(`panel${index}`)}
-                elevation={0} // Remove shadow for a flatter look
+        {course.curriculum.map((module, index) => (
+          <motion.div key={module.topic_title} variants={itemVariants} style={{ paddingTop: 7 }}>
+            <Accordion
+              expanded={expandedPanel === `panel${index}`}
+              onChange={handleChange(`panel${index}`)}
+              elevation={0} // Remove shadow for a flatter look
+              sx={{
+                border: '1px solid #e0e0e0', // Light border
+                borderRadius: '8px',
+                mb: 1.5, // Margin between accordions
+                '&:last-of-type': { mb: 0 }, // No margin for the last one
+                '&:before': {
+                  // Remove default accordion line
+                  display: 'none',
+                },
+                '&.Mui-expanded': {
+                  margin: '0 0 12px 0', // Keep consistent margin when expanded
+                  '&:last-of-type': { mb: 0 },
+                  borderRadius: '8px', // Ensure border radius stays when expanded
+                },
+              }}
+            >
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon sx={{ color: '#616161' }} />}
+                aria-controls={`panel${index}-content`}
+                id={`panel${index}-header`}
                 sx={{
-                  border: '1px solid #e0e0e0', // Light border
+                  backgroundColor: expandedPanel === `panel${index}` ? '#fafafa' : '#fff', // Slightly grey when expanded
                   borderRadius: '8px',
-                  mb: 1.5, // Margin between accordions
-                  '&:last-of-type': { mb: 0 }, // No margin for the last one
-                  '&:before': {
-                    // Remove default accordion line
-                    display: 'none',
-                  },
-                  '&.Mui-expanded': {
-                    margin: '0 0 12px 0', // Keep consistent margin when expanded
-                    '&:last-of-type': { mb: 0 },
-                    borderRadius: '8px', // Ensure border radius stays when expanded
+                  minHeight: { xs: 48, md: 64 }, // Adjust height
+                  '& .MuiAccordionSummary-content': {
+                    margin: '12px 0',
+                    '&.Mui-expanded': {
+                      margin: '12px 0',
+                    },
                   },
                 }}
               >
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon sx={{ color: '#616161' }} />}
-                  aria-controls={`panel${index}-content`}
-                  id={`panel${index}-header`}
-                  sx={{
-                    backgroundColor: expandedPanel === `panel${index}` ? '#fafafa' : '#fff', // Slightly grey when expanded
-                    borderRadius: '8px',
-                    minHeight: { xs: 48, md: 64 }, // Adjust height
-                    '& .MuiAccordionSummary-content': {
-                      margin: '12px 0',
-                      '&.Mui-expanded': {
-                        margin: '12px 0',
-                      },
-                    },
-                  }}
-                >
-                  <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#333' }}>
-                    {module.topic_title}
-                  </Typography>
-                </AccordionSummary>
+                <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#333' }}>
+                  {module.topic_title}
+                </Typography>
+              </AccordionSummary>
+              {module.subtopics.length > 0 ? (
                 <AccordionDetails sx={{ pt: 1, pb: 2, px: 2, borderTop: '1px solid #eee' }}>
                   <List sx={{ pt: 0 }}>
                     {module.subtopics.map((topic) => (
@@ -135,23 +135,25 @@ const CourseCurriculum: React.FC<CourseProps> = ({ course }) => {
                     ))}
                   </List>
                 </AccordionDetails>
-              </Accordion>
-            </motion.div>
-          ) : null
+              ) : null}
+            </Accordion>
+          </motion.div>
+        ))}
+        {course.syllabus_link && (
+          <motion.div variants={itemVariants}>
+            <Typography
+              variant="subtitle1"
+              sx={{
+                color: '#37474F', // Cool dark blue-gray
+                mt: 2,
+                fontStyle: 'italic',
+                textAlign: 'center',
+              }}
+            >
+              To view the full curriculum, download the syllabus.
+            </Typography>
+          </motion.div>
         )}
-        <motion.div variants={itemVariants}>
-          <Typography
-            variant="subtitle1"
-            sx={{
-              color: '#37474F', // Cool dark blue-gray
-              mt: 2,
-              fontStyle: 'italic',
-              textAlign: 'center',
-            }}
-          >
-            To view the full curriculum, download the syllabus.
-          </Typography>
-        </motion.div>
       </Paper>
     </Box>
   );

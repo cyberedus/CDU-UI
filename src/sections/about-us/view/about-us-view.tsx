@@ -26,7 +26,11 @@ const subtitleVariants: any = {
 
 const mentors = [
   { name: 'Ankita Sharma', role: 'Senior Mentor - Data Science', img: '/images/ankita.jpg' },
-  { name: 'Rahul Mehra', role: 'Mentor - Full Stack', img: '/images/rahul.jpg' },
+  {
+    name: 'Kaustubhmani Gothivarekar',
+    role: 'Managing Head at CyberNeedle Solutions',
+    img: '/assets/images/mentors/kaustubhamani-20-20.jpg',
+  },
   { name: 'Neha Verma', role: 'Career Coach', img: '/images/neha.jpg' },
 ];
 
@@ -154,8 +158,8 @@ const AboutUsPage = () => {
           </motion.div>
         </Grid>
 
-        {mentors.map((mentor, index) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+        {mentors.map((mentor) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mentor.name}>
             <motion.div variants={itemVariants}>
               <Card sx={{ py: 3 }}>
                 <Stack spacing={2} alignItems="center">
