@@ -132,8 +132,8 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
                 <Grid
                   size={{
                     xs: 12,
-                    sm: 6,
-                    lg: 4,
+                    sm: 11,
+                    lg: courses.length === 1 ? 4 : 11,
                   }}
                   py={3}
                   pb={5}
@@ -142,6 +142,7 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
                     sm: 2,
                   }}
                   height={1}
+                  width={1}
                 >
                   <CourseCard course={course} variants={itemVariants} />
                 </Grid>
@@ -169,7 +170,7 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
               color: 'white',
               '&:hover': {
                 background: 'linear-gradient(to right, #C76614, #E5943C)',
-              }
+              },
             }}
             onClick={handleGotoCourses}
           >

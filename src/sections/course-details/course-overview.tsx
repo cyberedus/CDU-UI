@@ -128,29 +128,28 @@ const CourseOverView = ({ course }: CourseProps) => {
               Additional Benefits
             </Typography>
           </motion.div>
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'start',
-              gap: 1,
-              backgroundColor: '#E3F2FD',
-              borderRadius: 2,
-              px: 2,
-              py: 1,
-            }}
-            component={motion.div}
-            variants={containerVariants}
-          >
-            <ListItem sx={{ py: 0, px: 0 }}>
-              <ListItemText
-                primary={course.additional_benefits}
-                sx={{ '& .MuiListItemText-primary': { color: '#444',
-                    fontWeight: 500,
-                  },
-                }}
-              />
-            </ListItem>
-          </Box>
+          {course.additional_benefits && (
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'start',
+                gap: 1,
+                backgroundColor: '#E3F2FD',
+                borderRadius: 2,
+                px: 2,
+                py: 1,
+              }}
+              component={motion.div}
+              variants={containerVariants}
+            >
+              <ListItem sx={{ py: 0, px: 0 }}>
+                <ListItemText
+                  primary={course.additional_benefits}
+                  sx={{ '& .MuiListItemText-primary': { color: '#444', fontWeight: 500 } }}
+                />
+              </ListItem>
+            </Box>
+          )}
         </Box>
       </Grid>
 

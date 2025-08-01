@@ -149,6 +149,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                   component={motion.button}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={downloadSyllabus}
                 >
                   Enroll Now
                 </Button>
@@ -193,7 +194,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                 height: 1,
                 objectFit: 'fill',
                 borderRadius: 2,
-                minHeight: 340
+                minHeight: 340,
               }}
             />
           </motion.div>

@@ -9,6 +9,8 @@ import { ThemeProvider } from 'src/theme/theme-provider';
 import { WhatsApp } from './components/whatsapp';
 import LeadsProvider from './leads/leads-provider';
 import { ProgressBar } from './components/nprogress-bar';
+import MotionLazy from './components/animate/lazy-motion';
+import { CallToAction } from './components/call-to-action';
 import { AppToastContainer } from './components/alert/alert';
 
 // ----------------------------------------------------------------------
@@ -21,10 +23,13 @@ export default function App({ children }: Readonly<AppProps>) {
   useScrollToTop();
   return (
     <ThemeProvider>
-      <WhatsApp />
-      <ProgressBar />
-      <AppToastContainer />
-      <LeadsProvider>{children}</LeadsProvider>
+      <MotionLazy>
+        <WhatsApp />
+        <CallToAction />
+        <ProgressBar />
+        <AppToastContainer />
+        <LeadsProvider>{children}</LeadsProvider>
+      </MotionLazy>
     </ThemeProvider>
   );
 }

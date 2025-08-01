@@ -4,11 +4,12 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 import Grid from '@mui/material/Grid';
-import { CircularProgress } from '@mui/material';
 
 import { setIsOpenTalk } from 'src/redux/index.slices';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { getDashboardDetails } from 'src/redux/async/dashboard/dashboard.async';
+
+import { LoadingScreen } from 'src/components/loading-screen';
 
 import HomePageHeader from '../landing-side-page';
 import { ReadyToStart } from '../../common/index';
@@ -59,12 +60,10 @@ export function OverviewAnalyticsView() {
         <HomePageHeader />
       </Grid>
       {loading ? (
-        <Grid container justifyContent="center" alignItems="center" minHeight={200}>
-          <CircularProgress />
-        </Grid>
+        <LoadingScreen />
       ) : (
         <>
-          <Grid container spacing={3} sx={{ pt: 1 }} justifyContent='center'>
+          <Grid container spacing={3} sx={{ pt: 1 }} justifyContent="center">
             <Grid size={{ xs: 12, sm: 6, md: 3, lg: 2.5 }}>
               <AnalyticsWidgetSummary
                 title="Students Trained"

@@ -4,10 +4,12 @@ import { motion } from 'framer-motion';
 import { useDispatch } from 'react-redux';
 import React, { useMemo, useState, useEffect } from 'react';
 
-import { Grid, Typography, CircularProgress } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 import { getAllCourseList } from 'src/redux/index.async';
+
+import { LoadingScreen } from 'src/components/loading-screen';
 
 import CourseFilter from '../filters';
 import { PopularCourses } from '../course/PopularCourses';
@@ -132,13 +134,7 @@ export function AllCoursesView() {
         </motion.div>
       </Grid>
       <CourseFilter courseList={courseList} onFilterChange={onFilterChange} />
-      {loading ? (
-        <Grid container justifyContent="center" alignItems="center" minHeight={200}>
-          <CircularProgress />
-        </Grid>
-      ) : (
-        renderCourses
-      )}
+      {loading ? <LoadingScreen /> : renderCourses}
     </DashboardContent>
   );
 }

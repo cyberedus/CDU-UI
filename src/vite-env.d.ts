@@ -86,8 +86,8 @@ interface CourseBatch {
   seats_available: number;
   created_at: string; // ISO timestamp
   duration: string;
-  format?: string | null
-  internship?: string | null
+  format?: string | null;
+  internship?: string | null;
 }
 
 interface Course {
@@ -216,4 +216,8 @@ interface ContactInfo {
 interface ContactDetialsProps {
   conatctDetails: ContactInfo;
   loading?: boolean;
+}
+
+interface splashScreenProps {
+  sx?: object;
 }

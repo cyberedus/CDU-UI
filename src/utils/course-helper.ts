@@ -65,13 +65,23 @@ export const responsiveOptions = [
 
 export const responsiveOptionsCourse = [
   {
-    breakpoint: '1400px',
+    breakpoint: '2560px',
+    numVisible: 4,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '1536px',
+    numVisible: 4,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '1440px',
     numVisible: 4,
     numScroll: 1,
   },
   {
     breakpoint: '1230px',
-    numVisible: 3,
+    numVisible: 4,
     numScroll: 1,
   },
   {
@@ -80,8 +90,13 @@ export const responsiveOptionsCourse = [
     numScroll: 1,
   },
   {
-    breakpoint: '767px',
-    numVisible: 1,
+    breakpoint: '1024px',
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '768px',
+    numVisible: 2,
     numScroll: 1,
   },
   {

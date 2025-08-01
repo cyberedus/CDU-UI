@@ -146,7 +146,7 @@ export const CyberEduFeatures = () => (
             xs: 12,
             sm: 6,
             md: 4,
-            lg: 2.3,
+            lg: 2.4,
           }}
           sx={{ height: 'auto' }}
         >
@@ -158,7 +158,6 @@ export const CyberEduFeatures = () => (
             transition={{ delay: index * 0.1 }}
             style={{ height: '100%' }}
           >
-
             <Paper
               elevation={3}
               sx={{
@@ -173,19 +172,20 @@ export const CyberEduFeatures = () => (
                 },
               }}
             >
-              <Box sx={{
-                position: 'relative',
-                height: 120,
-                width: 1,
-                backgroundColor: 'grey.200',
-                borderRadius: '16px 16px 50% 50%',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column', 
-                justifyContent: 'center', 
-                alignItems: 'center'
-              }}>
-
+              <Box
+                sx={{
+                  position: 'relative',
+                  height: 120,
+                  width: 1,
+                  backgroundColor: 'grey.200',
+                  borderRadius: '16px 16px 50% 50%',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+              >
                 <Box
                   sx={{
                     p: 1.5,
@@ -213,7 +213,6 @@ export const CyberEduFeatures = () => (
                     width: 90,
                   }}
                 >
-
                   {feature.icon}
                 </Box>
               </Box>

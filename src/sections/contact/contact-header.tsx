@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-import { Box, Card, Grid, Stack, Typography, CardContent, CircularProgress } from '@mui/material';
+import { Box, Card, Grid, Stack, Typography, CardContent } from '@mui/material';
+
+import { LoadingScreen } from 'src/components/loading-screen';
 
 import { ConsultForm } from '../common';
 import ContactOptions from './to-connect';
@@ -42,7 +44,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        alignItems="center"
+        alignItems="start"
         justifyContent="space-between"
       >
         {/* Left Section - Course Details */}
@@ -108,9 +110,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
 
         {/* Right Section - Video Thumbnail */}
         {loading ? (
-          <Grid container justifyContent="center" alignItems="center" width={1}>
-            <CircularProgress />
-          </Grid>
+          <LoadingScreen />
         ) : (
           <>
             <Grid size={{ xs: 12 }} container rowGap={3} pb={2}>

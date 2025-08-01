@@ -42,39 +42,52 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
         }}
         elevation={1}
       >
-        <Box sx={{
-          marginBottom: '0px',
-          position: 'relative',
-          height: 240,
-          display: 'flex',
-          justifyContent: 'center'
-        }}>
-
-          <Box component='img' src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'} alt={course.course_name} width={1} height={1} sx={{
-            borderRadius: '0px 0 50% 50%',
-            position: 'absolute',
-            left: 0
-          }} />
-          <Box sx={{
-            borderRadius: '70% 70% 180% 180%',
-            position: 'absolute',
-            background: (theme) => theme.palette.primary.main,
-            zIndex: -1,
-            top: 97,
-            left: 25,
-            right: 25,
-            height: 152,
-          }} />
+        <Box
+          sx={{
+            marginBottom: '0px',
+            position: 'relative',
+            height: 240,
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Box
+            component="img"
+            src={course.course_image_link ?? '/assets/images/cover/cover-1.webp'}
+            alt={course.course_name}
+            width={1}
+            height={1}
+            sx={{
+              borderRadius: '0px 0 50% 50%',
+              position: 'absolute',
+              left: 0,
+            }}
+          />
+          <Box
+            sx={{
+              borderRadius: '70% 70% 180% 180%',
+              position: 'absolute',
+              background: (theme) => theme.palette.primary.main,
+              zIndex: -1,
+              top: 97,
+              left: 25,
+              right: 25,
+              height: 152,
+            }}
+          />
         </Box>
-
 
         <CardContent
           sx={{
-            flexGrow: 1, display: 'flex', flexDirection: 'column', borderRadius: 4, p: {
+            flexGrow: 1,
+            display: 'flex',
+            flexDirection: 'column',
+            borderRadius: 4,
+            p: {
               xs: 3,
               lg: 4,
             },
-            pt: 0
+            pt: 0,
           }}
         >
           <Grid container justifyContent="space-between" alignItems="center">
@@ -97,7 +110,7 @@ export default function CourseCard({ course, variants }: Readonly<CourseCardProp
               />
             )}
           </Grid>
-          <Grid container gap={2} alignItems="center" flexWrap="nowrap" justifyContent='start'>
+          <Grid container gap={2} alignItems="center" flexWrap="nowrap" justifyContent="start">
             <Typography
               variant="h5"
               component="div"

@@ -1,49 +1,52 @@
 import { useSelector } from 'react-redux';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
+import { Place } from '@mui/icons-material';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import { Box, Grid, Link, IconButton, Typography } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 
 import { navData } from '../nav-config-dashboard';
 
-const linkDataProps = { color: 'text.secondary', sx: { cursor: 'pointer', pt: 1, fontSize: 14 } }
+const linkDataProps = {
+  color: 'text.secondary',
+  sx: { cursor: 'pointer', pt: 1, fontSize: 14, textDecoration: 'none' },
+};
 
-const supportLinks = [
-  {
-    title: 'Student Support',
-    linkProps: linkDataProps,
-  },
-  {
-    title: 'Downloads',
-    linkProps: linkDataProps,
-  },
-  {
-    title: 'FAQs',
-    linkProps: linkDataProps,
-  },
-  {
-    title: 'Privacy Policy',
-    linkProps: linkDataProps,
-  },
-  {
-    title: 'Terms Of Service',
-    linkProps: linkDataProps,
-  },
-  {
-    title: 'Refund Policy',
-    linkProps: linkDataProps,
-  },
-];
+// const supportLinks = [
+//   {
+//     title: 'Student Support',
+//     linkProps: linkDataProps,
+//   },
+//   {
+//     title: 'Downloads',
+//     linkProps: linkDataProps,
+//   },
+//   {
+//     title: 'FAQs',
+//     linkProps: linkDataProps,
+//   },
+//   {
+//     title: 'Privacy Policy',
+//     linkProps: linkDataProps,
+//   },
+//   {
+//     title: 'Terms Of Service',
+//     linkProps: linkDataProps,
+//   },
+//   {
+//     title: 'Refund Policy',
+//     linkProps: linkDataProps,
+//   },
+// ];
 
 const FooterSection = () => {
-  const navigate = useNavigate()
-  const { dashboardCourseList = [] } = useSelector(
-    (state: reduxState) => state.dashboardData
-  );
-  const handleNavigate = (path:string) => {
-    navigate(path)
-  }
+  const navigate = useNavigate();
+  const { dashboardCourseList = [] } = useSelector((state: reduxState) => state.dashboardData);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
   return (
     <Box
       component="footer"
@@ -63,7 +66,7 @@ const FooterSection = () => {
       }}
     >
       <Grid container spacing={3}>
-        <Grid size={{ xs: 6, md: 3 }}>
+        <Grid size={{ xs: 6, md: 4 }}>
           <Box component="div" sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
             <Grid container alignItems="center">
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'secondary.main' }}>
@@ -82,52 +85,79 @@ const FooterSection = () => {
             <IconButton
               color="inherit"
               sx={{ bgcolor: '#e0e0e0', '&:hover': { bgcolor: '#d5d5d5' } }}
-              onClick={() => { }}
+              onClick={() => window.open('https://www.facebook.com/share/19bz19LVzT', '_blank')}
             >
               <Iconify icon="socials:facebook" />
             </IconButton>
             <IconButton
               color="inherit"
               sx={{ bgcolor: '#e0e0e0', '&:hover': { bgcolor: '#d5d5d5' } }}
-              onClick={() => { }}
+              onClick={() =>
+                window.open(
+                  'https://www.instagram.com/thecyberedus?igsh=MWNmNHgxaWd1b2t5OA==',
+                  '_blank'
+                )
+              }
             >
-              <Iconify icon="socials:twitter" />
+              <InstagramIcon />
             </IconButton>
             <IconButton
               color="inherit"
               sx={{ bgcolor: '#e0e0e0', '&:hover': { bgcolor: '#d5d5d5' } }}
-              onClick={() => { }}
+              onClick={() => window.open('https://www.linkedin.com/company/cyberedus/', '_blank')}
             >
               <Iconify icon="socials:linkedin" />
             </IconButton>
+            <IconButton
+              color="inherit"
+              sx={{ bgcolor: '#e0e0e0', '&:hover': { bgcolor: '#d5d5d5' } }}
+              onClick={() =>
+                window.open('https://maps.app.goo.gl/GJbMXn6JcSxDP8GJ6?g_st=ac', '_blank')
+              }
+            >
+              <Place />
+            </IconButton>
           </Box>
         </Grid>
-        <Grid size={{ xs: 6, md: 3 }}>
+        <Grid size={{ xs: 6, md: 4 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Courses
           </Typography>
           <Box display="flex" flexDirection="column" pt={3}>
             {dashboardCourseList.map(({ course_name, id }, i) => (
-              <Link href={'/courses/' + id} key={course_name + i} {...linkDataProps} underline="hover">
+              <Link
+                key={course_name + i}
+                {...linkDataProps}
+                component="button"
+                variant="body2"
+                textAlign="left"
+                onClick={() => handleNavigate('courses/' + id)}
+              >
                 {course_name}
               </Link>
             ))}
           </Box>
         </Grid>
-        <Grid size={{ xs: 6, md: 3 }}>
+        <Grid size={{ xs: 6, md: 4 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Company
           </Typography>
           <Box display="flex" flexDirection="column" pt={3}>
             {navData.map(({ title, path }) => (
-              <Link key={title} {...linkDataProps} component="button"
-                variant="body2" textAlign='left' onClick={() => handleNavigate(path)}>
+              <Link
+                key={title}
+                {...linkDataProps}
+                component="button"
+                variant="body2"
+                textAlign="left"
+                onClick={() => handleNavigate(path)}
+              >
                 {title}
               </Link>
             ))}
           </Box>
         </Grid>
-        <Grid size={{ xs: 6, md: 3 }}>
+        {/* <Grid size={{ xs: 6, md: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Contact
           </Typography>
@@ -138,7 +168,7 @@ const FooterSection = () => {
               </Link>
             ))}
           </Box>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Grid sx={{ pt: 1, borderTop: '1px solid #ccc', mt: 5 }}>
         <Box
@@ -163,6 +193,6 @@ const FooterSection = () => {
         </Box>
       </Grid>
     </Box>
-  )
+  );
 };
 export default FooterSection;

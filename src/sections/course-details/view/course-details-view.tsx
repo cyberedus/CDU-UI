@@ -4,10 +4,12 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Grid, CircularProgress } from '@mui/material';
+import { Grid } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
 import { getSingleCourse } from 'src/redux/async/courses/courses.async';
+
+import { LoadingScreen } from 'src/components/loading-screen';
 
 import CourseDetailsOverview from '../details';
 import CourseDetailsHeader from '../course-details-header';
@@ -65,9 +67,7 @@ export function CourseDetailsView() {
   return (
     <DashboardContent maxWidth="xl">
       {loader ? (
-        <Grid container justifyContent="center" alignItems="center">
-          <CircularProgress />
-        </Grid>
+        <LoadingScreen />
       ) : (
         <>
           <Grid container sx={{ pb: 3 }}>
