@@ -25,13 +25,13 @@ const subtitleVariants: any = {
 };
 
 const mentors = [
-  { name: 'Ankita Sharma', role: 'Senior Mentor - Data Science', img: '/images/ankita.jpg' },
+  { name: 'Dr. Lalit Gupta', role: 'President Cybersecurity Council for India', img: '/assets/images/mentors/lalitgupta-image2.jpeg'},
   {
     name: 'Kaustubhmani Gothivarekar',
     role: 'Managing Head at CyberNeedle Solutions',
     img: '/assets/images/mentors/kaustubhamani-20-20.jpg',
   },
-  { name: 'Neha Verma', role: 'Career Coach', img: '/images/neha.jpg' },
+  { name: 'Nikhil Gokhale', role: 'Cyber Security Consultant & Cyber Forensics Expert', img: '/assets/images/mentors/nikhilgokhale-image.jpeg'},
 ];
 
 const AboutUsPage = () => (
