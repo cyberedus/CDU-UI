@@ -131,16 +131,23 @@ const CourseOverView = ({ course }: CourseProps) => {
           <Box
             sx={{
               display: 'flex',
-              flexWrap: 'wrap',
-              gap: 1, // Space between chips
+              alignItems: 'start',
+              gap: 1,
+              backgroundColor: '#E3F2FD',
+              borderRadius: 2,
+              px: 2,
+              py: 1,
             }}
             component={motion.div}
             variants={containerVariants}
           >
-            <ListItem sx={{ py: 0.5, pl: 0 }}>
+            <ListItem sx={{ py: 0, px: 0 }}>
               <ListItemText
                 primary={course.additional_benefits}
-                sx={{ '& .MuiListItemText-primary': { color: '#555' } }}
+                sx={{ '& .MuiListItemText-primary': { color: '#444',
+                    fontWeight: 500,
+                  },
+                }}
               />
             </ListItem>
           </Box>

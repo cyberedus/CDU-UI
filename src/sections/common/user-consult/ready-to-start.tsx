@@ -62,7 +62,7 @@ export const ReadyToStart = () => {
               color: '#333',
             }}
           >
-            Ready to Start Your
+            Ready To Start Your
           </Typography>
           <Typography
             variant="h2"

@@ -61,7 +61,7 @@ export function HeaderSection({
       {...other}
     >
       {slots?.topArea}
-
+      
       <HeaderContainer layoutQuery={layoutQuery} {...slotProps?.container}>
         {slots?.leftArea}
 

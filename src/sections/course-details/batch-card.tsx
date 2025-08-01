@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import SchoolIcon from '@mui/icons-material/School';
 import LaptopIcon from '@mui/icons-material/LaptopMac';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
@@ -20,7 +21,7 @@ const IconTextContainer = styled(Box)(({ theme }) => ({
 
 // Individual Batch Card Component
 const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
-  const { duration, format, mode, internship } = batch;
+  const { duration, format, mode, internship, batch_name } = batch;
 
   return (
     <motion.div
@@ -32,6 +33,9 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
       <Card sx={{ minWidth: 280, maxWidth: 300, borderRadius: 2, boxShadow: 3, m: 1.5 }}>
         {/* Added margin for spacing between cards */}
         <CardContent>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+             {batch_name}
+          </Typography>
           <IconTextContainer>
             <CalendarMonthIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
@@ -54,7 +58,7 @@ const BatchCard: React.FC<BatchCardProps> = ({ batch }) => {
           </IconTextContainer>
 
           <IconTextContainer>
-            <LaptopIcon sx={{ mr: 1, color: 'text.secondary' }} />
+            <SchoolIcon sx={{ mr: 1, color: 'text.secondary' }} />
             <Typography variant="body1" color="text.secondary">
               Internship: {internship}
             </Typography>

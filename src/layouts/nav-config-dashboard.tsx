@@ -40,11 +40,11 @@ export const navData: NavItem[] = [
     path: '/contact-us',
     icon: null,
   },
-  // {
-  //   title: 'Dashboard',
-  //   path: '/',
-  //   icon: null,
-  // },
+  {
+    title: 'About Us',
+    path: '/about-us',
+    icon: null,
+  },
   // {
   //   title: 'User',
   //   path: '/user',

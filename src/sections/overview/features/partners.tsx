@@ -43,7 +43,7 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
               color: '#333',
             }}
           >
-            Our Hiring
+            Where Our Students Are
           </Typography>
           <Typography
             variant="h2"
@@ -57,7 +57,7 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
               color: 'transparent',
             }}
           >
-            Partners
+            Placed
           </Typography>
         </Grid>
       </motion.div>

@@ -11,7 +11,6 @@ import { AuthLayout } from 'src/layouts/auth';
 import { DashboardLayout } from 'src/layouts/dashboard';
 
 import AuthProvider from 'src/auth/auth-provider';
-
 // ----------------------------------------------------------------------
 
 export const CourseDetailsPage = lazy(() => import('src/pages/course-details'));
@@ -24,6 +23,7 @@ export const SignInPage = lazy(() => import('src/pages/sign-in'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
 export const Page404 = lazy(() => import('src/pages/page-not-found'));
 export const TestimonialsPage = lazy(() => import('src/pages/testimonials'));
+export const AboutUsPage = lazy(() => import('src/pages/about-us'));
 
 const renderFallback = () => (
   <Box
@@ -81,6 +81,7 @@ export const routesSection: RouteObject[] = [
       { path: 'products', element: <ProductsPage /> },
       { path: 'blog', element: <BlogPage /> },
       { path: 'testimonials', element: <TestimonialsPage /> },
+      { path: 'about-us', element: <AboutUsPage /> },
       {
         path: 'admin',
         element: (
