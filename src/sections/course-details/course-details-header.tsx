@@ -3,9 +3,20 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import BarChartIcon from '@mui/icons-material/BarChart';
-import { FileDownloadOutlined } from '@mui/icons-material';
+import { ArrowBack, FileDownloadOutlined } from '@mui/icons-material';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import { Box, Chip, Grid, Stack, Button, Typography, CircularProgress } from '@mui/material';
+import {
+  Box,
+  Chip,
+  Grid,
+  Stack,
+  Button,
+  Typography,
+  IconButton,
+  CircularProgress,
+} from '@mui/material';
+
+import { useRouter } from 'src/routes/hooks';
 
 import { useDownload } from 'src/hooks/useDownload';
 
@@ -36,9 +47,11 @@ const itemVariants = {
 };
 
 const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
+  const navigate = useRouter();
   const { handleDownload, downloading } = useDownload();
   const { visitorRelated } = useSelector((state: reduxState) => state.appSettings);
   const [consultformOpen, setConsultformOpen] = useState<boolean>(false);
+  const [enrolling, setEnrolling] = useState<boolean>(false);
 
   const downloadSyllabus = async () => {
     if (!visitorRelated) {
@@ -51,13 +64,22 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
       await handleDownload(downloadCourseSyllabus, payload, `${course.course_name}syllabus.pdf`);
     }
   };
+  const handleEnrollNow = async () => {
+    if (!visitorRelated) {
+      setEnrolling(true);
+      setConsultformOpen(true);
+    }
+  };
 
   const afterFillForm = async () => {
-    const payload: downloadCourse = {
-      syllabus_link: course.syllabus_link,
-      resource_type: 'raw',
-    };
-    await handleDownload(downloadCourseSyllabus, payload, `${course.course_name}syllabus.pdf`);
+    if (!enrolling) {
+      const payload: downloadCourse = {
+        syllabus_link: course.syllabus_link,
+        resource_type: 'raw',
+      };
+      await handleDownload(downloadCourseSyllabus, payload, `${course.course_name}syllabus.pdf`);
+      setEnrolling(false);
+    }
   };
   return (
     <Box
@@ -85,6 +107,13 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
           <Stack spacing={{ xs: 2, md: 3 }} sx={{ pr: { md: 4 } }}>
             <motion.div variants={itemVariants}>
               <Stack direction="row" spacing={1} flexWrap="wrap" rowGap={1}>
+                <IconButton
+                  onClick={() => {
+                    navigate.back();
+                  }}
+                >
+                  <ArrowBack />
+                </IconButton>
                 <Chip
                   key={1}
                   label={course.level}
@@ -149,7 +178,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                   component={motion.button}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  onClick={downloadSyllabus}
+                  onClick={handleEnrollNow}
                 >
                   Enroll Now
                 </Button>

@@ -65,24 +65,26 @@ const CourseFooter = ({ course, isHome }: CourseFooterProps) => {
           px: 3,
         }}
       >
-        {course.syllabus_link && (
-          <Button
-            size="small"
-            variant="outlined"
-            color="warning"
-            onClick={downloadSyllabus}
-            disabled={downloading}
-            startIcon={
-              downloading ? (
-                <CircularProgress color="inherit" size={15} />
-              ) : (
-                <FileDownloadOutlined />
-              )
-            }
-          >
-            Syllabus
-          </Button>
-        )}
+        <div>
+          {course.syllabus_link && (
+            <Button
+              size="small"
+              variant="outlined"
+              color="warning"
+              onClick={downloadSyllabus}
+              disabled={downloading}
+              startIcon={
+                downloading ? (
+                  <CircularProgress color="inherit" size={15} />
+                ) : (
+                  <FileDownloadOutlined />
+                )
+              }
+            >
+              Syllabus
+            </Button>
+          )}
+        </div>
         <Button color="secondary" size="small" onClick={handleNavigateView}>
           View Details
         </Button>

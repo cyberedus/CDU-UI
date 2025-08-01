@@ -118,17 +118,17 @@ const CourseOverView = ({ course }: CourseProps) => {
           </Box>
         </Box>
         {/* Additional Benefits */}
-        <Box sx={{ mb: { xs: 4, md: 5 } }}>
-          <motion.div variants={itemVariants}>
-            <Typography
-              variant="h5"
-              component="h2"
-              sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}
-            >
-              Additional Benefits
-            </Typography>
-          </motion.div>
-          {course.additional_benefits && (
+        {course.additional_benefits && (
+          <Box sx={{ mb: { xs: 4, md: 5 } }}>
+            <motion.div variants={itemVariants}>
+              <Typography
+                variant="h5"
+                component="h2"
+                sx={{ fontWeight: 'bold', color: '#333', mb: 2 }}
+              >
+                Additional Benefits
+              </Typography>
+            </motion.div>
             <Box
               sx={{
                 display: 'flex',
@@ -149,8 +149,8 @@ const CourseOverView = ({ course }: CourseProps) => {
                 />
               </ListItem>
             </Box>
-          )}
-        </Box>
+          </Box>
+        )}
       </Grid>
 
       {/* Right Column */}

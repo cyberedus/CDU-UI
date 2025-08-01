@@ -114,7 +114,7 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  filter: 'grayscale(100%)', // Initial grayscale
+                  filter: 'grayscale(0%)', // Initial grayscale
                   transition: 'filter 0.5s ease-in-out', // Transition for grayscale
                   '&:hover': {
                     filter: 'grayscale(0%)', // Remove grayscale on hover
