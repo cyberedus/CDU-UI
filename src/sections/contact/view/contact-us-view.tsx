@@ -43,7 +43,7 @@ export function ContactUsView() {
 
   return (
     <DashboardContent>
-      <Grid spacing={3}>
+      <Grid spacing={1}>
         <ContactHeader loading={loading} conatctDetails={contactDetails} />
       </Grid>
       {/* <ContactUsPage /> */}

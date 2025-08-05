@@ -102,9 +102,12 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
         <Typography
           variant="h6"
           sx={{
-            mb: 1,
+            mb: 6,
             color: '#666',
-            fontSize: 27.2,
+            fontSize: {
+              xs: 17.2,
+              sm: 20.2,
+            },
           }}
         >
           Discover industry-leading courses designed by industry Expert

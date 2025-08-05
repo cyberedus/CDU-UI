@@ -55,15 +55,15 @@ export function OverviewAnalyticsView() {
   }, []);
 
   return (
-    <DashboardContent maxWidth="xl" sx={{ pb: 3 }}>
-      <Grid container sx={{ pb: 3 }}>
+    <DashboardContent sx={{ pb: 3, px: 0 }}>
+      <Grid container sx={{ pb: 3, }}>
         <HomePageHeader />
       </Grid>
       {loading ? (
         <LoadingScreen />
       ) : (
         <>
-          <Grid container spacing={3} sx={{ pt: 1 }} justifyContent="center">
+          <Grid container spacing={3} sx={{ pt: 1 }} justifyContent="center" px={0}>
             <Grid size={{ xs: 12, sm: 6, md: 3, lg: 2.5 }}>
               <AnalyticsWidgetSummary
                 title="Students Trained"
@@ -181,16 +181,16 @@ export function OverviewAnalyticsView() {
         </Grid> */}
           </Grid>
 
-          <Grid container spacing={3}>
+          <Grid container spacing={3} px={0}>
             <CyberEduFeatures />
           </Grid>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} px={0}>
             <PopularCourses courses={courseList} />
           </Grid>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} px={0}>
             <ReadyToStart />
           </Grid>
-          <Grid container spacing={3} width={1}>
+          <Grid container spacing={3} width={1} px={0}>
             <HiringPartners hiringPartners={hiringPartners} />
           </Grid>
         </>

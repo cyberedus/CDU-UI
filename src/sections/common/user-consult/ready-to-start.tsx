@@ -93,10 +93,13 @@ export const ReadyToStart = () => {
           sx={{
             mb: 6,
             color: '#666',
-            fontSize: 27.2,
+            fontSize: {
+              xs: 17.2,
+              sm: 20.2,
+            },
           }}
         >
-          Join thousands of students who have transformed their careers with our hands-on approach
+          Join thousands who’ve transformed their careers with our practical approach
         </Typography>
       </motion.div>
       <Box textAlign="center" sx={{ mt: 6 }}>

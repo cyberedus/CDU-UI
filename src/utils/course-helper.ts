@@ -76,12 +76,12 @@ export const responsiveOptionsCourse = [
   },
   {
     breakpoint: '1440px',
-    numVisible: 4,
+    numVisible: 3,
     numScroll: 1,
   },
   {
     breakpoint: '1230px',
-    numVisible: 4,
+    numVisible: 3,
     numScroll: 1,
   },
   {

@@ -50,7 +50,7 @@ const AboutUsPage = () => (
       <Grid size={{ xs: 12 }} textAlign="center">
         <motion.div variants={itemVariants}>
           <Grid container justifyContent="center" textAlign="center" gap={1}>
-            <Typography
+            {/* <Typography
               variant="h1"
               component="h1"
               sx={[
@@ -65,7 +65,7 @@ const AboutUsPage = () => (
               ]}
             >
               Driven by Purpose, Powered by
-            </Typography>
+            </Typography> */}
             <Typography
               variant="h1"
               component="h1"
@@ -80,7 +80,7 @@ const AboutUsPage = () => (
                 }),
               ]}
             >
-              Passion
+              About Us
             </Typography>
           </Grid>
         </motion.div>
@@ -109,21 +109,8 @@ const AboutUsPage = () => (
 
       <motion.div variants={itemVariants}>
         <Typography variant="h6" sx={{ maxWidth: 750, mx: 'auto', mt: 2 }}>
-          We are committed to providing quality education and hands-on experience through expert
-          mentors, industry-backed curriculum, and personalized support to help you reach your
-          career goals.
-        </Typography>
-        <Typography variant="body1" sx={{ maxWidth: 800, mx: 'auto', mt: 3 }}>
-          Our mission is to bridge the gap between academia and the industry by equipping students
-          with the right skills, mindset, and tools required for the evolving tech landscape. From
-          foundational learning to advanced real-world projects, we ensure our learners are prepared
-          for challenges in their careers.
-        </Typography>
-        <Typography variant="body1" sx={{ maxWidth: 800, mx: 'auto', mt: 2 }}>
-          Whether you{`'`}re a beginner or looking to upskill, our structured programs are designed
-          to meet diverse learning needs. With support that extends beyond course completion —
-          including resume building, mock interviews, and career counseling — we walk every step of
-          your journey with you.
+          At CyberEdus, we’re redefining cybersecurity education in India. Based in Pune, we offer practical, hands-on training in CEH, Bug Bounty, AI–ML, and more — guided by industry experts, real-world labs, and a strong internship & placement ecosystem.
+          Whether you’re a student, working professional, or career switcher — we help you Decode. Defend. Dominate.
         </Typography>
       </motion.div>
       {/* MENTORS SECTION */}

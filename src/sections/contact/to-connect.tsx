@@ -181,7 +181,7 @@ const ContactOptions: React.FC = () => {
               <Button
                 variant="contained"
                 startIcon={<LocationOnIcon />}
-                onClick={() => window.open('https://www.google.com/maps?q=Cyber-Edu,Shivajinagar,Pune,Maharashtra+411004', '_blank')}
+                onClick={() => window.open('https://maps.app.goo.gl/GJbMXn6JcSxDP8GJ6?g_st=ac', '_blank')}
                 sx={{
                   backgroundColor: '#1250A3',
                   '&:hover': { backgroundColor: '#376BBC' },

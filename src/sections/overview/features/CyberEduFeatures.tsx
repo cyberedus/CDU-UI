@@ -131,7 +131,10 @@ export const CyberEduFeatures = () => (
         sx={{
           mb: 6,
           color: '#666',
-          fontSize: 27.2,
+          fontSize: {
+            xs: 17.2,
+            sm: 20.2,
+          },
         }}
       >
         What makes us different from other institutes

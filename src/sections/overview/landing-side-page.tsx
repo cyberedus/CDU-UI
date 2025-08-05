@@ -30,7 +30,7 @@ const HomePageHeader = () => {
     router.push('/courses');
   };
   return (
-    <Grid container sx={{ pb: 3, width: 1, }}>
+    <Grid container sx={{ pb: 3, width: 1, px: 0 }}>
       <Grid size={{ xs: 12, md: 6 }}>
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <Typography

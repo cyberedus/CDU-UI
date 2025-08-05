@@ -46,6 +46,7 @@ const ContactHeader = ({ loading, conatctDetails }: ContactDetialsProps) => {
         animate="visible"
         alignItems="start"
         justifyContent="space-between"
+        px={0}
       >
         {/* Left Section - Course Details */}
         <Grid size={{ xs: 12 }} textAlign="center">

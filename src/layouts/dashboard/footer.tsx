@@ -57,7 +57,7 @@ const FooterSection = () => {
           md: 6,
         },
         px: {
-          xs: 5,
+          xs: 3,
           sm: 6,
           md: 10,
         },
@@ -66,8 +66,8 @@ const FooterSection = () => {
       }}
     >
       <Grid container spacing={3}>
-        <Grid size={{ xs: 6, md: 4 }}>
-          <Box component="div" sx={{ gap: 3, display: 'flex', flexDirection: 'column' }}>
+        <Grid size={{ xs: 12, md: 3, sm: 6 }}>
+          <Box component="div" sx={{ gap: 2, display: 'flex', flexDirection: 'column' }}>
             <Grid container alignItems="center">
               <Typography variant="h4" sx={{ fontWeight: 700, color: 'secondary.main' }}>
                 Cyber
@@ -119,11 +119,11 @@ const FooterSection = () => {
             </IconButton>
           </Box>
         </Grid>
-        <Grid size={{ xs: 6, md: 4 }}>
+        <Grid size={{ xs: 12, md: 3, sm: 6 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Courses
           </Typography>
-          <Box display="flex" flexDirection="column" pt={3}>
+          <Box display="flex" flexDirection="column" pt={2}>
             {dashboardCourseList.map(({ course_name, id }, i) => (
               <Link
                 key={course_name + i}
@@ -138,37 +138,40 @@ const FooterSection = () => {
             ))}
           </Box>
         </Grid>
-        <Grid size={{ xs: 6, md: 4 }}>
+        <Grid size={{ xs: 12, md: 3, sm: 6 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
             Company
           </Typography>
-          <Box display="flex" flexDirection="column" pt={3}>
+          <Grid container pt={2}>
             {navData.map(({ title, path }) => (
-              <Link
+              <Grid
                 key={title}
-                {...linkDataProps}
-                component="button"
-                variant="body2"
-                textAlign="left"
-                onClick={() => handleNavigate(path)}
-              >
-                {title}
-              </Link>
+                size={{
+                  xs: 6
+                }}>
+                <Link
+                  {...linkDataProps}
+                  component="button"
+                  variant="body2"
+                  textAlign="left"
+                  onClick={() => handleNavigate(path)}
+                >
+                  {title}
+                </Link>
+              </Grid>
             ))}
+          </Grid>
+        </Grid>
+        <Grid size={{ xs: 12, md: 3, sm: 6 }}>
+          <Box component="div" sx={{ gap: 2, display: 'flex', flexDirection: 'column' }}>
+            <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
+              Address
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>
+              Office 1 & 2, Rameshwar Apartment, Near JM Road Z-Bridge, Deccan, Pulachi Wadi, Narayan Peth, Pune, Maharashtra – 411004
+            </Typography>
           </Box>
         </Grid>
-        {/* <Grid size={{ xs: 6, md: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, color: 'text.primary' }}>
-            Contact
-          </Typography>
-          <Box display="flex" flexDirection="column" pt={3}>
-            {supportLinks.map(({ title, linkProps }) => (
-              <Link key={title} {...linkProps} underline="hover">
-                {title}
-              </Link>
-            ))}
-          </Box>
-        </Grid> */}
       </Grid>
       <Grid sx={{ pt: 1, borderTop: '1px solid #ccc', mt: 5 }}>
         <Box

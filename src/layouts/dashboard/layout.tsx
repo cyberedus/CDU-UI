@@ -125,7 +125,7 @@ export function DashboardLayout({
   const renderFooter = () => <FooterSection />;
 
   const renderMain = () => (
-    <MainSection {...slotProps?.main} sx={{ px: { xs: 1, sm: 6, md: 9, lg: 12 } }}>
+    <MainSection {...slotProps?.main} sx={{ px: { xs: 3, sm: 6, md: 9, lg: 12 } }}>
       {children}
     </MainSection>
   );

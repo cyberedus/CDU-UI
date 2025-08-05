@@ -71,9 +71,12 @@ export const HiringPartners = ({ hiringPartners }: HiringPartnersProps) => {
         <Typography
           variant="h6"
           sx={{
-            mb: 1,
+            mb: 6,
             color: '#666',
-            fontSize: 27.2,
+            fontSize: {
+              xs: 17.2,
+              sm: 20.2,
+            },
           }}
         >
           Trusted by industry leaders to source top cybersecurity and tech talent

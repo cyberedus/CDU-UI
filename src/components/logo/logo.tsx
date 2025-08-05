@@ -114,7 +114,7 @@ export function Logo({
     initial={{ opacity: 0, scale: 0.8 }}
     animate={{ opacity: 1, scale: 1, rotate: 360 }}
     exit={{ opacity: 0, scale: 0.8 }}
-    transition={{ duration: 0.4 }}
+    transition={{ duration: 0.2 }}
   />;
   // const fullLogo = (
   //   <svg
@@ -194,7 +194,7 @@ export function Logo({
       sx={[
         {
           height: 50,
-          ...(isSingle && { mb: 1 }),
+          // ...(isSingle && { mb: 1 }),
           ...(!isSingle && { width: 102, height: 36 }),
           ...(disabled && { pointerEvents: 'none' }),
         },
