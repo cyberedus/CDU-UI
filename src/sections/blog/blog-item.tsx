@@ -1,5 +1,5 @@
 import type { CardProps } from '@mui/material/Card';
-import type { IconifyName } from 'src/components/iconify';
+// import type { IconifyName } from 'src/components/iconify';
 
 import { varAlpha } from 'minimal-shared/utils';
 
@@ -10,44 +10,30 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 
 import { fDate } from 'src/utils/format-time';
-import { fShortenNumber } from 'src/utils/format-number';
+// import { fShortenNumber } from 'src/utils/format-number';
 
-import { Iconify } from 'src/components/iconify';
+// import { Iconify } from 'src/components/iconify';
 import { SvgColor } from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
 
-export type IPostItem = {
-  id: string;
-  title: string;
-  coverUrl: string;
-  totalViews: number;
-  description: string;
-  totalShares: number;
-  totalComments: number;
-  totalFavorites: number;
-  postedAt: string | number | null;
-  author: {
-    name: string;
-    avatarUrl: string;
-  };
-};
-
-export function PostItem({
+export function BlogItem({
   sx,
-  post,
+  blog,
   latestPost,
   latestPostLarge,
+  handleBlogClick,
   ...other
 }: CardProps & {
-  post: IPostItem;
+  blog: Blog;
   latestPost: boolean;
   latestPostLarge: boolean;
+  handleBlogClick: (arg: Blog) => void
 }) {
   const renderAvatar = (
     <Avatar
-      alt={post.author.name}
-      src={post.author.avatarUrl}
+      alt={blog.author_name ?? 'blog profile name'}
+      src={blog.blog_image_url}
       sx={{
         left: 24,
         zIndex: 9,
@@ -61,64 +47,69 @@ export function PostItem({
   );
 
   const renderTitle = (
-    <Link
+    <Box
+      component={Link}
       color="inherit"
       variant="subtitle2"
       underline="hover"
+      onClick={() => {
+        handleBlogClick(blog)
+      }}
       sx={{
         height: 44,
         overflow: 'hidden',
         WebkitLineClamp: 2,
         display: '-webkit-box',
         WebkitBoxOrient: 'vertical',
+        cursor: 'pointer',
         ...(latestPostLarge && { typography: 'h5', height: 60 }),
         ...((latestPostLarge || latestPost) && {
           color: 'common.white',
         }),
       }}
     >
-      {post.title}
-    </Link>
-  );
-
-  const renderInfo = (
-    <Box
-      sx={{
-        mt: 3,
-        gap: 1.5,
-        display: 'flex',
-        flexWrap: 'wrap',
-        color: 'text.disabled',
-        justifyContent: 'flex-end',
-      }}
-    >
-      {[
-        { number: post.totalComments, icon: 'solar:chat-round-dots-bold' },
-        { number: post.totalViews, icon: 'solar:eye-bold' },
-        { number: post.totalShares, icon: 'solar:share-bold' },
-      ].map((info, _index) => (
-        <Box
-          key={_index}
-          sx={{
-            display: 'flex',
-            ...((latestPostLarge || latestPost) && {
-              opacity: 0.64,
-              color: 'common.white',
-            }),
-          }}
-        >
-          <Iconify width={16} icon={info.icon as IconifyName} sx={{ mr: 0.5 }} />
-          <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
-        </Box>
-      ))}
+      {blog.title}
     </Box>
   );
+
+  // const renderInfo = (
+  //   <Box
+  //     sx={{
+  //       mt: 3,
+  //       gap: 1.5,
+  //       display: 'flex',
+  //       flexWrap: 'wrap',
+  //       color: 'text.disabled',
+  //       justifyContent: 'flex-end',
+  //     }}
+  //   >
+  //     {[
+  //       { number: blog.totalComments, icon: 'solar:chat-round-dots-bold' },
+  //       { number: blog.totalViews, icon: 'solar:eye-bold' },
+  //       { number: blog.totalShares, icon: 'solar:share-bold' },
+  //     ].map((info, _index) => (
+  //       <Box
+  //         key={_index}
+  //         sx={{
+  //           display: 'flex',
+  //           ...((latestPostLarge || latestPost) && {
+  //             opacity: 0.64,
+  //             color: 'common.white',
+  //           }),
+  //         }}
+  //       >
+  //         <Iconify width={16} icon={info.icon as IconifyName} sx={{ mr: 0.5 }} />
+  //         <Typography variant="caption">{fShortenNumber(info.number)}</Typography>
+  //       </Box>
+  //     ))}
+  //   </Box>
+  // );
 
   const renderCover = (
     <Box
       component="img"
-      alt={post.title}
-      src={post.coverUrl}
+      alt={blog.title}
+      src={blog.blog_image_url ?? '/assets/images/cover/cover-1.webp'}
       sx={{
         top: 0,
         width: 1,
@@ -142,7 +133,7 @@ export function PostItem({
         }),
       }}
     >
-      {fDate(post.postedAt)}
+      {fDate(blog.published_at)}
     </Typography>
   );
 
@@ -204,8 +195,9 @@ export function PostItem({
       >
         {renderDate}
         {renderTitle}
-        {renderInfo}
+        {/* {renderInfo} */}
       </Box>
     </Card>
   );
 }
+

@@ -6,9 +6,13 @@ export { getContactDetails } from './async/contact/contact.async';
 export { getAllCourseList, downloadCourseSyllabus } from './async/courses/courses.async';
 //Home
 export { createLeadsData, getDashboardDetails } from './async/dashboard/dashboard.async';
-// Defaults
+// Default
 export {
   getAllSideMenus,
   getDefaultRoute,
   checkVisitorExists,
 } from './async/default/default.async';
+// Blogs
+export {
+  getAllBlogsAsync
+} from './async/blogs/blogs.async'

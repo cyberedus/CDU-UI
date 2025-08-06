@@ -25,13 +25,13 @@ const subtitleVariants: any = {
 };
 
 const mentors = [
-  { name: 'Dr. Lalit Gupta', role: 'President Cybersecurity Council for India', img: '/assets/images/mentors/lalitgupta-image2.jpeg'},
+  { name: 'Dr. Lalit Gupta', role: 'President Cybersecurity Council for India', img: '/assets/images/mentors/lalitgupta-image2.jpeg' },
   {
     name: 'Kaustubhmani Gothivarekar',
     role: 'Managing Head at CyberNeedle Solutions',
     img: '/assets/images/mentors/kaustubhamani-20-20.jpg',
   },
-  { name: 'Nikhil Gokhale', role: 'Cyber Security Consultant & Cyber Forensics Expert', img: '/assets/images/mentors/nikhilgokhale-image.jpeg'},
+  { name: 'Nikhil Gokhale', role: 'Cyber Security Consultant & Cyber Forensics Expert', img: '/assets/images/mentors/nikhilgokhale-image.jpeg' },
 ];
 
 const AboutUsPage = () => (
@@ -142,26 +142,27 @@ const AboutUsPage = () => (
           </Grid>
         </motion.div>
       </Grid>
-
-      {mentors.map((mentor) => (
-        <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mentor.name}>
-          <motion.div variants={itemVariants}>
-            <Card sx={{ py: 3 }}>
-              <Stack spacing={2} alignItems="center">
-                <Avatar src={mentor.img} alt={mentor.name} sx={{ width: 100, height: 100 }} />
-                <CardContent>
-                  <Typography variant="h6" fontWeight="bold">
-                    {mentor.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {mentor.role}
-                  </Typography>
-                </CardContent>
-              </Stack>
-            </Card>
-          </motion.div>
-        </Grid>
-      ))}
+      <Grid container >
+        {mentors.map((mentor) => (
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mentor.name} height={1}>
+            <motion.div variants={itemVariants} style={{ height: '100%' }}>
+              <Card sx={{ py: 3, height: 1 }}>
+                <Stack spacing={2} alignItems="center" height={1}>
+                  <Avatar src={mentor.img} alt={mentor.name} sx={{ width: 100, height: 100 }} />
+                  <CardContent sx={{ height: 1, flexGrow: 1 }}>
+                    <Typography variant="h6" fontWeight="bold">
+                      {mentor.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {mentor.role}
+                    </Typography>
+                  </CardContent>
+                </Stack>
+              </Card>
+            </motion.div>
+          </Grid>
+        ))}
+      </Grid>
     </Grid>
   </Box>
 );

@@ -115,6 +115,7 @@ interface Course {
   upcoming_batch_date?: string | null;
   additional_benefits?: string | null;
   available_seats?: number | null;
+  internship_included?: boolean | null;
 }
 
 type CourseList = Course[];
@@ -220,4 +221,26 @@ interface ContactDetialsProps {
 
 interface splashScreenProps {
   sx?: object;
+}
+
+interface blogContent {
+  blog_id: string
+}
+
+interface Blog {
+  blog_id: number;
+  title: string;
+  meta_description: string;
+  seo_keywords: string[];
+  tags: string[];
+  blog_image_url: string;
+  is_active: boolean;
+  published_at: string; // ISO date string from API
+  created_at: string;   // ISO date string from API
+  updated_at: string;   // ISO date string from API
+  author_id: number | null;
+  author_name: string | null;
+  author_email: string | null;
+  profile_image_url: string | null;
+  author_bio: string | null;
 }

@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import BarChartIcon from '@mui/icons-material/BarChart';
-import { ArrowBack, FileDownloadOutlined } from '@mui/icons-material';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import { ArrowBack, FileDownloadOutlined, School } from '@mui/icons-material';
 import {
   Box,
   Chip,
@@ -155,7 +155,15 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                   <Stack direction="row" alignItems="center" spacing={0.5}>
                     <WorkspacePremiumIcon sx={{ color: '#616161' }} />
                     <Typography variant="body2" sx={{ color: '#616161' }}>
-                      Certificate Included
+                      Certified
+                    </Typography>
+                  </Stack>
+                )}
+                {course.internship_included && (
+                  <Stack direction="row" alignItems="center" spacing={0.5}>
+                    <School sx={{ color: '#616161' }} />
+                    <Typography variant="body2" sx={{ color: '#616161' }}>
+                      Internship included
                     </Typography>
                   </Stack>
                 )}

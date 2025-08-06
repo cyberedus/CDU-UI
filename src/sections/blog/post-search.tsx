@@ -6,12 +6,10 @@ import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete';
 
 import { Iconify } from 'src/components/iconify';
 
-import type { IPostItem } from './post-item';
-
 // ----------------------------------------------------------------------
 
 type PostSearchProps = {
-  posts: IPostItem[];
+  posts: Blog[];
   sx?: SxProps<Theme>;
 };
 
@@ -35,7 +33,7 @@ export function PostSearch({ posts, sx }: PostSearchProps) {
       }}
       options={posts}
       getOptionLabel={(post) => post.title}
-      isOptionEqualToValue={(option, value) => option.id === value.id}
+      isOptionEqualToValue={(option, value) => option.blog_id === value.blog_id}
       renderInput={(params) => (
         <TextField
           {...params}
