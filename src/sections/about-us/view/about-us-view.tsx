@@ -144,22 +144,20 @@ const AboutUsPage = () => (
       </Grid>
       <Grid container >
         {mentors.map((mentor) => (
-          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mentor.name} height={1}>
-            <motion.div variants={itemVariants} style={{ height: '100%' }}>
-              <Card sx={{ py: 3, height: 1 }}>
-                <Stack spacing={2} alignItems="center" height={1}>
-                  <Avatar src={mentor.img} alt={mentor.name} sx={{ width: 100, height: 100 }} />
-                  <CardContent sx={{ height: 1, flexGrow: 1 }}>
-                    <Typography variant="h6" fontWeight="bold">
-                      {mentor.name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {mentor.role}
-                    </Typography>
-                  </CardContent>
-                </Stack>
-              </Card>
-            </motion.div>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={mentor.name} >
+            <Card sx={{ py: 3, height: 1 }} >
+              <Stack spacing={2} alignItems="center" height={1}>
+                <Avatar src={mentor.img} alt={mentor.name} sx={{ width: 100, height: 100 }} />
+                <CardContent>
+                  <Typography variant="h6" fontWeight="bold">
+                    {mentor.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {mentor.role}
+                  </Typography>
+                </CardContent>
+              </Stack>
+            </Card>
           </Grid>
         ))}
       </Grid>
