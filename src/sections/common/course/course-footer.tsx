@@ -50,7 +50,7 @@ const CourseFooter = ({ course, isHome }: CourseFooterProps) => {
 
   const handleNavigateView = () => {
     dispatch(setInterestedCourse(course.course_name));
-    router.push(isHome ? `/courses/${course.id}` : `${course.id}`);
+    router.push(isHome ? `/courses/${course.course_key}` : `${course.course_key}`);
   };
   return (
     <Box>

@@ -35,6 +35,7 @@ const defCourse: Course = {
   tools_and_technologies: [],
   curriculum: [],
   course_icon: '',
+  course_key: '',
   batches: [],
 };
 export function CourseDetailsView() {
@@ -46,7 +47,7 @@ export function CourseDetailsView() {
   const getCourseDetail = async () => {
     setLoader(true);
     const payload: getCoursePayload = {
-      id: courseId,
+      course_key: courseId,
     };
     const res = await dispatch(getSingleCourse(payload));
     if (res.meta.requestStatus === 'fulfilled') {

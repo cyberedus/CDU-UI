@@ -116,6 +116,7 @@ interface Course {
   additional_benefits?: string | null;
   available_seats?: number | null;
   internship_included?: boolean | null;
+  course_key: string;
 }
 
 type CourseList = Course[];
@@ -173,7 +174,7 @@ interface downloadCourse {
 }
 
 interface getCoursePayload {
-  id?: string | number;
+  course_key?: string | number;
 }
 interface FeatureCardProps {
   icon: OverridableComponent<SvgIconTypeMap<object, 'svg'>> & { muiName: string }; // Type for MUI Icon Component
@@ -224,7 +225,7 @@ interface splashScreenProps {
 }
 
 interface blogContent {
-  blog_id: string
+  blog_id?: string | number;
 }
 
 interface Blog {
@@ -236,8 +237,8 @@ interface Blog {
   blog_image_url: string;
   is_active: boolean;
   published_at: string; // ISO date string from API
-  created_at: string;   // ISO date string from API
-  updated_at: string;   // ISO date string from API
+  created_at: string; // ISO date string from API
+  updated_at: string; // ISO date string from API
   author_id: number | null;
   author_name: string | null;
   author_email: string | null;

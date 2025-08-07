@@ -2,7 +2,10 @@ import { varAlpha } from 'minimal-shared/utils';
 
 import { Box, LinearProgress, linearProgressClasses } from '@mui/material';
 
-const LoadingScreen = () => (
+interface LoadingScreen {
+  sx?: object;
+}
+const LoadingScreen = ({ sx, ...other }: LoadingScreen) => (
   <Box
     sx={{
       display: 'flex',
@@ -10,7 +13,9 @@ const LoadingScreen = () => (
       alignItems: 'center',
       justifyContent: 'center',
       height: 800,
+      ...sx,
     }}
+    {...other}
   >
     <LinearProgress
       sx={{

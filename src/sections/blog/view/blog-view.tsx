@@ -9,9 +9,11 @@ import { AppDispatch } from 'src/redux';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { getAllBlogsAsync } from 'src/redux/index.async';
 
+import DialogSlide from 'src/components/dialog/slide-dialog';
 import { LoadingScreen } from 'src/components/loading-screen';
 
 import { BlogItem } from '../blog-item';
+import BlogDetails from '../blog-details';
 
 const titleVariants: any = {
   hidden: { opacity: 0, y: 20 },
@@ -26,8 +28,10 @@ const subtitleVariants: any = {
 export function BlogView() {
   // const [sortBy, setSortBy] = useState('latest');
   const dispatch = useDispatch<AppDispatch>();
-  const [allBlogsList, setAllBlogsList] = useState<Blog[]>([])
-  const [loading, setLoading] = useState(false)
+  const [allBlogsList, setAllBlogsList] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<Blog>();
+  const [openBlog, setOpenBlog] = useState(false);
 
   const getDefaultBlogs = async () => {
     setLoading(true);
@@ -45,12 +49,13 @@ export function BlogView() {
     getDefaultBlogs();
   }, []);
 
-  const handleBlogClick = (selectedBlog: Blog) => {
-    console.log(selectedBlog)
-  }
+  const handleBlogClick = (blog: Blog) => {
+    setSelectedBlog(blog);
+    setOpenBlog(true);
+  };
 
   return (
-    <DashboardContent sx={{ height: 'calc(100vh - 100px)' }}>
+    <DashboardContent sx={{ minHeight: 'calc(100vh - 100px)' }}>
       <Grid textAlign="center">
         <motion.div
           initial="hidden"
@@ -130,15 +135,13 @@ export function BlogView() {
           ]}
         />
       </Box> */}
-      {loading ?
+      {loading ? (
         <LoadingScreen />
-        :
-
+      ) : (
         <Grid container spacing={3}>
           {allBlogsList.map((blog: Blog, index: number) => {
             const latestPostLarge = index === 0;
             const latestPost = index === 1 || index === 2;
-
             return (
               <Grid
                 key={blog.blog_id}
@@ -148,12 +151,27 @@ export function BlogView() {
                   md: latestPostLarge ? 6 : 3,
                 }}
               >
-                <BlogItem handleBlogClick={handleBlogClick} blog={blog} latestPost={latestPost} latestPostLarge={latestPostLarge} />
+                <BlogItem
+                  handleBlogClick={handleBlogClick}
+                  blog={blog}
+                  latestPost={latestPost}
+                  latestPostLarge={latestPostLarge}
+                />
               </Grid>
             );
           })}
         </Grid>
-      }
+      )}
+
+      <DialogSlide
+        maxWidth="lg"
+        id="blogDetails"
+        open={openBlog}
+        setOpen={setOpenBlog}
+        title="Blog Details"
+      >
+        {openBlog ? <BlogDetails selectedBlog={selectedBlog} /> : <></>}
+      </DialogSlide>
 
       {/* <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} /> */}
     </DashboardContent>

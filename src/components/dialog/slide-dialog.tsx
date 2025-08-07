@@ -55,7 +55,7 @@ export default function DialogSlide({
       }}
       keepMounted
       onClose={handleClose}
-      aria-describedby="alert-dialog-slide-description"
+      aria-describedby={"alert-dialog-slide-description"+id}
       {...rest}
     >
       {title && <DialogTitle>{title}</DialogTitle>}

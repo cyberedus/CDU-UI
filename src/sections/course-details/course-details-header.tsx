@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import BarChartIcon from '@mui/icons-material/BarChart';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
@@ -20,11 +20,14 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useDownload } from 'src/hooks/useDownload';
 
+import { AppDispatch } from 'src/redux';
+import { setInterestedCourse } from 'src/redux/index.slices';
 import { downloadCourseSyllabus } from 'src/redux/index.async';
 
 import DialogSlide from 'src/components/dialog/slide-dialog';
 
 import { ConsultForm } from '../common';
+import EnrollNow from '../common/user-consult/enroll-now';
 
 interface CourseDetailHeaderPropTypes {
   course: Course;
@@ -48,10 +51,12 @@ const itemVariants = {
 
 const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
   const navigate = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
   const { handleDownload, downloading } = useDownload();
   const { visitorRelated } = useSelector((state: reduxState) => state.appSettings);
   const [consultformOpen, setConsultformOpen] = useState<boolean>(false);
   const [enrolling, setEnrolling] = useState<boolean>(false);
+  const [openEnroll, setOpenEnroll] = useState<boolean>(false);
 
   const downloadSyllabus = async () => {
     if (!visitorRelated) {
@@ -65,10 +70,8 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
     }
   };
   const handleEnrollNow = async () => {
-    if (!visitorRelated) {
-      setEnrolling(true);
-      setConsultformOpen(true);
-    }
+    dispatch(setInterestedCourse(course.course_name));
+    setOpenEnroll(true);
   };
 
   const afterFillForm = async () => {
@@ -250,6 +253,15 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
           <ConsultForm afterFillForm={afterFillForm} />
         </DialogSlide>
       )}
+      <DialogSlide
+        maxWidth="md"
+        id="consultForm"
+        open={openEnroll}
+        setOpen={setOpenEnroll}
+        title="Enroll Now"
+      >
+        <EnrollNow buttonTitle="Enroll Now" />
+      </DialogSlide>
     </Box>
   );
 };

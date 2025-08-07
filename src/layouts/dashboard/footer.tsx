@@ -124,14 +124,14 @@ const FooterSection = () => {
             Courses
           </Typography>
           <Box display="flex" flexDirection="column" pt={2}>
-            {dashboardCourseList.map(({ course_name, id }, i) => (
+            {dashboardCourseList.map(({ course_name, course_key }, i) => (
               <Link
                 key={course_name + i}
                 {...linkDataProps}
                 component="button"
                 variant="body2"
                 textAlign="left"
-                onClick={() => handleNavigate('courses/' + id)}
+                onClick={() => handleNavigate('courses/' + course_key)}
               >
                 {course_name}
               </Link>
@@ -147,8 +147,9 @@ const FooterSection = () => {
               <Grid
                 key={title}
                 size={{
-                  xs: 6
-                }}>
+                  xs: 6,
+                }}
+              >
                 <Link
                   {...linkDataProps}
                   component="button"
@@ -168,7 +169,8 @@ const FooterSection = () => {
               Address
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 14 }}>
-              Office 1 & 2, Rameshwar Apartment, Near JM Road Z-Bridge, Deccan, Pulachi Wadi, Narayan Peth, Pune, Maharashtra – 411004
+              Office 1 & 2, Rameshwar Apartment, Near JM Road Z-Bridge, Deccan, Pulachi Wadi,
+              Narayan Peth, Pune, Maharashtra – 411004
             </Typography>
           </Box>
         </Grid>
