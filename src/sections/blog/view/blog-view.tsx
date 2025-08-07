@@ -68,7 +68,7 @@ export function BlogView() {
   }, []);
 
   const handleBlogClick = (blog: Blog) => {
-    navigate.push(`${blog.blog_id}`)
+    navigate.push(`${blog.blog_key}`)
   };
 
   return (
