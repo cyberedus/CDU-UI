@@ -64,7 +64,7 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
       username: '',
       email: '',
       phone_number: '',
-      course_interested: interestedCouse ?? '',
+      course_interested: '',
       course_id: '',
     },
   });
@@ -219,11 +219,15 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
                       <MenuItem value="">
                         <em>Select a course</em>
                       </MenuItem>
-                      {interestedCourseOptions.map((option) => (
-                        <MenuItem key={option} value={option}>
-                          {option}
-                        </MenuItem>
-                      ))}
+
+                      {interestedCourseOptions
+                        .filter(option => option === interestedCouse)
+                        .map(option => (
+                          <MenuItem key={option} value={option}>
+                            {option}
+                          </MenuItem>
+                        ))
+                      }
                     </Select>
                   )}
                 />
