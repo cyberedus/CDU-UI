@@ -5,15 +5,15 @@ import React, { useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
+import { useRouter } from 'src/routes/hooks';
+
 import { AppDispatch } from 'src/redux';
 import { DashboardContent } from 'src/layouts/dashboard';
 import { getAllBlogsAsync } from 'src/redux/index.async';
 
-import DialogSlide from 'src/components/dialog/slide-dialog';
 import { LoadingScreen } from 'src/components/loading-screen';
 
-import { BlogItem } from '../blog-item';
-import BlogDetails from '../blog-details';
+import { BlogItem } from '../../common/blog/blog-item';
 
 const titleVariants: any = {
   hidden: { opacity: 0, y: 20 },
@@ -25,13 +25,31 @@ const subtitleVariants: any = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.2 } },
 };
 
+// const defaultBlog: Blog = {
+//   blog_id: 0,
+//   title: '',
+//   meta_description: '',
+//   seo_keywords: [],
+//   content: '',
+//   tags: [],
+//   blog_image_url: '',
+//   is_active: false,
+//   published_at: '',
+//   created_at: '',
+//   updated_at: '',
+//   author_id: null,
+//   author_name: null,
+//   author_email: null,
+//   profile_image_url: null,
+//   author_bio: null,
+// };
+
 export function BlogView() {
+  const navigate = useRouter();
   // const [sortBy, setSortBy] = useState('latest');
   const dispatch = useDispatch<AppDispatch>();
   const [allBlogsList, setAllBlogsList] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedBlog, setSelectedBlog] = useState<Blog>();
-  const [openBlog, setOpenBlog] = useState(false);
 
   const getDefaultBlogs = async () => {
     setLoading(true);
@@ -50,8 +68,7 @@ export function BlogView() {
   }, []);
 
   const handleBlogClick = (blog: Blog) => {
-    setSelectedBlog(blog);
-    setOpenBlog(true);
+    navigate.push(`${blog.blog_id}`)
   };
 
   return (
@@ -162,16 +179,6 @@ export function BlogView() {
           })}
         </Grid>
       )}
-
-      <DialogSlide
-        maxWidth="lg"
-        id="blogDetails"
-        open={openBlog}
-        setOpen={setOpenBlog}
-        title="Blog Details"
-      >
-        {openBlog ? <BlogDetails selectedBlog={selectedBlog} /> : <></>}
-      </DialogSlide>
 
       {/* <Pagination count={10} color="primary" sx={{ mt: 8, mx: 'auto' }} /> */}
     </DashboardContent>

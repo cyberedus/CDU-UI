@@ -64,8 +64,8 @@ axiosclient.interceptors.response.use(
     }
     const status = error.response?.status;
     let errorMessage = '';
-    const contentType = error.response.headers['content-type'];
-    if (contentType && contentType.includes('application/json')) {
+    const contentType = error.request.responseType;
+    if (contentType && contentType.includes('blob')) {
       // Read JSON from blob
       const errorBlob = error.response.data as Blob;
       const text = await errorBlob.text();
@@ -178,7 +178,7 @@ export const AxiosClient: AxiosClientFunction = async (
     } else {
       rejectPayload = error.message || 'An unknown error occurred';
     }
-
+    
     return toolkit?.rejectWithValue(rejectPayload);
   }
 };

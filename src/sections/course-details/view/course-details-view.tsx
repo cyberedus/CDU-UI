@@ -40,14 +40,14 @@ const defCourse: Course = {
 };
 export function CourseDetailsView() {
   const dispatch = useDispatch<AppDispatch>();
-  const { courseId } = useParams();
+  const { courseKey } = useParams();
   const [course, setCourse] = useState<Course>(defCourse);
   const [loader, setLoader] = useState(false);
 
   const getCourseDetail = async () => {
     setLoader(true);
     const payload: getCoursePayload = {
-      course_key: courseId,
+      course_key: courseKey,
     };
     const res = await dispatch(getSingleCourse(payload));
     if (res.meta.requestStatus === 'fulfilled') {
@@ -59,13 +59,13 @@ export function CourseDetailsView() {
     }
   };
   useEffect(() => {
-    if (courseId) {
+    if (courseKey) {
       getCourseDetail();
     }
-  }, [courseId]);
+  }, [courseKey]);
 
   return (
-    <DashboardContent maxWidth="xl">
+    <DashboardContent sx={{ minHeight: 'calc(100vh - 100px)', p: 0 }}>
       {loader ? (
         <LoadingScreen />
       ) : (

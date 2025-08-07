@@ -26,9 +26,9 @@ export function BlogItem({
   ...other
 }: CardProps & {
   blog: Blog;
-  latestPost: boolean;
-  latestPostLarge: boolean;
-  handleBlogClick: (arg: Blog) => void
+  latestPost?: boolean;
+  latestPostLarge?: boolean;
+  handleBlogClick?: (arg: Blog) => void;
 }) {
   const renderAvatar = (
     <Avatar
@@ -53,7 +53,7 @@ export function BlogItem({
       variant="subtitle2"
       underline="hover"
       onClick={() => {
-        handleBlogClick(blog)
+        if (handleBlogClick) handleBlogClick(blog);
       }}
       sx={{
         height: 44,
@@ -200,4 +200,3 @@ export function BlogItem({
     </Card>
   );
 }
-

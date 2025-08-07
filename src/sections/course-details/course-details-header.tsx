@@ -260,7 +260,13 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
         setOpen={setOpenEnroll}
         title="Enroll Now"
       >
-        <EnrollNow buttonTitle="Enroll Now" />
+        <EnrollNow
+          afterFillForm={() => {
+            setOpenEnroll(false);
+          }}
+          buttonTitle="Submit"
+          courseId={course.id}
+        />
       </DialogSlide>
     </Box>
   );

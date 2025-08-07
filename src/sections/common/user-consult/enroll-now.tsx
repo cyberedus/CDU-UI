@@ -1,8 +1,8 @@
 import type { AppDispatch } from 'src/redux';
 import type { SubmitHandler } from 'react-hook-form';
 
-import React from 'react';
 import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -20,10 +20,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 
-import { UIDV4 } from 'src/utils/course-helper';
-
-import { createLeadsData } from 'src/redux/index.async';
-import { setVitorId, setIsOpenTalk } from 'src/redux/index.slices';
+import { enrollNowLeadsData } from 'src/redux/index.async';
 
 import { notify } from 'src/components/alert/alert';
 
@@ -48,13 +45,12 @@ interface ConsultationProps {
   afterFillForm?: () => void;
   children?: React.ReactElement<any, any>;
   buttonTitle?: string;
+  courseId: string | number;
 }
 
-const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) => {
+const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: ConsultationProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { appSettingLoader, visitorRelated } = useSelector(
-    (state: reduxState) => state.appSettings
-  );
+  const [loading, setLoading] = useState(false);
   const { interestedCourseOptions, interestedCouse } = useSelector(
     (state: reduxState) => state.dashboardData
   );
@@ -63,33 +59,33 @@ const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) 
     control,
     formState: { errors },
     reset,
-  } = useForm<leadsFormData>({
+  } = useForm<enrollFormData>({
     defaultValues: {
       username: '',
       email: '',
       phone_number: '',
       course_interested: interestedCouse ?? '',
-      message: '',
-      device_fingerprint: visitorRelated ?? '',
+      course_id: '',
     },
   });
 
-  const onSubmit: SubmitHandler<leadsFormData> = async (data: leadsFormData) => {
-    const device_fingerprint: string = visitorRelated ?? UIDV4();
-    const res = await dispatch(createLeadsData({ ...data, device_fingerprint }));
+  const onSubmit: SubmitHandler<enrollFormData> = async (data: enrollFormData) => {
+    setLoading(true);
+    const payload = { ...data, course_id: courseId };
+    const res = await dispatch(enrollNowLeadsData(payload));
     if (res.meta.requestStatus === 'fulfilled') {
       notify(
         'Thank you for your enquiry! Our team will get in touch with you shortly.',
         'success',
         'We’ve Got Your Request!'
       );
-      localStorage.setItem('device_fingerprint', device_fingerprint);
-      dispatch(setVitorId(device_fingerprint));
-      dispatch(setIsOpenTalk(false));
       if (afterFillForm) {
         afterFillForm();
       }
       reset(); // Reset form after successful submission
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
   };
 
@@ -177,7 +173,7 @@ const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) 
                 name="phone_number"
                 control={control}
                 rules={{
-                  required: 'Phone Number is required',
+                  required: false,
                   pattern: {
                     value: /^[0-9]{10,15}$/, // Simple digit-only pattern for example
                     message: 'Invalid phone number (10-15 digits)',
@@ -241,7 +237,7 @@ const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) 
           </Grid>
 
           {/* Message (Optional) */}
-          <Grid
+          {/* <Grid
             size={{
               xs: 12,
             }}
@@ -263,7 +259,7 @@ const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) 
                 )}
               />
             </motion.div>
-          </Grid>
+          </Grid> */}
 
           {/* Submit Button */}
           <Grid container justifyContent="center" width={1}>
@@ -273,8 +269,8 @@ const EnrollNow = ({ afterFillForm, children, buttonTitle }: ConsultationProps) 
                 variant="contained"
                 size="large"
                 endIcon={<Send />}
-                disabled={appSettingLoader}
-                startIcon={appSettingLoader ? <CircularProgress size={15} /> : null}
+                disabled={loading}
+                startIcon={loading ? <CircularProgress size={15} /> : null}
                 sx={{
                   mt: 0,
                   px: 5,

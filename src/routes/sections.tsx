@@ -17,6 +17,7 @@ export const CoursesPage = lazy(() => import('src/pages/courses'));
 export const ContactUsPage = lazy(() => import('src/pages/contact-us'));
 export const DashboardPage = lazy(() => import('src/pages/dashboard'));
 export const BlogPage = lazy(() => import('src/pages/blog'));
+export const BlogDetailsPage = lazy(() => import('src/pages/blog-detail'));
 export const UserPage = lazy(() => import('src/pages/user'));
 export const SignInPage = lazy(() => import('src/pages/sign-in'));
 export const ProductsPage = lazy(() => import('src/pages/products'));
@@ -46,7 +47,7 @@ export const routesSection: RouteObject[] = [
             element: <CoursesPage />,
           },
           {
-            path: ':courseId',
+            path: ':courseKey',
             element: <CourseDetailsPage />,
           },
         ],
@@ -57,7 +58,17 @@ export const routesSection: RouteObject[] = [
       },
       { path: 'user', element: <UserPage /> },
       { path: 'products', element: <ProductsPage /> },
-      { path: 'blog', element: <BlogPage /> },
+      {
+        path: 'blog',
+        element: <Outlet />,
+        children: [
+          { index: true, element: <BlogPage /> },
+          {
+            path: ':blogKey',
+            element: <BlogDetailsPage />,
+          },
+        ],
+      },
       { path: 'testimonials', element: <TestimonialsPage /> },
       { path: 'about-us', element: <AboutUsPage /> },
       {

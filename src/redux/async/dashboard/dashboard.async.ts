@@ -48,3 +48,18 @@ export const createLeadsData = createAsyncThunk(
       true
     )
 );
+export const enrollNowLeadsData = createAsyncThunk(
+  'dashboard/enrollNowLeadsData',
+  async (payload: enrollFormData, { fulfillWithValue, rejectWithValue, dispatch }) =>
+    await customAxiosClient(
+      'post',
+      '/v1/leads/enroll-course',
+      payload,
+      {
+        fulfillWithValue,
+        rejectWithValue,
+        dispatch,
+      },
+      true
+    )
+);

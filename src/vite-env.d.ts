@@ -143,6 +143,13 @@ type leadsFormData = {
   message: string;
   device_fingerprint: string;
 };
+type enrollFormData = {
+  username: string;
+  email: string;
+  phone_number: string;
+  course_interested: string;
+  course_id: string | number;
+};
 // Slice Interface and type
 interface DashboardState {
   loading: boolean;
@@ -225,16 +232,17 @@ interface splashScreenProps {
 }
 
 interface blogContent {
-  blog_id?: string | number;
+  blog_key?: string | number;
 }
 
 interface Blog {
   blog_id: number;
   title: string;
+  blog_key?: string | number;
   meta_description: string;
   seo_keywords: string[];
   tags: string[];
-  blog_image_url: string;
+  blog_image_url?: string;
   is_active: boolean;
   published_at: string; // ISO date string from API
   created_at: string; // ISO date string from API
@@ -244,4 +252,5 @@ interface Blog {
   author_email: string | null;
   profile_image_url: string | null;
   author_bio: string | null;
+  content?: string | null;
 }
