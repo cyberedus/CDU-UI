@@ -163,7 +163,7 @@ const CourseDetailsHeader = ({ course }: CourseDetailHeaderPropTypes) => {
                   <Stack direction="row" alignItems="center" spacing={0.5}>
                     <School sx={{ color: '#616161' }} />
                     <Typography variant="body2" sx={{ color: '#616161' }}>
-                      Internship included
+                      Internship Included
                     </Typography>
                   </Stack>
                 )}
