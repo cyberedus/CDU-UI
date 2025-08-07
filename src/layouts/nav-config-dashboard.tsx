@@ -24,7 +24,7 @@ export const navData: NavItem[] = [
     ],
   },
   {
-    title: 'Blog',
+    title: 'Blogs',
     path: '/blog',
     icon: null,
     // icon: icon('ic-blog'),
