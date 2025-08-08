@@ -147,7 +147,7 @@ type enrollFormData = {
   username: string;
   email: string;
   phone_number: string;
-  course_interested: string;
+  course_interested: string | null;
   course_id: string | number;
 };
 // Slice Interface and type
@@ -157,7 +157,7 @@ interface DashboardState {
   error: string | null;
   interestedCourseOptions: string[] | any[];
   dashboardCourseList: string[] | any[];
-  interestedCouse: string | null;
+  interestedCourse: string | null;
 }
 
 interface appSettingState {

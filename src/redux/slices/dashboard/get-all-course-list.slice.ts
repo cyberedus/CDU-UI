@@ -7,7 +7,7 @@ const initialState: DashboardState = {
   data: null,
   error: null,
   interestedCourseOptions: [],
-  interestedCouse: null,
+  interestedCourse: null,
   dashboardCourseList: []
 };
 
@@ -16,7 +16,7 @@ const dashboardSlice = createSlice({
   initialState,
   reducers: {
     setInterestedCourse: (state, action) => {
-      state.interestedCouse = action.payload;
+      state.interestedCourse = action.payload;
     },
   },
   extraReducers: (builder) => {

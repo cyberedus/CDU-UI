@@ -6,7 +6,6 @@ import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Send } from '@mui/icons-material';
 import {
   Box,
   Grid,
@@ -51,7 +50,7 @@ interface ConsultationProps {
 const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: ConsultationProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
-  const { interestedCourseOptions, interestedCouse } = useSelector(
+  const { interestedCourseOptions, interestedCourse } = useSelector(
     (state: reduxState) => state.dashboardData
   );
   const {
@@ -64,18 +63,22 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
       username: '',
       email: '',
       phone_number: '',
-      course_interested: '',
+      course_interested: interestedCourse ?? '',
       course_id: '',
     },
   });
 
   const onSubmit: SubmitHandler<enrollFormData> = async (data: enrollFormData) => {
     setLoading(true);
-    const payload = { ...data, course_id: courseId };
+    const payload: enrollFormData = {
+      ...data,
+      course_id: courseId,
+      course_interested: interestedCourse,
+    };
     const res = await dispatch(enrollNowLeadsData(payload));
     if (res.meta.requestStatus === 'fulfilled') {
       notify(
-        'Thank you for your enquiry! Our team will get in touch with you shortly.',
+        'You have successfully enrolled in this course. Our team will get in touch with you shortly.',
         'success',
         'We’ve Got Your Request!'
       );
@@ -173,7 +176,7 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
                 name="phone_number"
                 control={control}
                 rules={{
-                  required: false,
+                  required: 'Phone number is required',
                   pattern: {
                     value: /^[0-9]{10,15}$/, // Simple digit-only pattern for example
                     message: 'Invalid phone number (10-15 digits)',
@@ -208,6 +211,7 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
                 <Controller
                   name="course_interested"
                   control={control}
+                  disabled
                   rules={{ required: 'Please select a course' }}
                   render={({ field }) => (
                     <Select
@@ -220,14 +224,11 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
                         <em>Select a course</em>
                       </MenuItem>
 
-                      {interestedCourseOptions
-                        .filter(option => option === interestedCouse)
-                        .map(option => (
-                          <MenuItem key={option} value={option}>
-                            {option}
-                          </MenuItem>
-                        ))
-                      }
+                      {interestedCourseOptions.map((option) => (
+                        <MenuItem key={option} value={option}>
+                          {option}
+                        </MenuItem>
+                      ))}
                     </Select>
                   )}
                 />
@@ -272,7 +273,7 @@ const EnrollNow = ({ courseId, afterFillForm, children, buttonTitle }: Consultat
                 type="submit"
                 variant="contained"
                 size="large"
-                endIcon={<Send />}
+                // endIcon={<Send />}
                 disabled={loading}
                 startIcon={loading ? <CircularProgress size={15} /> : null}
                 sx={{

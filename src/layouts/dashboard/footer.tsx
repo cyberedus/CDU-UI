@@ -1,9 +1,12 @@
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Place } from '@mui/icons-material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { Box, Grid, Link, IconButton, Typography } from '@mui/material';
+
+import { AppDispatch } from 'src/redux';
+import { setInterestedCourse } from 'src/redux/index.slices';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -42,9 +45,13 @@ const linkDataProps = {
 // ];
 
 const FooterSection = () => {
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { dashboardCourseList = [] } = useSelector((state: reduxState) => state.dashboardData);
-  const handleNavigate = (path: string) => {
+  const handleNavigate = (path: string, courseName?: string) => {
+    if (courseName) {
+      dispatch(setInterestedCourse(courseName));
+    }
     navigate(path);
   };
   return (
@@ -131,7 +138,7 @@ const FooterSection = () => {
                 component="button"
                 variant="body2"
                 textAlign="left"
-                onClick={() => handleNavigate('courses/' + course_key)}
+                onClick={() => handleNavigate('courses/' + course_key, course_name)}
               >
                 {course_name}
               </Link>

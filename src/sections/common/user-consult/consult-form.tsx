@@ -55,7 +55,7 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
   const { appSettingLoader, visitorRelated } = useSelector(
     (state: reduxState) => state.appSettings
   );
-  const { interestedCourseOptions, interestedCouse } = useSelector(
+  const { interestedCourseOptions, interestedCourse } = useSelector(
     (state: reduxState) => state.dashboardData
   );
   const {
@@ -68,7 +68,7 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
       username: '',
       email: '',
       phone_number: '',
-      course_interested: interestedCouse ?? '',
+      course_interested: interestedCourse ?? '',
       message: '',
       device_fingerprint: visitorRelated ?? '',
     },
