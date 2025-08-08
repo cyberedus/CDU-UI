@@ -126,7 +126,7 @@ export const PopularCourses = ({ courses }: PopularCourses) => {
             <Carousel
               value={courses}
               numVisible={3}
-              numScroll={1}
+              numScroll={3}
               responsiveOptions={responsiveOptionsCourse}
               className="custom-carousel"
               contentClassName="container-carousel"
