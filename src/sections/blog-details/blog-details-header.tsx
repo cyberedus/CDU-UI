@@ -2,7 +2,7 @@ import React from 'react';
 import DOMPurify from 'dompurify';
 import { motion } from 'framer-motion';
 
-import { Container, Typography, Box, Paper, Stack, Avatar, Chip, IconButton } from '@mui/material';
+import { Container, Typography, Box, Paper, Stack, Avatar, Chip, IconButton, Grid } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 
 import { fDate } from 'src/utils';
@@ -45,7 +45,7 @@ const BlogDetailHeader: React.FC<BogHeaderProps> = ({ blogData }) => {
     <Container maxWidth="lg" sx={{ my: 4 }}>
       <motion.div variants={containerVariants} initial="hidden" animate="visible">
         <motion.div variants={itemVariants}>
-          <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" paddingBottom={2}>
+          <Grid container direction="row" spacing={2} alignItems="center" flexWrap="wrap" paddingBottom={2} rowGap={1}>
             <IconButton
               color="inherit"
               onClick={() => {
@@ -57,7 +57,7 @@ const BlogDetailHeader: React.FC<BogHeaderProps> = ({ blogData }) => {
             {blogData.tags.map((tag) => (
               <Chip key={tag} label={tag} />
             ))}
-          </Stack>
+          </Grid>
         </motion.div>
         <motion.div variants={itemVariants}>
           <Typography variant="h3" component="h1" gutterBottom>
