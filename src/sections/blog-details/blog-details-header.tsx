@@ -2,11 +2,12 @@ import React from 'react';
 import DOMPurify from 'dompurify';
 import { motion } from 'framer-motion';
 
-import { Container, Typography, Box, Paper, Stack, Avatar, Chip, IconButton, Grid } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
+import { Container, Typography, Box, Paper, Stack, Avatar, Chip, IconButton, Grid } from '@mui/material';
+
+import { useRouter } from 'src/routes/hooks';
 
 import { fDate } from 'src/utils';
-import { useRouter } from 'src/routes/hooks';
 
 const defaultUrl =
   'https://1602894.fs1.hubspotusercontent-na1.net/hub/1602894/hubfs/Resilient_Cybersecurity_Framework_cropped%20%281%29.webp?width=650&name=Resilient_Cybersecurity_Framework_cropped%20%281%29.webp';
