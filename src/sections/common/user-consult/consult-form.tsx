@@ -23,7 +23,7 @@ import {
 import { UIDV4 } from 'src/utils/course-helper';
 
 import { createLeadsData } from 'src/redux/index.async';
-import { setVitorId, setIsOpenTalk } from 'src/redux/index.slices';
+import { setVisitorId, setIsOpenTalk } from 'src/redux/index.slices';
 
 import { notify } from 'src/components/alert/alert';
 
@@ -84,7 +84,7 @@ const ConsultForm = ({ afterFillForm, children, buttonTitle }: ConsultationProps
         'We’ve Got Your Request!'
       );
       localStorage.setItem('device_fingerprint', device_fingerprint);
-      dispatch(setVitorId(device_fingerprint));
+      dispatch(setVisitorId(device_fingerprint));
       dispatch(setIsOpenTalk(false));
       if (afterFillForm) {
         afterFillForm();

@@ -6,7 +6,7 @@ interface MotionLazyProps {
 }
 const MotionLazy = ({ children }: MotionLazyProps) => (
   <LazyMotion features={domAnimation}>
-    <m.div style={{ height: '100%' }}>{children}</m.div>
+    <m.div style={{ height: '100vh' }}>{children}</m.div>
   </LazyMotion>
 );
 

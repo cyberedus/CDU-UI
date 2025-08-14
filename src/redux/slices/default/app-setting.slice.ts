@@ -18,7 +18,7 @@ const appSettings = createSlice({
     setRevisited: (state, action) => {
       state.isRevisited = action.payload;
     },
-    setVitorId: (state, action) => {
+    setVisitorId: (state, action) => {
       state.visitorRelated = action.payload;
     },
     setIsOpenTalk: (state, action) => {
@@ -42,6 +42,6 @@ const appSettings = createSlice({
   },
 });
 
-export const { setVitorId, setRevisited, setIsOpenTalk } = appSettings.actions;
+export const { setVisitorId, setRevisited, setIsOpenTalk } = appSettings.actions;
 
 export default appSettings.reducer;

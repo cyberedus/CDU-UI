@@ -3,7 +3,7 @@ import type { AppDispatch } from 'src/redux';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setVitorId, setRevisited, setIsOpenTalk } from 'src/redux/index.slices';
+import { setVisitorId, setRevisited, setIsOpenTalk } from 'src/redux/index.slices';
 
 const LeadsProvider = ({ children }: leadsProps) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +18,7 @@ const LeadsProvider = ({ children }: leadsProps) => {
     dispatch(setIsOpenTalk(false));
     const visitorData = localStorage.getItem('device_fingerprint');
     if (visitorData) {
-      dispatch(setVitorId(visitorData));
+      dispatch(setVisitorId(visitorData));
     }
   }, []);
 

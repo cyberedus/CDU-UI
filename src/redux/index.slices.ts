@@ -5,7 +5,7 @@ export {
 } from './slices/dashboard/get-all-course-list.slice';
 // App setting
 export {
-  setVitorId,
+  setVisitorId,
   setRevisited,
   setIsOpenTalk,
   default as appSettingsSlice,
