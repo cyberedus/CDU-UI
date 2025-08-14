@@ -10,6 +10,7 @@ import { DashboardContent } from 'src/layouts/dashboard';
 import { getSingleCourse } from 'src/redux/async/courses/courses.async';
 
 import { LoadingScreen } from 'src/components/loading-screen';
+import { SomethingWentWrong } from 'src/components/went-wrong';
 
 import CourseDetailsOverview from '../details';
 import CourseDetailsHeader from '../course-details-header';
@@ -51,8 +52,8 @@ export function CourseDetailsView() {
     };
     const res = await dispatch(getSingleCourse(payload));
     if (res.meta.requestStatus === 'fulfilled') {
-      const data = res.payload.data;
-      setCourse(data[0]);
+      const data = res.payload.data[0];
+      setCourse(data);
       setLoader(false);
     } else {
       setLoader(false);
@@ -69,14 +70,14 @@ export function CourseDetailsView() {
       {loader ? (
         <LoadingScreen />
       ) : (
-        <>
+       course ?  <>
           <Grid container sx={{ pb: 3 }}>
             <CourseDetailsHeader course={course} />
           </Grid>
           <Grid container sx={{ pb: 3 }}>
             <CourseDetailsOverview course={course} />
           </Grid>
-        </>
+        </> : <SomethingWentWrong/>
       )}
     </DashboardContent>
   );

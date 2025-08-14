@@ -8,8 +8,9 @@ import { AppDispatch } from 'src/redux';
 import { getBlogContentAsync } from 'src/redux/async/blogs/blogs.async';
 
 import { LoadingScreen } from 'src/components/loading-screen';
+import { SomethingWentWrong } from 'src/components/went-wrong';
 
-import { BlogItem } from 'src/sections/common/blog/blog-item';
+import BlogDetailHeader from '../blog-details-header';
 
 const defaultBlog: Blog = {
   blog_id: 0,
@@ -18,9 +19,10 @@ const defaultBlog: Blog = {
   seo_keywords: [],
   content: '',
   tags: [],
-  blog_image_url: '',
+  blog_image_url:
+    'https://1602894.fs1.hubspotusercontent-na1.net/hub/1602894/hubfs/Resilient_Cybersecurity_Framework_cropped%20%281%29.webp?width=650&name=Resilient_Cybersecurity_Framework_cropped%20%281%29.webp',
   is_active: false,
-  published_at: '',
+  published_at: '14 August 2025',
   created_at: '',
   updated_at: '',
   author_id: null,
@@ -50,7 +52,6 @@ const BlogDetailsView = () => {
     } else {
       setLoading(false);
     }
-    console.log(blogDetails);
   };
 
   useEffect(() => {
@@ -61,10 +62,10 @@ const BlogDetailsView = () => {
   return (
     <Box>
       {loading ? (
-        <LoadingScreen sx={{ height: 60, minWidth: '200px' }} />
+        <LoadingScreen sx={{ height: 800, minWidth: '200px' }} />
       ) : (
         <Grid container>
-          <BlogItem blog={blogDetails} sx={{ width: 1, height: '500px' }} />
+          {blogDetails ? <BlogDetailHeader blogData={blogDetails} /> : <SomethingWentWrong />}
         </Grid>
       )}
     </Box>
